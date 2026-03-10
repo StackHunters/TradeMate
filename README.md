@@ -1,4 +1,4 @@
-# TradeMate 🛠️
+# TradeMate 
 
 > **Find Trusted Local Professionals in Minutes.**
 
@@ -6,15 +6,15 @@ TradeMate is a local services marketplace web platform that connects users with 
 
 ---
 
-## 📸 Preview
+##  Preview
 
 > _Landing page, User Dashboard, Provider Dashboard, and more — see `/screenshots` folder._
 
 ---
 
-## 🚀 Features
+##  Features
 
-### 👤 User Features
+###  User Features
 - Register and login as a **User** or **Service Provider**
 - Search and filter service providers by category and location
 - View detailed provider profiles with ratings and reviews
@@ -23,7 +23,7 @@ TradeMate is a local services marketplace web platform that connects users with 
 - Rate and review completed services
 - User dashboard with recent bookings and recommended providers
 
-### 🛠️ Provider Features
+###  Provider Features
 - Multi-step profile setup with progress indicator
 - Upload identity and professional verification documents
 - Add, edit, enable, or disable services
@@ -32,7 +32,7 @@ TradeMate is a local services marketplace web platform that connects users with 
 - Availability calendar management
 - Provider dashboard with booking stats and earnings chart
 
-### 🌐 General
+###  General
 - Fully responsive design (Mobile, Tablet, Desktop)
 - Role-based access control (User vs Provider)
 - Booking status workflow (Pending → Accepted → Completed)
@@ -42,7 +42,7 @@ TradeMate is a local services marketplace web platform that connects users with 
 
 ---
 
-## 🧱 Tech Stack
+##  Tech Stack
 
 | Layer        | Technology                        |
 |--------------|-----------------------------------|
@@ -56,7 +56,7 @@ TradeMate is a local services marketplace web platform that connects users with 
 
 ---
 
-## 🎨 Brand & Design
+##  Brand & Design
 
 ### Color Palette
 
@@ -79,7 +79,7 @@ TradeMate is a local services marketplace web platform that connects users with 
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 trademate/
@@ -154,7 +154,7 @@ trademate/
 
 ---
 
-## 🖥️ Pages Overview
+##  Pages Overview
 
 | Page                    | Route                        | Access       |
 |-------------------------|------------------------------|--------------|
@@ -175,7 +175,7 @@ trademate/
 
 ---
 
-## ⚙️ Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -212,7 +212,7 @@ Then visit: **`http://localhost:3000`**
 
 ---
 
-## 🔐 Authentication Flow
+##  Authentication Flow
 
 TradeMate uses **localStorage** to manage sessions on the frontend.
 
@@ -246,7 +246,7 @@ Login
 
 ---
 
-## 📦 Booking Status Workflow
+##  Booking Status Workflow
 
 ```
 Pending
@@ -257,12 +257,12 @@ Pending
 
 | Status      | Color     | User Action           | Provider Action     |
 |-------------|-----------|----------------------|---------------------|
-| Pending     | 🟡 Yellow | Cancel booking       | Accept / Reject     |
-| Accepted    | 🟢 Green  | View / Contact       | Mark as completed   |
-| In Progress | 🔵 Blue   | Track                | Update status       |
-| Completed   | 🟣 Purple | Leave Review / Rebook| —                   |
-| Rejected    | 🔴 Red    | Rebook               | —                   |
-| Cancelled   | ⚫ Grey   | Rebook               | —                   |
+| Pending     |  Yellow | Cancel booking       | Accept / Reject     |
+| Accepted    |  Green  | View / Contact       | Mark as completed   |
+| In Progress |  Blue   | Track                | Update status       |
+| Completed   |  Purple | Leave Review / Rebook| —                   |
+| Rejected    |  Red    | Rebook               | —                   |
+| Cancelled   |  Grey   | Rebook               | —                   |
 
 ---
 
@@ -277,7 +277,7 @@ Pending
 
 ---
 
-## 🗺️ UX Flows
+##  UX Flows
 
 ### User Journey
 ```
@@ -295,7 +295,7 @@ Register → Complete Profile Setup → Upload Verification
 
 ---
 
-## ✅ Business Rules
+##  Business Rules
 
 - Users can only see **their own** bookings
 - Only **completed** bookings can receive a review
@@ -308,7 +308,7 @@ Register → Complete Profile Setup → Upload Verification
 
 ---
 
-## 🔒 Security Considerations
+##  Security Considerations
 
 > Since this is a frontend-only project, the following are simulated but should be implemented server-side in production:
 
@@ -321,7 +321,7 @@ Register → Complete Profile Setup → Upload Verification
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! To contribute:
 
@@ -335,24 +335,24 @@ Please follow the existing code style and naming conventions.
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **TradeMate Design & Development Team**  
-Built with ❤️ for connecting local professionals with their communities.
+Built with 😍 for connecting local professionals with their communities.
 
 ---
 
-## 📬 Contact
+##  Contact
 
 | Channel  | Details                        |
 |----------|--------------------------------|
-| Email    | support@trademate.com          |
+| Email    | smartbwoy48@gmail.com          |
 | Website  | [www.trademate.com](#)         |
 | Twitter  | [@trademate](#)                |
 
