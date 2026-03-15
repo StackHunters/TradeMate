@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provider Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/HTML/CSS/SERVICES/dashboard.css">
+</head>
+<body>
+
+<!-- ════ SIDEBAR OVERLAY ════ -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+<!-- ════════════════════════════════
+     SIDEBAR
+════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">⚡</div>
+    <div>
+      <h2>Trade Mate</h2>
+      <span>Provider Portal</span>
+    </div>
+  </div>
+  <div class="sidebar-profile">
+    <div class="profile-avatar">KB</div>
+    <div class="profile-info">
+      <strong>KOFI BREBO</strong>
+      <div class="profile-badge">Online</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Main</div>
+    <div class="nav-item active" onclick="navigate('dashboard', this)">
+      <span class="nav-icon">🏠</span> Dashboard
+    </div>
+    <div class="nav-item" onclick="navigate('bookings', this)">
+      <span class="nav-icon">📋</span> Bookings
+      <span class="nav-badge">3</span>
+    </div>
+    <div class="nav-item" onclick="navigate('services', this)">
+      <span class="nav-icon">🛠️</span> Services
+    </div>
+    <div class="nav-item" onclick="navigate('earnings', this)">
+      <span class="nav-icon">💰</span> Earnings
+    </div>
+    <div class="nav-section-label">Communication</div>
+    <div class="nav-item" onclick="navigate('messages', this)">
+      <span class="nav-icon">💬</span> Messages
+      <span class="nav-badge">2</span>
+    </div>
+    <div class="nav-item" onclick="navigate('reviews', this)">
+      <span class="nav-icon">⭐</span> Reviews
+    </div>
+    <div class="nav-section-label">Account</div>
+    <div class="nav-item" onclick="navigate('settings', this)">
+      <span class="nav-icon">⚙️</span> Settings
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="nav-item logout" onclick="showToast('Logging out...','info');  window.location.href = '/HTML/ADMIN/LandingPage.html';">
+      <span class="nav-icon">🚪</span> Logout
+    </div>
+  </div>
+</aside>
+
+<!-- ════════════════════════════════
+     MAIN WRAPPER
+════════════════════════════════ -->
+<div class="main-wrapper">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    <div class="topbar-title" id="topbarTitle">Dashboard <span>Overview</span></div>
+    <div class="topbar-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search anything...">
+    </div>
+    <div class="topbar-actions">
+      <button class="topbar-btn" onclick="showToast('No new updates','info')">🔔<span class="notif-dot"></span></button>
+      <button class="topbar-btn" onclick="showToast('Refreshed!','success')">🔄</button>
+      <button class="topbar-btn" onclick="navigate('settings', document.querySelector('[onclick*=settings]'))">👤</button>
+    </div>
+  </header> 
+
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- ══════════════════════════════════
+         PAGE: DASHBOARD
+    ══════════════════════════════════ -->
+    <div class="page active" id="page-dashboard">
+
+      <div class="section-header">
+        <div>
+          <h2>Welcome back, Kofi 👋</h2>
+          <p>Here's what's happening with your business today.</p>
+        </div>
+        <button class="btn btn-primary" onclick="navigate('bookings', document.querySelectorAll('.nav-item')[1])">📋 View All Bookings</button>
+      </div>
+
+      <!-- EARNINGS CARDS -->
+      <div class="earnings-grid">
+        <div class="earning-card total" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
+          <div class="earning-card-top">
+            <div class="earning-icon">💰</div>
+            <span class="earning-card-arrow">→</span>
+          </div>
+          <div class="earning-label">Total Earnings</div>
+          <div class="earning-amount">GH₵ 12,450</div>
+          <div class="earning-meta"><span class="trend up">▲ 14.2%</span> vs last month</div>
+          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
+        </div>
+        <div class="earning-card monthly" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
+          <div class="earning-card-top">
+            <div class="earning-icon">📅</div>
+            <span class="earning-card-arrow">→</span>
+          </div>
+          <div class="earning-label">This Month</div>
+          <div class="earning-amount">GH₵ 3,820</div>
+          <div class="earning-meta"><span class="trend up">▲ 8.7%</span> vs Feb</div>
+          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
+        </div>
+        <div class="earning-card pending" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
+          <div class="earning-card-top">
+            <div class="earning-icon">🕒</div>
+            <span class="earning-card-arrow">→</span>
+          </div>
+          <div class="earning-label">Pending Earnings</div>
+          <div class="earning-amount">GH₵ 680</div>
+          <div class="earning-meta"><span style="color:var(--warning)">4 jobs</span> awaiting clearance</div>
+          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
+        </div>
+        <div class="earning-card withdraw" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
+          <div class="earning-card-top">
+            <div class="earning-icon">💳</div>
+            <span class="earning-card-arrow">→</span>
+          </div>
+          <div class="earning-label">Withdrawable</div>
+          <div class="earning-amount">GH₵ 2,340</div>
+          <div class="earning-meta">Min withdrawal: <strong style="color:#c9d1d9">GH₵ 50</strong></div>
+          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
+        </div>
+      </div>
+
+      <!-- QUICK STATS -->
+      <div class="quick-stats mb-24">
+        <div class="quick-stat-card">
+          <div class="qs-icon purple">📦</div>
+          <div>
+            <div class="qs-value">24</div>
+            <div class="qs-label">Total Bookings</div>
+          </div>
+        </div>
+        <div class="quick-stat-card">
+          <div class="qs-icon green">✅</div>
+          <div>
+            <div class="qs-value">18</div>
+            <div class="qs-label">Completed Jobs</div>
+          </div>
+        </div>
+        <div class="quick-stat-card">
+          <div class="qs-icon yellow">⭐</div>
+          <div>
+            <div class="qs-value">4.8</div>
+            <div class="qs-label">Average Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECENT TWO COL -->
+      <div class="recent-two-col">
+        <!-- RECENT BOOKINGS -->
+        <div>
+          <div class="table-wrapper">
+            <div class="table-header">
+              <div>
+                <div class="table-title">Recent Bookings</div>
+                <div class="table-count">Showing last 5 requests</div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="navigate('bookings', document.querySelectorAll('.nav-item')[1])">View all →</button>
+            </div>
+            <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Service</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recentBookingsBody">
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIVE SERVICES SUMMARY -->
+        <div>
+          <div class="table-wrapper">
+            <div class="table-header">
+              <div>
+                <div class="table-title">Active Services</div>
+                <div class="table-count">3 of 5 active</div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="navigate('services', document.querySelectorAll('.nav-item')[2])">Manage →</button>
+            </div>
+            <div id="activeSummaryList" style="padding: 8px 0;"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /page-dashboard -->
+
+    <!-- ══════════════════════════════════
+         PAGE: BOOKINGS
+    ══════════════════════════════════ -->
+    <div class="page" id="page-bookings">
+      <div class="section-header">
+        <div>
+          <h2>Booking Requests</h2>
+          <p>Manage and respond to all your service bookings.</p>
+        </div>
+        <button class="btn btn-primary" onclick="showToast('Export started','success')">📤 Export CSV</button>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters-bar">
+        <div class="filter-group">
+          <span class="filter-label">Status:</span>
+          <select class="filter-select" id="bookingStatusFilter" onchange="filterBookings()">
+            <option value="all">All Statuses</option>
+            <option value="pending">Pending</option>
+            <option value="accepted">Accepted</option>
+            <option value="inprogress">In Progress</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">From:</span>
+          <input type="date" class="filter-input" id="bookingDateFrom" onchange="filterBookings()">
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">To:</span>
+          <input type="date" class="filter-input" id="bookingDateTo" onchange="filterBookings()">
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="resetBookingFilters()">✕ Reset</button>
+      </div>
+
+      <div class="table-wrapper">
+        <div class="table-header">
+          <div>
+            <div class="table-title">All Bookings</div>
+            <div class="table-count" id="bookingCount">Loading...</div>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Service</th>
+              <th>Date & Time</th>
+              <th>Location</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody"></tbody>
+        </table>
+        </div>
+      </div>
+    </div><!-- /page-bookings -->
+
+    <!-- ══════════════════════════════════
+         PAGE: SERVICES
+    ══════════════════════════════════ -->
+    <div class="page" id="page-services">
+      <div class="section-header">
+        <div>
+          <h2>My Services</h2>
+          <p>Manage all your listed services.</p>
+        </div>
+        <button class="btn btn-primary" onclick="showToast('Service form coming soon','info')">+ Add New Service</button>
+      </div>
+
+      <div class="service-grid" id="serviceGrid"></div>
+    </div><!-- /page-services -->
+
+    <!-- ══════════════════════════════════
+         PAGE: EARNINGS
+    ══════════════════════════════════ -->
+    <div class="page" id="page-earnings">
+      <div class="section-header">
+        <div>
+          <h2>Earnings & Withdrawals</h2>
+          <p>Track your income and manage withdrawals.</p>
+        </div>
+      </div>
+
+      <div class="earnings-grid" style="margin-bottom:28px">
+        <div class="earning-card total">
+          <div class="earning-card-top">
+            <div class="earning-icon">💰</div>
+          </div>
+          <div class="earning-label">Total Earnings</div>
+          <div class="earning-amount">GH₵ 12,450</div>
+          <div class="earning-timestamp">All-time earnings since Jan 2024</div>
+        </div>
+        <div class="earning-card monthly">
+          <div class="earning-card-top">
+            <div class="earning-icon">📅</div>
+          </div>
+          <div class="earning-label">This Month</div>
+          <div class="earning-amount">GH₵ 3,820</div>
+          <div class="earning-timestamp">March 2026</div>
+        </div>
+        <div class="earning-card pending">
+          <div class="earning-card-top">
+            <div class="earning-icon">🕒</div>
+          </div>
+          <div class="earning-label">Pending</div>
+          <div class="earning-amount">GH₵ 680</div>
+          <div class="earning-timestamp">Awaiting job completion</div>
+        </div>
+        <div class="earning-card withdraw">
+          <div class="earning-card-top">
+            <div class="earning-icon">💳</div>
+          </div>
+          <div class="earning-label">Withdrawable</div>
+          <div class="earning-amount">GH₵ 2,340</div>
+          <div class="earning-timestamp">Available to withdraw</div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters-bar mb-16">
+        <div class="filter-group">
+          <span class="filter-label">Category:</span>
+          <select class="filter-select" id="earningCatFilter" onchange="filterEarnings()">
+            <option value="all">All Categories</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="electrical">Electrical</option>
+            <option value="painting">Painting</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Payment:</span>
+          <select class="filter-select" id="earningPayFilter" onchange="filterEarnings()">
+            <option value="all">All</option>
+            <option value="paid">Paid</option>
+            <option value="pending">Pending</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- EARNINGS TABLE -->
+      <div class="table-wrapper mb-24">
+        <div class="table-header">
+          <div>
+            <div class="table-title">Earnings Breakdown</div>
+            <div class="table-count" id="earningsCount">Showing all records</div>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Job</th>
+              <th>Customer</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Gross</th>
+              <th>Commission (15%)</th>
+              <th>Net Earned</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="earningsTableBody"></tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- WITHDRAWAL -->
+      <div class="withdrawal-grid">
+        <div class="withdrawal-card">
+          <div class="earning-label">Available Balance</div>
+          <div class="withdrawal-balance">GH₵ 2,340.00</div>
+          <div class="withdrawal-info">Minimum withdrawal: GH₵ 50.00</div>
+          <div class="payment-method-display">
+            <div class="payment-icon">🏦</div>
+            <div class="payment-details">
+              <strong>MTN Mobile Money</strong>
+              <span>+233 ** *** 5489</span>
+            </div>
+            <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="showToast('Edit payment method','info')">Edit</button>
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="openWithdrawModal()">💳 Withdraw Funds</button>
+        </div>
+        <div class="withdrawal-card">
+          <div class="table-title" style="margin-bottom:16px">Withdrawal History</div>
+          <div id="withdrawalHistory"></div>
+        </div>
+      </div>
+    </div><!-- /page-earnings -->
+
+    <!-- ══════════════════════════════════
+         PAGE: MESSAGES
+    ══════════════════════════════════ -->
+    <div class="page" id="page-messages">
+      <div class="section-header">
+        <div>
+          <h2>Messages</h2>
+          <p>Chat with your customers.</p>
+        </div>
+      </div>
+      <div class="messages-layout">
+        <div class="messages-list">
+          <div class="msg-list-header">💬 Conversations</div>
+          <div id="messagesList"></div>
+        </div>
+        <div class="chat-area">
+          <div class="chat-header">
+            <div class="msg-avatar" style="background:linear-gradient(135deg,#667eea,#764ba2)">KB</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:#e6edf3">Kofi Brebo</div>
+              <div style="font-size:11.5px;color:var(--success)">● Online</div>
+            </div>
+            <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="showToast('Calling customer...','info')">📞 Call</button>
+          </div>
+          <div class="chat-messages" id="chatMessages"></div>
+          <div class="chat-input-bar">
+            <input class="chat-input" type="text" placeholder="Type a message..." id="chatInput" onkeypress="handleChatSend(event)">
+            <button class="btn btn-primary" onclick="sendMessage()">Send →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         PAGE: REVIEWS
+    ══════════════════════════════════ -->
+    <div class="page" id="page-reviews">
+      <div class="section-header">
+        <div>
+          <h2>Reviews & Ratings</h2>
+          <p>What customers say about your services.</p>
+        </div>
+      </div>
+      <div class="reviews-summary">
+        <div class="rating-big">
+          <div class="rating-num">4.8</div>
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-count">Based on 42 reviews</div>
+        </div>
+        <div class="rating-bars">
+          <div style="font-size:14px;font-weight:600;color:#e6edf3;margin-bottom:16px;font-family:'Times New Roman',serif">Rating Distribution</div>
+          <div class="rating-bar-row">5 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:78%"></div></div><span>33</span></div>
+          <div class="rating-bar-row">4 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:14%"></div></div><span>6</span></div>
+          <div class="rating-bar-row">3 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:5%"></div></div><span>2</span></div>
+          <div class="rating-bar-row">2 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div><span>1</span></div>
+          <div class="rating-bar-row">1 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%"></div></div><span>0</span></div>
+        </div>
+      </div>
+      <div id="reviewsList"></div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         PAGE: SETTINGS
+    ══════════════════════════════════ -->
+    <div class="page" id="page-settings">
+      <div class="section-header">
+        <div>
+          <h2>Settings</h2>
+          <p>Manage your account and preferences.</p>
+        </div>
+      </div>
+      <div class="settings-grid">
+        <div class="settings-nav" id="settingsNav">
+          <div class="settings-nav-item active" onclick="switchSettingsPanel('profile', this)">👤 Profile</div>
+          <div class="settings-nav-item" onclick="switchSettingsPanel('notifications', this)">🔔 Notifications</div>
+          <div class="settings-nav-item" onclick="switchSettingsPanel('payments', this)">💳 Payments</div>
+          <div class="settings-nav-item" onclick="switchSettingsPanel('security', this)">🔒 Security</div>
+        </div>
+        <div>
+          <!-- Profile -->
+          <div class="settings-panel active card" id="settings-profile">
+            <div class="settings-section-title">Profile Information</div>
+            <div class="settings-section-desc">Update your public provider profile.</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input class="form-input" type="text" value="Kofi">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input class="form-input" type="text" value="Brebo">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input class="form-input" type="email" value="smartbwoy48@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input class="form-input" type="tel" value="+233 553 981 702">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bio / Description</label>
+              <textarea class="textarea" style="margin-top:0" rows="3">Professional home services provider with 5+ years experience in plumbing, electrical, and general maintenance.</textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Location / Area</label>
+              <input class="form-input" type="text" value="East Legon, Accra">
+            </div>
+            <button class="btn btn-primary" onclick="showToast('Profile saved successfully!','success')">💾 Save Changes</button>
+          </div>
+          <!-- Notifications -->
+          <div class="settings-panel card" id="settings-notifications">
+            <div class="settings-section-title">Notification Preferences</div>
+            <div class="settings-section-desc">Choose how you want to be notified.</div>
+            <div class="toggle-row"><div class="toggle-info"><strong>New Booking Requests</strong><span>Get notified when a customer places a booking</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>Booking Status Updates</strong><span>Confirmations, cancellations, and changes</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>New Messages</strong><span>Notifications for incoming customer messages</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>Payment Received</strong><span>Alert when earnings are confirmed</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>Review Posted</strong><span>Get notified when a customer leaves a review</span></div><label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>Promotional Emails</strong><span>Tips, offers, and platform news</span></div><label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+            <div style="margin-top:20px"><button class="btn btn-primary" onclick="showToast('Notification preferences saved!','success')">💾 Save Preferences</button></div>
+          </div>
+          <!-- Payments -->
+          <div class="settings-panel card" id="settings-payments">
+            <div class="settings-section-title">Payment Methods</div>
+            <div class="settings-section-desc">Manage how you receive withdrawals.</div>
+            <div class="payment-method-display" style="margin-bottom:16px">
+              <div class="payment-icon">📱</div>
+              <div class="payment-details"><strong>MTN Mobile Money</strong><span>+233 ** *** 1702 · Primary</span></div>
+              <span class="badge badge-active" style="margin-left:auto">✓ Active</span>
+            </div>
+            <div class="payment-method-display">
+              <div class="payment-icon">🏦</div>
+              <div class="payment-details"><strong>GCB Bank</strong><span>**** **** **** 3421</span></div>
+              <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="showToast('Set as primary','success')">Set Primary</button>
+            </div>
+            <div style="margin-top:20px"><button class="btn btn-primary" onclick="showToast('Add payment form coming soon','info')">+ Add Payment Method</button></div>
+          </div>
+          <!-- Security -->
+          <div class="settings-panel card" id="settings-security">
+            <div class="settings-section-title">Security Settings</div>
+            <div class="settings-section-desc">Keep your account secure.</div>
+            <div class="form-group"><label class="form-label">Current Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
+            <div class="form-group"><label class="form-label">New Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
+            <div class="form-group"><label class="form-label">Confirm New Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
+            <div class="toggle-row" style="margin-bottom:20px"><div class="toggle-info"><strong>Two-Factor Authentication</strong><span>Add extra security with SMS verification</span></div><label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+            <button class="btn btn-primary" onclick="showToast('Password updated successfully!','success')">🔒 Update Password</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main-wrapper -->
+</div><!-- /layout -->
+
+<!-- ════════════════════════════════
+     BOOKING DETAIL MODAL
+════════════════════════════════ -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>📋 Booking Details</h3>
+      <div class="modal-close" onclick="closeModal('bookingModal')">✕</div>
+    </div>
+    <div id="bookingModalContent"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     REJECT MODAL
+════════════════════════════════ -->
+<div class="modal-overlay" id="rejectModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>❌ Reject Booking</h3>
+      <div class="modal-close" onclick="closeModal('rejectModal')">✕</div>
+    </div>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:4px">Please provide a reason for rejection (optional but recommended):</p>
+    <textarea class="textarea" id="rejectReason" placeholder="e.g. Schedule conflict, outside service area..."></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-danger" onclick="confirmReject()">Confirm Rejection</button>
+      <button class="btn btn-outline" onclick="closeModal('rejectModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     WITHDRAW MODAL
+════════════════════════════════ -->
+<div class="modal-overlay" id="withdrawModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>💳 Withdraw Funds</h3>
+      <div class="modal-close" onclick="closeModal('withdrawModal')">✕</div>
+    </div>
+    <div class="modal-detail-row">
+      <span class="modal-detail-label">Available Balance</span>
+      <span class="modal-detail-value" style="color:var(--success);font-family:'Times New Roman',serif;font-size:20px;font-weight:700">GH₵ 2,340.00</span>
+    </div>
+    <div class="modal-detail-row">
+      <span class="modal-detail-label">Minimum Withdrawal</span>
+      <span class="modal-detail-value">GH₵ 50.00</span>
+    </div>
+    <div class="modal-detail-row">
+      <span class="modal-detail-label">Payment Method</span>
+      <span class="modal-detail-value">MTN Mobile Money ···1702</span>
+    </div>
+    <div class="form-group" style="margin-top:18px">
+      <label class="form-label">Amount to Withdraw (GH₵)</label>
+      <input class="form-input" type="number" id="withdrawAmount" placeholder="Enter amount (min 50)" min="50" max="2340">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="confirmWithdraw()">🏦 Request Withdrawal</button>
+      <button class="btn btn-outline" onclick="closeModal('withdrawModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     SERVICE EDIT MODAL
+════════════════════════════════ -->
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>✏️ Edit Service</h3>
+      <div class="modal-close" onclick="closeModal('serviceModal')">✕</div>
+    </div>
+    <div class="form-group"><label class="form-label">Service Title</label><input class="form-input" type="text" id="editServiceTitle"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Category</label><select class="form-input"><option>Cleaning</option><option>Plumbing</option><option>Electrical</option><option>Painting</option></select></div>
+      <div class="form-group"><label class="form-label">Price (GH₵)</label><input class="form-input" type="number" id="editServicePrice"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Description</label><textarea class="textarea" style="margin-top:0" id="editServiceDesc" rows="3"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="saveServiceEdit()">💾 Save Changes</button>
+      <button class="btn btn-outline" onclick="closeModal('serviceModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast-container"></div>
+
+<script src="/HTML/JS/SERVICES/dashboard.js">
+
+</script>
+</body>
+</html>

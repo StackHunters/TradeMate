@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Henry Charles — Private Tutor | TradeMate</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/HTML/CSS/CLIENT/provider-profile.css">
+</head>
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/HTML/ADMIN/landingPage.html" class="nav-logo">
+      <div class="nav-logo-icon">TM</div>
+      <div class="nav-logo-text">Trade<span>Mate</span></div>
+    </a>
+    <a href="/HTML/CLIENT/services.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Services
+    </a>
+    <div class="nav-right">
+      <button class="nav-share-btn" onclick="shareProfile()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        Share
+      </button>
+      <button class="nav-book-btn" onclick="scrollToBook()">Book Now</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ PROFILE HERO ═══════ -->
+<section class="profile-hero">
+  <div class="hero-banner-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="profile-hero-inner">
+    <!-- Avatar -->
+    <div class="avatar-wrap reveal-left">
+      <div class="avatar">
+        <img src="https://i.pravatar.cc/220?img=11" alt="Kwame Asante" onerror="this.style.display='none'"/>
+        HC
+      </div>
+      <div class="verified-ring" title="Verified Provider">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="provider-info reveal">
+      <div class="provider-breadcrumb">
+        <a href="#">Home</a><span>/</span>
+        <a href="#">Tutors</a><span>/</span>
+        <span>Henry Charles</span>
+      </div>
+      <h1 class="provider-name">Henry Charles</h1>
+      <div class="provider-category-row">
+        <div class="category-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+          Private Tutor
+        </div>
+        <div class="verified-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          Verified
+        </div>
+      </div>
+      <div class="rating-row">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="star">★</span><span class="star" style="color:rgba(245,158,11,.5)">★</span>
+        </div>
+        <span class="rating-score">4.8</span>
+        <span class="rating-count">127 reviews</span>
+        <span style="color:var(--border-2)">·</span>
+        <span style="font-size:.78rem;color:var(--muted)">312 jobs completed</span>
+      </div>
+      <div class="location-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        East Legon, Accra — serves Accra, Tema &amp; Adenta
+      </div>
+    </div>
+
+    <!-- Quick stats -->
+    <div class="quick-stats reveal">
+      <div class="qstat">
+        <div class="qstat-val">312</div>
+        <div class="qstat-lbl">Jobs Done</div>
+      </div>
+      <div class="qstat">
+        <div class="qstat-val">6 yrs</div>
+        <div class="qstat-lbl">Experience</div>
+      </div>
+      <div class="qstat">
+        <div class="qstat-val">&lt;2h</div>
+        <div class="qstat-lbl">Response</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust strip -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span><strong>ID Verified</strong></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 11 12 14 22 4"/>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+      </svg>
+      <span><strong>Skills Tested</strong></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <span>Member since <strong>Jan 2019</strong></span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span><strong>127</strong> happy clients</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      <span>Avg <strong>4.8 / 5</strong> stars</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+      <span>Responds in <strong>&lt; 2 hours</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PAGE BODY ═══════ -->
+<main class="page-body" id="mainBody">
+
+  <!-- ═══ LEFT COLUMN ═══ -->
+  <div class="left-col">
+
+    <!-- About -->
+    <div class="section-card reveal">
+      <div class="section-card-title">About Henry</div>
+      <p class="about-text">
+        I am a passionate and experienced private tutor with over 6 years of teaching Mathematics,
+        Science and English to students from JHS through University level. I hold a BSc in Mathematics
+        from University of Ghana, Legon and have consistently helped students improve their grades
+        by at least 2 letter grades within 3 months.
+      </p>
+      <p class="about-text" style="margin-top:10px">
+        My approach is student-centered — I tailor every session to the individual learner's pace,
+        learning style and goals. Whether you need exam preparation, remedial support or enrichment
+        classes, I deliver results with patience and clarity.
+      </p>
+      <div class="skills-grid">
+        <div class="skill-chip">Mathematics</div>
+        <div class="skill-chip">Science</div>
+        <div class="skill-chip">English Language</div>
+        <div class="skill-chip">WASSCE </div>
+        <div class="skill-chip">BECE </div>
+        <div class="skill-chip">University Calculus</div>
+        <div class="skill-chip">Physics</div>
+        <div class="skill-chip">Chemistry</div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="section-card reveal">
+      <div class="section-card-title">Work Gallery</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="gallery-item-inner"><img src="/ASSETS/teach1.jpeg" alt=""></div></div>
+        <div class="gallery-item"><div class="gallery-item-inner"><img src="/ASSETS/teach2.jpeg" alt=""></div></div>
+        <div class="gallery-item"><div class="gallery-item-inner"><img src="/ASSETS/teach3.jpeg" alt=""></div></div>
+        <div class="gallery-item"><div class="gallery-item-inner"><img src="/ASSETS/teach4.jpeg" alt=""></div></div>
+        <div class="gallery-item"><div class="gallery-item-inner"><img src="/ASSETS/teach5.jpeg" alt=""></div></div>
+        <div class="gallery-item"><div class="gallery-item-inner"><img src="/ASSETS/teach6.jpeg" alt=""></div></div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="section-card reveal" id="pricing">
+      <div class="section-card-title">Service Packages</div>
+      <div class="pricing-grid">
+
+        <div class="price-card" onclick="selectPackage(this,'basic',50)">
+          <div class="price-left">
+            <div class="price-name">Basic Session</div>
+            <div class="price-desc">1-hour one-on-one tutoring session. Single subject focus.</div>
+            <div class="price-includes">
+              <span class="price-incl-item">1 hour session</span>
+              <span class="price-incl-item">1 subject</span>
+              <span class="price-incl-item">Study notes provided</span>
+            </div>
+          </div>
+          <div class="price-right">
+            <div class="price-amount">₵50</div>
+            <div class="price-unit">per session</div>
+          </div>
+        </div>
+
+        <div class="price-card popular" onclick="selectPackage(this,'standard',120)">
+          <div class="popular-badge">POPULAR</div>
+          <div class="price-left">
+            <div class="price-name">Weekly Package</div>
+            <div class="price-desc">3 sessions per week, up to 2 subjects. Best value for exam prep.</div>
+            <div class="price-includes">
+              <span class="price-incl-item">3 sessions/week</span>
+              <span class="price-incl-item">Up to 2 subjects</span>
+              <span class="price-incl-item">Practice exams</span>
+              <span class="price-incl-item">Progress report</span>
+            </div>
+          </div>
+          <div class="price-right">
+            <div class="price-amount">₵120</div>
+            <div class="price-unit">per week</div>
+          </div>
+        </div>
+
+        <div class="price-card" onclick="selectPackage(this,'premium',400)">
+          <div class="price-left">
+            <div class="price-name">Monthly Premium</div>
+            <div class="price-desc">Daily sessions, all subjects, parent progress reports and materials included.</div>
+            <div class="price-includes">
+              <span class="price-incl-item">Daily sessions</span>
+              <span class="price-incl-item">All subjects</span>
+              <span class="price-incl-item">Study materials</span>
+              <span class="price-incl-item">Parent reports</span>
+              <span class="price-incl-item">WhatsApp support</span>
+            </div>
+          </div>
+          <div class="price-right">
+            <div class="price-amount">₵400</div>
+            <div class="price-unit">per month</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="section-card reveal" id="reviews">
+      <div class="reviews-header">
+        <div class="rating-summary">
+          <div class="big-rating">4.8</div>
+          <div>
+            <div class="stars" style="margin-bottom:4px">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="star">★</span><span class="star" style="color:rgba(245,158,11,.5)">★</span>
+            </div>
+            <div style="font-size:.75rem;color:var(--muted)">Based on 127 reviews</div>
+            <div class="rating-breakdown" style="margin-top:8px">
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">5</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:78%"></div></div>
+                <span class="rating-bar-count">99</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">4</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:14%"></div></div>
+                <span class="rating-bar-count">18</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">3</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:6%"></div></div>
+                <span class="rating-bar-count">7</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">2</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div>
+                <span class="rating-bar-count">2</span>
+              </div>
+              <div class="rating-bar-row">
+                <span class="rating-bar-label">1</span>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div>
+                <span class="rating-bar-count">1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="review-filter">
+          <button class="filter-btn active" onclick="filterReviews(this,'all')">All</button>
+          <button class="filter-btn" onclick="filterReviews(this,'5')">5★</button>
+          <button class="filter-btn" onclick="filterReviews(this,'4')">4★</button>
+        </div>
+      </div>
+
+      <!-- Section card title -->
+      <div class="section-card-title" style="margin-bottom:16px">Client Reviews</div>
+
+      <div class="reviews-list" id="reviewsList">
+
+        <div class="review-item" data-stars="5">
+          <div class="review-top">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">AA</div>
+              <div>
+                <div class="reviewer-name">Abena Agyemang</div>
+                <div class="reviewer-meta">Mathematics · WASSCE Prep</div>
+              </div>
+            </div>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <p class="review-text">
+            Kwame is absolutely amazing! My daughter went from a D to a B+ in Mathematics in just
+            two months. He explains concepts so clearly and always brings practice problems to
+            every session. Highly recommend him to any parent.
+          </p>
+          <div class="review-date">March 2, 2025</div>
+          <div class="review-tag">Verified Booking</div>
+        </div>
+
+        <div class="review-item" data-stars="5">
+          <div class="review-top">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#22c55e,#16a34a)">KO</div>
+              <div>
+                <div class="reviewer-name">Kofi Owusu</div>
+                <div class="reviewer-meta">Science · JHS Level</div>
+              </div>
+            </div>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <p class="review-text">
+            I booked Kwame for my son's BECE preparation. Excellent communicator, very patient
+            with students who struggle. He comes prepared every time with notes and past questions.
+            Worth every pesewa.
+          </p>
+          <div class="review-date">February 15, 2025</div>
+          <div class="review-tag">Verified Booking</div>
+        </div>
+
+        <div class="review-item" data-stars="4">
+          <div class="review-top">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">EA</div>
+              <div>
+                <div class="reviewer-name">Esi Amoah</div>
+                <div class="reviewer-meta">English Language · University</div>
+              </div>
+            </div>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="star">★</span><span class="star empty">★</span>
+            </div>
+          </div>
+          <p class="review-text">
+            Good tutor. Very knowledgeable in English writing and comprehension. Only giving 4 stars
+            because he cancelled one session last minute. Otherwise would be 5 stars easily.
+          </p>
+          <div class="review-date">January 28, 2025</div>
+          <div class="review-tag">Verified Booking</div>
+        </div>
+
+        <div class="review-item" data-stars="5">
+          <div class="review-top">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#ef4444,#dc2626)">MA</div>
+              <div>
+                <div class="reviewer-name">Mensah Akrong</div>
+                <div class="reviewer-meta">Physics &amp; Chemistry · SHS Level</div>
+              </div>
+            </div>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <p class="review-text">
+            Outstanding tutor! Helped me pass my Physics and Chemistry exams in the same semester.
+            His explanations are clear and he makes difficult topics very easy to understand.
+            I will definitely book again for my final exams.
+          </p>
+          <div class="review-date">January 10, 2025</div>
+          <div class="review-tag">Verified Booking</div>
+        </div>
+
+        <div class="review-item" data-stars="5">
+          <div class="review-top">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">PA</div>
+              <div>
+                <div class="reviewer-name">Priscilla Addo</div>
+                <div class="reviewer-meta">Calculus · University Level</div>
+              </div>
+            </div>
+            <div class="review-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <p class="review-text">
+            I was failing Calculus in my first year at KNUST. After 4 sessions with Kwame I finally
+            understood integration and differentiation. He's a natural teacher. Very flexible
+            with timing too — accommodated my class schedule perfectly.
+          </p>
+          <div class="review-date">December 5, 2024</div>
+          <div class="review-tag">Verified Booking</div>
+        </div>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-btn" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn" onclick="changePage(this)">2</button>
+        <button class="page-btn" onclick="changePage(this)">3</button>
+        <span style="color:var(--muted);font-size:.8rem;padding:0 4px">…</span>
+        <button class="page-btn" onclick="changePage(this)">13</button>
+        <button class="page-btn" onclick="changePage(this)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- end left-col -->
+
+  <!-- ═══ RIGHT COLUMN ═══ -->
+  <div class="right-col" id="bookingCard">
+
+    <!-- Booking card -->
+    <div class="booking-card reveal">
+      <div class="booking-card-title">Book a Session</div>
+      <div class="booking-card-sub">Choose a package and select your preferred time</div>
+
+      <div class="price-highlight">
+        <span class="price-from">From</span>
+        <span class="price-big" id="selectedPrice">₵50</span>
+        <span class="price-period" id="selectedPeriod">/ session</span>
+      </div>
+
+      <!-- Service selector -->
+      <div class="service-selector">
+        <div class="selector-label">Select Package</div>
+        <div class="service-options">
+          <div class="service-option selected" onclick="selectService(this,'Basic Session','₵50','/ session')">
+            <div class="service-option-left">
+              <div class="service-radio"></div>
+              <span class="service-option-name">Basic Session</span>
+            </div>
+            <span class="service-option-price">₵50</span>
+          </div>
+          <div class="service-option" onclick="selectService(this,'Weekly Package','₵120','/ week')">
+            <div class="service-option-left">
+              <div class="service-radio"></div>
+              <span class="service-option-name">Weekly Package</span>
+            </div>
+            <span class="service-option-price">₵120</span>
+          </div>
+          <div class="service-option" onclick="selectService(this,'Monthly Premium','₵400','/ month')">
+            <div class="service-option-left">
+              <div class="service-radio"></div>
+              <span class="service-option-name">Monthly Premium</span>
+            </div>
+            <span class="service-option-price">₵400</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date & Time -->
+      <div class="datetime-row">
+        <div class="dt-field">
+          <label>Date</label>
+          <input type="date" id="bookDate" min=""/>
+        </div>
+        <div class="dt-field">
+          <label>Time</label>
+          <input type="time" id="bookTime" value="09:00"/>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="msg-field">
+        <label>Message (optional)</label>
+        <textarea id="bookMessage" placeholder="Tell Kwame about what you need — subject, level, specific topics…"></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <button class="book-btn" onclick="handleBooking()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Book Service
+      </button>
+      <button class="contact-btn" onclick="handleContact()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Message Kwame
+      </button>
+
+      <div class="booking-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>Payment is only released after you confirm the job is done. Fully escrow-protected.</span>
+      </div>
+    </div>
+
+    <!-- Availability -->
+    <div class="avail-card reveal">
+      <div class="avail-title">📅 Weekly Availability</div>
+      <div class="avail-grid">
+        <div class="avail-day">
+          <span class="avail-day-name">Mon</span>
+          <span class="avail-day-status open">Open</span>
+        </div>
+        <div class="avail-day">
+          <span class="avail-day-name">Tue</span>
+          <span class="avail-day-status open">Open</span>
+        </div>
+        <div class="avail-day">
+          <span class="avail-day-name">Wed</span>
+          <span class="avail-day-status open">Open</span>
+        </div>
+        <div class="avail-day">
+          <span class="avail-day-name">Thu</span>
+          <span class="avail-day-status open">Open</span>
+        </div>
+        <div class="avail-day">
+          <span class="avail-day-name">Fri</span>
+          <span class="avail-day-status open">Open</span>
+        </div>
+        <div class="avail-day">
+          <span class="avail-day-name">Sat</span>
+          <span class="avail-day-status open">Open</span>
+        </div>
+        <div class="avail-day">
+          <span class="avail-day-name">Sun</span>
+          <span class="avail-day-status closed">Closed</span>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:.72rem;color:var(--muted)">
+        ⏰ Hours: 7:00 AM – 8:00 PM (Mon–Sat)
+      </div>
+    </div>
+
+    <!-- Similar providers -->
+    <div class="similar-card reveal">
+      <div class="similar-title">Similar Tutors</div>
+      <div class="similar-list">
+        <div class="similar-item" onclick="window.location.href='#'">
+          <div class="similar-avatar" style="background:linear-gradient(135deg,#22c55e,#16a34a)">AB</div>
+          <div class="similar-info">
+            <div class="similar-name">Ama Boateng</div>
+            <div class="similar-rating">⭐ 4.9 · 89 reviews</div>
+          </div>
+          <div class="similar-price">₵60</div>
+        </div>
+        <div class="similar-item" onclick="window.location.href='#'">
+          <div class="similar-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">YD</div>
+          <div class="similar-info">
+            <div class="similar-name">Yaw Darko</div>
+            <div class="similar-rating">⭐ 4.7 · 203 reviews</div>
+          </div>
+          <div class="similar-price">₵45</div>
+        </div>
+        <div class="similar-item" onclick="window.location.href='#'">
+          <div class="similar-avatar" style="background:linear-gradient(135deg,#ef4444,#dc2626)">AO</div>
+          <div class="similar-info">
+            <div class="similar-name">Akua Ofori</div>
+            <div class="similar-rating">⭐ 4.8 · 156 reviews</div>
+          </div>
+          <div class="similar-price">₵55</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end right-col -->
+
+</main>
+
+<!-- ═══════ MOBILE BOOK BAR ═══════ -->
+<div class="mobile-book-bar">
+  <div class="mobile-book-price">
+    <span class="mobile-book-from">From</span>
+    <span class="mobile-book-amount">₵50</span>
+  </div>
+  <button class="mobile-book-btn" onclick="scrollToBook()">Book Henry</button>
+</div>
+<script src="/HTML/JS/CLIENT/provider-profile.js"></script>
+</body>
+</html>

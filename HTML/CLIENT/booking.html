@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Book a Service — TradeMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/HTML/CSS/CLIENT/booking.css" />
+ 
+</head>
+<body>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="/HTML/ADMIN/LandingPage.html">TradeMate</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
+        <button class="nav-btn active" data-page="services">Services</button>
+        <button class="nav-btn" data-page="book">Book</button>
+        <button class="nav-btn" data-page="my-bookings">My Bookings</button>
+        <button class="nav-btn" data-page="contact">Contact</button>
+        <button class="navbtn" ><a href="/HTML/ADMIN/LandingPage.html">Home</a></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══════ PAGE WRAP ═══════ -->
+  <div class="page-wrap">
+
+    <!-- page title -->
+    <div class="page-title" id="pageTitle">
+      <h1>Book a <em>Service</em></h1>
+      <p class="lead">Choose a service, pick a date &amp; time, enter your location, and confirm your booking.</p>
+    </div>
+
+    <!-- ═══════ BOOKING CARD ═══════ -->
+    <div class="card" id="bookingCard">
+
+      <!-- LEFT: form -->
+      <div class="form-pane">
+        <form id="bookingForm" autocomplete="off" novalidate>
+          <div class="form-section">
+
+            <!-- Service selector -->
+            <div>
+              <label class="field-label">Select Service</label>
+              <div class="services" id="serviceList" aria-label="services">
+
+                <label class="service-card selected" data-service="Home Cleaning">
+                  <div class="service-left">
+                    <div class="service-radio-dot"></div>
+                    <input type="radio" name="service" value="Home Cleaning" checked>
+                    <span class="service-name">🧹 Home Cleaning</span>
+                  </div>
+                  <span class="service-price">GH₵80</span>
+                </label>
+
+                <label class="service-card" data-service="Plumbing">
+                  <div class="service-left">
+                    <div class="service-radio-dot"></div>
+                    <input type="radio" name="service" value="Plumbing">
+                    <span class="service-name">🔧 Plumbing</span>
+                  </div>
+                  <span class="service-price">GH₵120</span>
+                </label>
+
+                <label class="service-card" data-service="Electrician">
+                  <div class="service-left">
+                    <div class="service-radio-dot"></div>
+                    <input type="radio" name="service" value="Electrician">
+                    <span class="service-name">⚡ Electrician</span>
+                  </div>
+                  <span class="service-price">GH₵100</span>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Date -->
+            <div>
+              <label class="field-label" for="date">Date</label>
+              <input id="date" type="date" required>
+            </div>
+
+            <!-- Time + Duration -->
+            <div class="row">
+              <div>
+                <label class="field-label" for="time">Time</label>
+                <input id="time" type="time" required>
+                <p class="field-hint">Business hours: 08:00 — 20:00</p>
+              </div>
+              <div>
+                <label class="field-label" for="duration">Duration</label>
+                <select id="duration" aria-label="Duration">
+                  <option value="1">1 hour</option>
+                  <option value="2">2 hours</option>
+                  <option value="3">3 hours</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div>
+              <label class="field-label" for="location">Location (address)</label>
+              <div class="location-row">
+                <input id="location" type="text" placeholder="Street, City, Region" required>
+                <button id="geoBtn" type="button" class="btn btn-geo">📍 Use my location</button>
+              </div>
+              <p class="coords-info" id="coordsInfo"></p>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+              <button id="confirmBtn" type="button" class="btn btn-primary" disabled>Confirm Booking</button>
+              <button id="clearBtn" type="button" class="btn btn-secondary">Clear</button>
+              <span class="required-note">All fields required</span>
+            </div>
+
+          </div>
+        </form>
+      </div><!-- /form-pane -->
+
+      <!-- RIGHT: summary -->
+      <aside class="summary-pane" aria-live="polite" aria-label="Booking summary">
+        <div class="summary-title">Booking Summary</div>
+
+        <div class="summary-lines">
+          <div class="sum-line">
+            <span class="sum-key">Service</span>
+            <span class="sum-val" id="sumService">Home Cleaning</span>
+          </div>
+          <div class="sum-line">
+            <span class="sum-key">Date</span>
+            <span class="sum-val" id="sumDate">—</span>
+          </div>
+          <div class="sum-line">
+            <span class="sum-key">Time</span>
+            <span class="sum-val" id="sumTime">—</span>
+          </div>
+          <div class="sum-line">
+            <span class="sum-key">Duration</span>
+            <span class="sum-val" id="sumDuration">1 hour</span>
+          </div>
+          <div class="sum-line">
+            <span class="sum-key">Location</span>
+            <span class="sum-val" id="sumLocation">—</span>
+          </div>
+
+          <div class="sum-divider"></div>
+
+          <div class="sum-line sum-total">
+            <span class="sum-key">Total</span>
+            <span class="sum-val" id="sumTotal">GH₵80</span>
+          </div>
+        </div>
+
+        <div class="summary-footer">
+          When you click <strong>Confirm Booking</strong>, you'll see a final review before submission.
+        </div>
+      </aside>
+
+    </div><!-- /card -->
+
+    <!-- ═══════ MY BOOKINGS PANEL ═══════ -->
+    <div class="panel" id="bookingsPanel">
+      <h2>My Bookings</h2>
+      <p class="panel-lead">Saved bookings (stored locally in your browser).</p>
+      <div class="bookings-list" id="bookingsList"></div>
+    </div>
+
+    <!-- ═══════ CONTACT PANEL ═══════ -->
+    <div class="panel" id="contactPanel">
+      <h2>Contact Us</h2>
+      <p class="panel-lead">Questions? Send us a message and we'll get back to you within 24 hours.</p>
+      <form id="contactForm" class="contact-form" novalidate>
+        <div>
+          <label class="field-label" for="contactName">Your Name</label>
+          <input id="contactName" type="text" placeholder="Full name" required>
+        </div>
+        <div>
+          <label class="field-label" for="contactEmail">Email</label>
+          <input id="contactEmail" type="text" placeholder="you@example.com" required>
+        </div>
+        <div>
+          <label class="field-label" for="contactMessage">Message</label>
+          <textarea id="contactMessage" rows="4" placeholder="How can we help?" required></textarea>
+        </div>
+        <div class="actions">
+          <button id="contactSend" type="button" class="btn btn-primary">Send Message</button>
+          <span class="required-note">We won't share your data.</span>
+        </div>
+      </form>
+    </div>
+
+  </div><!-- /page-wrap -->
+
+  <!-- ═══════ MODAL ═══════ -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <h3 id="modalTitle">Review your booking</h3>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-actions">
+        <button id="modalCancel" class="btn btn-secondary" type="button">Cancel</button>
+        <button id="modalConfirm" class="btn btn-primary" type="button">Confirm &amp; Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ TOAST ═══════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/HTML/JS/CLIENT/booking.js"></script>
+</body>
+</html>
