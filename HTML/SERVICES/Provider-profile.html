@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradeMate — Provider Profile Setup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/HTML/CSS/SERVICES/Provider-profile.css">
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="#" class="logo">
+    <div class="logo-mark">TM</div>
+    <span class="logo-text">Trade<span>Mate</span></span>
+  </a>
+  <div class="topbar-right">
+    <span class="topbar-step-label">Step <strong id="topStepNum">1</strong> of 7</span>
+    <button class="save-draft-btn" onclick="saveDraft()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Save Draft
+    </button>
+  </div>
+</div>
+
+<!-- COMPLETION BAR -->
+<div class="completion-bar-wrap">
+  <div class="completion-header">
+    <span class="completion-label">Profile Completion</span>
+    <span class="completion-pct" id="completionPct">0%</span>
+  </div>
+  <div class="completion-track"><div class="completion-fill" id="completionFill"></div></div>
+</div>
+
+<!-- STEPPER -->
+<div class="stepper-wrap">
+  <div class="stepper" id="stepper">
+    <div class="step-item active" data-step="1" onclick="goStep(1)">
+      <div class="step-circle">1</div>
+      <div class="step-label">Basic Info</div>
+    </div>
+    <div class="step-item" data-step="2" onclick="goStep(2)">
+      <div class="step-circle">2</div>
+      <div class="step-label">Professional</div>
+    </div>
+    <div class="step-item" data-step="3" onclick="goStep(3)">
+      <div class="step-circle">3</div>
+      <div class="step-label">Services</div>
+    </div>
+    <div class="step-item" data-step="4" onclick="goStep(4)">
+      <div class="step-circle">4</div>
+      <div class="step-label">Availability</div>
+    </div>
+    <div class="step-item" data-step="5" onclick="goStep(5)">
+      <div class="step-circle">5</div>
+      <div class="step-label">Verification</div>
+    </div>
+    <div class="step-item" data-step="6" onclick="goStep(6)">
+      <div class="step-circle">6</div>
+      <div class="step-label">Payment</div>
+    </div>
+    <div class="step-item" data-step="7" onclick="goStep(7)">
+      <div class="step-circle">7</div>
+      <div class="step-label">Review &amp; Terms</div>
+    </div>
+  </div>
+</div>
+
+<main>
+<div class="page-body">
+
+<!-- ══ STEP 1: BASIC INFO ══ -->
+<div class="step-panel active" id="panel-1">
+  <div class="step-heading">
+    <h2>Let's set up your <em>profile</em></h2>
+    <p>Start with the basics — your name, photo, contact details and where you're located.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <div><div class="fch-title">Personal Details</div><div class="fch-sub">Your public-facing profile information</div></div>
+    </div>
+    <div class="form-card-body">
+      <!-- Avatar -->
+      <div class="form-group form-full" style="margin-bottom:22px;">
+        <label class="form-label">Profile Photo <span class="lbl-req">*</span></label>
+        <div class="avatar-upload-row">
+          <div class="avatar-preview" id="avatarPreview" onclick="document.getElementById('avatarInput').click()">
+            <span id="avatarInitials">KB</span>
+            <div class="avatar-overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <input type="file" id="avatarInput" accept=".jpg,.jpeg,.png,.webp" style="display:none" onchange="previewAvatar(this)">
+          </div>
+          <div class="avatar-info">
+            <strong>Upload a clear headshot</strong>
+            <p>JPG, PNG or WebP · Max 5MB · Square crop recommended for best results.</p>
+            <div class="avatar-btns">
+              <button class="btn-sm" onclick="document.getElementById('avatarInput').click()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Upload
+              </button>
+              <button class="btn-sm" onclick="removeAvatar()">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group form-full">
+          <label class="form-label">Full Name <span class="lbl-req">*</span></label>
+          <input class="form-input" type="text" id="fullName" placeholder="e.g. Kofi Brebo" oninput="updateInitials(this.value); updateUrl()">
+          <div class="field-error" id="nameErr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Full name is required.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Phone Number <span class="lbl-req">*</span></label>
+          <div class="otp-row">
+            <input class="form-input" type="tel" id="phoneNum" placeholder="+233 XX XXX XXXX">
+            <button class="otp-btn" id="sendOtpBtn" onclick="sendOTP()">Send OTP</button>
+          </div>
+          <div id="otpVerifyRow" style="display:none;margin-top:8px;">
+            <div class="otp-row">
+              <input class="form-input" type="text" id="otpInput" placeholder="Enter 6-digit OTP" maxlength="6">
+              <button class="otp-btn" onclick="verifyOTP()">Verify</button>
+            </div>
+          </div>
+          <div id="phoneVerifiedPill" style="display:none;margin-top:6px;">
+            <span class="verified-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Phone verified</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" id="emailAddr" value="smartbwoy48@gmail.com" readonly style="opacity:0.6;cursor:not-allowed;">
+          <span class="form-hint" style="display:flex;align-items:center;gap:4px;margin-top:2px;">
+            <span class="verified-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Auto-verified</span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">City <span class="lbl-req">*</span></label>
+          <input class="form-input" type="text" id="city" placeholder="e.g. Accra">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Region <span class="lbl-req">*</span></label>
+          <select class="form-select" id="region">
+            <option value="">— Select region —</option>
+            <option>Greater Accra</option>
+            <option>Ashanti</option>
+            <option>Western</option>
+            <option>Central</option>
+            <option>Eastern</option>
+            <option>Northern</option>
+            <option>Volta</option>
+            <option>Upper East</option>
+            <option>Upper West</option>
+            <option>Brong-Ahafo</option>
+          </select>
+        </div>
+
+        <div class="form-group form-full">
+          <label class="form-label">Service Radius <span class="lbl-req">*</span></label>
+          <div class="radius-slider-wrap">
+            <div class="radius-value" id="radiusDisplay">10 <span>km from your location</span></div>
+            <input type="range" id="radiusSlider" min="2" max="50" value="10" step="2" oninput="document.getElementById('radiusDisplay').innerHTML=this.value+' <span>km from your location</span>'">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Gender <span class="lbl-opt">Optional</span></label>
+          <select class="form-select">
+            <option value="">Prefer not to say</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Non-binary</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Languages Spoken <span class="lbl-opt">Optional</span></label>
+          <input class="form-input" type="text" placeholder="e.g. English, Twi, Ga">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <div></div>
+    <button class="btn-next" onclick="nextStep(1)">
+      Continue
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ══ STEP 2: PROFESSIONAL INFO ══ -->
+<div class="step-panel" id="panel-2">
+  <div class="step-heading">
+    <h2>Your <em>expertise</em></h2>
+    <p>Tell clients what you do, your experience, and what makes you great at it.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <div><div class="fch-title">Professional Information</div><div class="fch-sub">Determines your credibility and discoverability</div></div>
+    </div>
+    <div class="form-card-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Primary Category <span class="lbl-req">*</span></label>
+          <select class="form-select" id="primaryCat" onchange="updateSubcats()">
+            <option value="">— Select category —</option>
+            <option value="carpenter">Carpenter</option>
+            <option value="plumber">Plumber</option>
+            <option value="electrician">Electrician</option>
+            <option value="painter">Painter</option>
+            <option value="cleaner">Cleaner</option>
+            <option value="tutor">Tutor</option>
+            <option value="driver">Driver</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subcategory <span class="lbl-req">*</span></label>
+          <select class="form-select" id="subcat">
+            <option value="">— Select primary first —</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Years of Experience <span class="lbl-req">*</span></label>
+          <select class="form-select">
+            <option value="">— Select —</option>
+            <option>Less than 1 year</option>
+            <option>1–2 years</option>
+            <option>3–5 years</option>
+            <option>6–10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Profile Headline <span class="lbl-req">*</span></label>
+          <input class="form-input" type="text" placeholder="e.g. Expert Electrician with 8 Years Experience" id="headlineInput" maxlength="80" oninput="updateUrl()">
+        </div>
+
+        <div class="form-group form-full">
+          <label class="form-label">Short Bio <span class="lbl-req">*</span></label>
+          <textarea class="form-textarea" id="bioText" placeholder="Describe your experience, approach and what clients can expect from working with you (100–300 words)…" oninput="updateCharCount(this,'bioCount',300)"></textarea>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div class="form-hint">Minimum 100 words · Maximum 300 words</div>
+            <div class="char-count" id="bioCount">0 / 300</div>
+          </div>
+        </div>
+
+        <div class="form-group form-full">
+          <label class="form-label">Skills <span class="lbl-req">*</span></label>
+          <div class="tag-input-wrap" id="skillsWrap" onclick="document.getElementById('skillInput').focus()">
+            <input class="tag-real-input" id="skillInput" placeholder="Type a skill and press Enter…" onkeydown="handleTagInput(event,'skillInput','skillsWrap')">
+          </div>
+          <div class="form-hint">Press Enter or comma to add · Click × to remove</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Certifications <span class="lbl-opt">Optional</span></label>
+          <input class="form-input" type="text" placeholder="e.g. City &amp; Guilds Level 3">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Education <span class="lbl-opt">Optional</span></label>
+          <input class="form-input" type="text" placeholder="e.g. KNUST, HND Electrical">
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label">Portfolio Link <span class="lbl-opt">Optional</span></label>
+          <input class="form-input" type="url" placeholder="https://yourportfolio.com">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-prev" onclick="prevStep(2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back</button>
+    <button class="btn-next" onclick="nextStep(2)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  </div>
+</div>
+
+<!-- ══ STEP 3: SERVICE SETUP ══ -->
+<div class="step-panel" id="panel-3">
+  <div class="step-heading">
+    <h2>Define your <em>services</em></h2>
+    <p>Create at least one service. This is what clients will browse and book.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div><div class="fch-title">Service Details</div><div class="fch-sub">At least one service is required</div></div>
+    </div>
+    <div class="form-card-body">
+      <div class="form-grid">
+        <div class="form-group form-full">
+          <label class="form-label">Service Title <span class="lbl-req">*</span></label>
+          <input class="form-input" type="text" placeholder="e.g. Kitchen Cabinet Installation">
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label">Service Description <span class="lbl-req">*</span></label>
+          <textarea class="form-textarea" placeholder="Describe exactly what's included in this service, tools used, process and expected outcome…" style="min-height:90px;" oninput="updateCharCount(this,'svcDescCount',500)"></textarea>
+          <div style="display:flex;justify-content:flex-end;"><div class="char-count" id="svcDescCount">0 / 500</div></div>
+        </div>
+
+        <div class="form-group form-full">
+          <label class="form-label">Pricing Model <span class="lbl-req">*</span></label>
+          <div class="pricing-options">
+            <label class="pricing-opt selected" id="pmFixed">
+              <input type="radio" name="pricing" value="fixed" checked onchange="selectPricing('fixed')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Fixed Price
+            </label>
+            <label class="pricing-opt" id="pmHourly">
+              <input type="radio" name="pricing" value="hourly" onchange="selectPricing('hourly')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Hourly Rate
+            </label>
+            <label class="pricing-opt" id="pmStarting">
+              <input type="radio" name="pricing" value="starting" onchange="selectPricing('starting')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              Starting Price
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Amount (GH₵) <span class="lbl-req">*</span></label>
+          <input class="form-input" type="number" id="priceAmount" placeholder="e.g. 250" min="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Estimated Duration <span class="lbl-req">*</span></label>
+          <select class="form-select">
+            <option>— Select duration —</option>
+            <option>Less than 1 hour</option>
+            <option>1–2 hours</option>
+            <option>Half day (3–4 hrs)</option>
+            <option>Full day (6–8 hrs)</option>
+            <option>2–3 days</option>
+            <option>1 week</option>
+            <option>Custom / TBD</option>
+          </select>
+        </div>
+
+        <div class="form-group form-full">
+          <label class="form-label">Service Location <span class="lbl-req">*</span></label>
+          <div class="location-options">
+            <label class="loc-opt selected" id="locClient">
+              <input type="radio" name="svcLoc" value="client" checked onchange="selectLoc('client')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>At Client's Location</span>
+            </label>
+            <label class="loc-opt" id="locMine">
+              <input type="radio" name="svcLoc" value="mine" onchange="selectLoc('mine')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>At My Location</span>
+            </label>
+            <label class="loc-opt" id="locOnline">
+              <input type="radio" name="svcLoc" value="online" onchange="selectLoc('online')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Online / Remote</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group form-full">
+          <label class="form-label">Service Images <span class="lbl-opt">Optional</span></label>
+          <div class="portfolio-grid" id="portfolioGrid">
+            <div class="portfolio-item" onclick="document.getElementById('portfolioInput').click()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <input type="file" id="portfolioInput" accept=".jpg,.jpeg,.png" multiple style="display:none" onchange="addPortfolioImages(this)">
+          <div class="form-hint" style="margin-top:6px;">Add up to 6 photos of your work · JPG/PNG · Max 5MB each</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-prev" onclick="prevStep(3)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back</button>
+    <button class="btn-next" onclick="nextStep(3)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  </div>
+</div>
+
+<!-- ══ STEP 4: AVAILABILITY ══ -->
+<div class="step-panel" id="panel-4">
+  <div class="step-heading">
+    <h2>Set your <em>availability</em></h2>
+    <p>Define the days and hours you're available to take bookings.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div><div class="fch-title">Working Days &amp; Hours</div><div class="fch-sub">Clients will only be able to book within these windows</div></div>
+    </div>
+    <div class="form-card-body">
+      <div class="form-group" style="margin-bottom:22px;">
+        <label class="form-label">Working Days <span class="lbl-req">*</span></label>
+        <div class="days-grid">
+          <label class="day-toggle"><input type="checkbox" checked><div class="day-chip">Mon</div></label>
+          <label class="day-toggle"><input type="checkbox" checked><div class="day-chip">Tue</div></label>
+          <label class="day-toggle"><input type="checkbox" checked><div class="day-chip">Wed</div></label>
+          <label class="day-toggle"><input type="checkbox" checked><div class="day-chip">Thu</div></label>
+          <label class="day-toggle"><input type="checkbox" checked><div class="day-chip">Fri</div></label>
+          <label class="day-toggle"><input type="checkbox"><div class="day-chip">Sat</div></label>
+          <label class="day-toggle"><input type="checkbox"><div class="day-chip">Sun</div></label>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Start Time <span class="lbl-req">*</span></label>
+          <div class="time-row"><input class="form-input" type="time" value="08:00" style="flex:1;"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">End Time <span class="lbl-req">*</span></label>
+          <div class="time-row"><input class="form-input" type="time" value="18:00" style="flex:1;"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Timezone <span class="lbl-req">*</span></label>
+          <select class="form-select">
+            <option value="GMT">GMT+0 — Ghana / Accra</option>
+            <option value="WAT">WAT (UTC+1) — Nigeria/Lagos</option>
+            <option value="EAT">EAT (UTC+3) — Nairobi</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Break Period <span class="lbl-opt">Optional</span></label>
+          <select class="form-select">
+            <option value="">No break</option>
+            <option>12:00 – 13:00 (1 hr lunch)</option>
+            <option>13:00 – 14:00</option>
+            <option>Custom</option>
+          </select>
+        </div>
+
+        <div class="form-group form-full" style="display:flex;align-items:center;justify-content:space-between;background:var(--dark-3);border-radius:var(--radius-sm);padding:14px 16px;gap:12px;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--white);">Emergency Availability</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px;">Accept urgent bookings outside working hours for a premium rate</div>
+          </div>
+          <label style="position:relative;display:inline-flex;align-items:center;cursor:pointer;flex-shrink:0;">
+            <input type="checkbox" id="emergencyToggle" style="display:none;" onchange="toggleEmergency(this)">
+            <div id="toggleTrack" style="width:44px;height:24px;background:var(--dark);border:1px solid var(--border);border-radius:12px;position:relative;transition:all 0.25s;">
+              <div id="toggleThumb" style="position:absolute;top:3px;left:3px;width:16px;height:16px;background:var(--muted);border-radius:50%;transition:all 0.25s;"></div>
+            </div>
+          </label>
+        </div>
+
+        <div class="form-group form-full" style="display:flex;align-items:center;justify-content:space-between;background:var(--dark-3);border-radius:var(--radius-sm);padding:14px 16px;gap:12px;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--white);">Vacation Mode</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px;">Pause all bookings temporarily while you're away</div>
+          </div>
+          <label style="position:relative;display:inline-flex;align-items:center;cursor:pointer;flex-shrink:0;">
+            <input type="checkbox" id="vacationToggle" style="display:none;" onchange="toggleVacation(this)">
+            <div id="vacTrack" style="width:44px;height:24px;background:var(--dark);border:1px solid var(--border);border-radius:12px;position:relative;transition:all 0.25s;">
+              <div id="vacThumb" style="position:absolute;top:3px;left:3px;width:16px;height:16px;background:var(--muted);border-radius:50%;transition:all 0.25s;"></div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-prev" onclick="prevStep(4)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back</button>
+    <button class="btn-next" onclick="nextStep(4)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  </div>
+</div>
+
+<!-- ══ STEP 5: VERIFICATION ══ -->
+<div class="step-panel" id="panel-5">
+  <div class="step-heading">
+    <h2>Verify your <em>identity</em></h2>
+    <p>A verified profile builds client trust and unlocks all features on TradeMate.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><div class="fch-title">Identity &amp; Verification</div><div class="fch-sub">Government ID required · Selfie optional but recommended</div></div>
+    </div>
+    <div class="form-card-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">ID Type <span class="lbl-req">*</span></label>
+          <select class="form-select">
+            <option value="">— Select type —</option>
+            <option>National ID Card</option>
+            <option>International Passport</option>
+            <option>Driver's License</option>
+            <option>Voter's ID</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">ID Number <span class="lbl-req">*</span></label>
+          <input class="form-input" type="text" placeholder="Enter ID number">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Upload Government ID <span class="lbl-req">*</span></label>
+          <div class="upload-zone-sm" id="govIdZone">
+            <input type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="simUpload(this,'govIdProg','govIdZone','govIdSuccess')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <strong>Upload ID Document</strong>
+            <p>JPG · PNG · PDF · Max 5MB</p>
+          </div>
+          <div class="progress-sm" id="govIdProg">
+            <div class="bar-track"><div class="bar-fill" id="govIdBar"></div></div>
+            <p><span id="govIdFilename">—</span><span id="govIdPct">0%</span></p>
+          </div>
+          <div class="field-success" id="govIdSuccess" style="display:none;align-items:center;gap:6px;font-size:12px;color:var(--green);margin-top:6px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            ID uploaded successfully
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Selfie Photo <span class="lbl-opt">Strongly Recommended</span></label>
+          <div class="upload-zone-sm" id="selfieZone">
+            <input type="file" accept=".jpg,.jpeg,.png" onchange="simUpload(this,'selfieProg','selfieZone','selfieSuccess')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <strong>Upload Selfie</strong>
+            <p>Hold your ID next to your face</p>
+          </div>
+          <div class="progress-sm" id="selfieProg">
+            <div class="bar-track"><div class="bar-fill" id="selfieBar"></div></div>
+            <p><span id="selfieFilename">—</span><span id="selfiePct">0%</span></p>
+          </div>
+          <div class="field-success" id="selfieSuccess" style="display:none;align-items:center;gap:6px;font-size:12px;color:var(--green);margin-top:6px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Selfie uploaded successfully
+          </div>
+        </div>
+
+        <div class="form-group form-full" style="background:rgba(102,126,234,0.06);border:1px solid rgba(102,126,234,0.15);border-radius:var(--radius-md);padding:16px 20px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <strong style="font-size:13px;color:var(--white);">Security &amp; Privacy</strong>
+          </div>
+          <p style="font-size:12px;color:var(--muted);line-height:1.7;">Your documents are encrypted, stored in private cloud storage, and never exposed publicly. Only you and authorised TradeMate admins can access your files. MIME-type validation and malware scanning are applied on all uploads.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-prev" onclick="prevStep(5)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back</button>
+    <button class="btn-next" onclick="nextStep(5)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  </div>
+</div>
+
+<!-- ══ STEP 6: PAYMENT ══ -->
+<div class="step-panel" id="panel-6">
+  <div class="step-heading">
+    <h2>Payment <em>setup</em></h2>
+    <p>Add your payment details so TradeMate can pay you for completed jobs.</p>
+  </div>
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+      <div><div class="fch-title">Payment Method</div><div class="fch-sub">Select how you'd like to receive your earnings</div></div>
+    </div>
+    <div class="form-card-body">
+      <div class="form-group" style="margin-bottom:22px;">
+        <label class="form-label">Payment Type <span class="lbl-req">*</span></label>
+        <div class="payment-methods">
+          <label class="pay-method selected" id="pm-mtn">
+            <input type="radio" name="payType" value="mtn" checked onchange="selectPayMethod('mtn')">
+            <div class="pay-icon" style="background:rgba(245,200,66,0.15);">📱</div>
+            <div class="pay-method-name">MTN MoMo</div>
+          </label>
+          <label class="pay-method" id="pm-voda">
+            <input type="radio" name="payType" value="voda" onchange="selectPayMethod('voda')">
+            <div class="pay-icon" style="background:rgba(239,68,68,0.1);">📞</div>
+            <div class="pay-method-name">Vodafone Cash</div>
+          </label>
+          <label class="pay-method" id="pm-airtel">
+            <input type="radio" name="payType" value="airtel" onchange="selectPayMethod('airtel')">
+            <div class="pay-icon" style="background:rgba(239,68,68,0.1);">📶</div>
+            <div class="pay-method-name">AirtelTigo Money</div>
+          </label>
+          <label class="pay-method" id="pm-bank">
+            <input type="radio" name="payType" value="bank" onchange="selectPayMethod('bank')">
+            <div class="pay-icon" style="background:rgba(102,126,234,0.1);">🏦</div>
+            <div class="pay-method-name">Bank Account</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group form-full">
+          <label class="form-label">Account Name <span class="lbl-req">*</span></label>
+          <input class="form-input" type="text" placeholder="Full name as registered on account">
+        </div>
+        <div class="form-group">
+          <label class="form-label" id="acctNumLabel">Mobile Number <span class="lbl-req">*</span></label>
+          <div class="masked-input">
+            <input class="form-input" type="text" id="acctNum" placeholder="e.g. 0244 000 000" maxlength="16">
+            <button class="mask-toggle" id="maskToggleBtn" onclick="toggleMask()" title="Show/Hide">
+              <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+          <div class="form-hint" style="display:flex;align-items:center;gap:5px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Account numbers are encrypted and masked in all displays
+          </div>
+        </div>
+        <div class="form-group" id="bankNameGroup" style="display:none;">
+          <label class="form-label">Bank Name <span class="lbl-req">*</span></label>
+          <select class="form-select">
+            <option>— Select bank —</option>
+            <option>GCB Bank</option>
+            <option>Ecobank Ghana</option>
+            <option>Absa Ghana</option>
+            <option>Zenith Bank</option>
+            <option>Fidelity Bank</option>
+            <option>Stanbic Bank</option>
+            <option>Standard Chartered</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-prev" onclick="prevStep(6)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back</button>
+    <button class="btn-next" onclick="nextStep(6)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  </div>
+</div>
+
+<!-- ══ STEP 7: TERMS & REVIEW ══ -->
+<div class="step-panel" id="panel-7">
+  <div class="step-heading">
+    <h2>Review &amp; <em>agree</em></h2>
+    <p>Almost done! Review the commission structure and agree to TradeMate's terms before launching your profile.</p>
+  </div>
+
+  <!-- SEO Settings -->
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div><div class="fch-title">SEO &amp; Discoverability</div><div class="fch-sub">Help clients find you on TradeMate</div></div>
+    </div>
+    <div class="form-card-body">
+      <div class="form-grid">
+        <div class="form-group form-full">
+          <label class="form-label">Short Profile URL <span class="lbl-opt">Optional</span></label>
+          <input class="form-input" type="text" id="slugInput" placeholder="e.g. kwame-carpenter" oninput="updateUrl()" style="text-transform:lowercase;">
+          <div class="url-preview" style="margin-top:8px;">trademate.com/provider/<span id="urlPreview">your-name</span></div>
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label">Service Keywords <span class="lbl-opt">Optional</span></label>
+          <div class="tag-input-wrap" id="keywordsWrap" onclick="document.getElementById('keywordInput').focus()">
+            <input class="tag-real-input" id="keywordInput" placeholder="Type keyword and press Enter…" onkeydown="handleTagInput(event,'keywordInput','keywordsWrap')">
+          </div>
+          <div class="form-hint">Keywords help your profile rank higher in search results</div>
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label">Service Tags <span class="lbl-opt">Optional</span></label>
+          <div class="tag-input-wrap" id="tagsWrap" onclick="document.getElementById('tagInput').focus()">
+            <input class="tag-real-input" id="tagInput" placeholder="Add tags…" onkeydown="handleTagInput(event,'tagInput','tagsWrap')">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Commission & Terms -->
+  <div class="form-card">
+    <div class="form-card-header">
+      <div class="fch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div><div class="fch-title">Terms &amp; Agreements</div><div class="fch-sub">All three checkboxes are required to proceed</div></div>
+    </div>
+    <div class="form-card-body">
+      <div class="commission-box">
+        <h4>Platform Commission</h4>
+        <div class="commission-rate">10%</div>
+        <p>TradeMate charges a <strong style="color:var(--white);">10% commission</strong> on each completed job. This covers platform hosting, payment processing, customer support, and provider insurance. You keep <strong style="color:var(--white);">90%</strong> of every job payment.</p>
+      </div>
+
+      <div class="terms-checks">
+        <label class="check-row">
+          <input type="checkbox" id="termsCheck">
+          <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="check-text">I have read and agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a> of TradeMate.</div>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="commissionCheck">
+          <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="check-text">I accept the <strong style="color:var(--white);">10% platform commission</strong> on all completed jobs booked through TradeMate.</div>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="cancelCheck">
+          <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="check-text">I accept the <a href="#">Cancellation &amp; Refund Policy</a>, including the requirement to give at least 24 hours notice for job cancellations.</div>
+        </label>
+      </div>
+      <div class="field-error" id="termsErr" style="margin-top:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Please agree to all terms before submitting.</div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button class="btn-prev" onclick="prevStep(7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back</button>
+    <button class="btn-next" onclick="submitProfile()" style="background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 4px 18px rgba(34,197,94,0.35);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+      Launch My Profile
+    </button>
+  </div>
+</div>
+
+<!-- ══ STEP 8: SUCCESS ══ -->
+<div class="step-panel" id="panel-success">
+  <div class="success-screen">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h2>Profile Live! 🎉</h2>
+    <p>Your TradeMate provider profile is set up and under review. You'll receive a verification notification within 1–2 business days. Start exploring your dashboard.</p>
+    <div class="success-actions">
+      <a href="/HTML/SERVICES/dashboard.html" class="btn-go-dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Go to Dashboard
+      </a>
+      <a href="/HTML/SERVICES/Provider-profile.html" class="btn-preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Preview Profile
+      </a>
+    </div>
+  </div>
+</div>
+
+</div><!-- end page-body -->
+</main>
+
+<!-- DRAFT SAVED TOAST -->
+<div class="toast" id="draftToast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+  Draft saved successfully
+</div>
+<script src="/HTML/JS/SERVICES/Provider-profile.js"></script>
+</body>
+</html>

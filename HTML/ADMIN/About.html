@@ -1,0 +1,1237 @@
+
+About · HTML
+Copy
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0D1117" />
+  <title>About — TradeMate</title>
+  <style>
+    /* ═══════════════════════════════════════════
+       DESIGN TOKENS  (matches TradeMate palette)
+    ═══════════════════════════════════════════ */
+    :root {
+      --gold:       #667eea;
+      --dark:       #0D1117;
+      --dark-2:     #161B24;
+      --dark-3:     #1E2535;
+      --text:       #764ba2;
+      --muted:      #8B95A8;
+      --accent:     #667eea;
+      --accent-2:   #764ba2;
+      --gradient:   linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --border:     rgba(102,126,234,0.16);
+      --border-h:   rgba(102,126,234,0.40);
+      --ink:        #E8EDF5;
+      --ink-2:      #C5CFDE;
+      --card-r:     18px;
+      --shadow:     0 12px 48px rgba(0,0,0,0.5);
+
+      /* System font stacks — no imports */
+      --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      --font-body:    system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-serif:   Georgia, "Times New Roman", serif;
+
+      /* Fluid spacing */
+      --sp-xs: clamp(8px,  1.5vw, 12px);
+      --sp-sm: clamp(12px, 2vw,   20px);
+      --sp-md: clamp(20px, 3vw,   36px);
+      --sp-lg: clamp(36px, 6vw,   72px);
+      --sp-xl: clamp(56px, 8vw,  112px);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── Base ── */
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* ── Ambient background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 10% 20%, rgba(102,126,234,.10) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 90% 75%, rgba(118,75,162,.12) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 40% at 50% 50%, rgba(102,126,234,.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(102,126,234,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102,126,234,.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* ════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(13,17,23,.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 500;
+      padding: clamp(12px,2vw,18px) clamp(16px,5vw,48px);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(16px,2.5vw,20px);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(4px,1vw,8px);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: clamp(12px,1.4vw,14px);
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 100px;
+      transition: color .2s, background .2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--ink);
+      background: rgba(102,126,234,.1);
+    }
+
+    /* ════════════════════════════════════════
+       PAGE WRAPPER
+    ════════════════════════════════════════ */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: calc(var(--sp-xl) + 56px) clamp(16px,5vw,48px) var(--sp-xl);
+    }
+
+    /* ════════════════════════════════════════
+       EYEBROW / PILL LABEL
+    ════════════════════════════════════════ */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(102,126,234,.1);
+      border: 1px solid rgba(102,126,234,.25);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: clamp(10px,1.3vw,12px);
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--sp-sm);
+    }
+
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2.4s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.75); }
+    }
+
+    /* ════════════════════════════════════════
+       HERO / PAGE TITLE BLOCK
+    ════════════════════════════════════════ */
+    .hero {
+      text-align: center;
+      margin-bottom: var(--sp-xl);
+      animation: fadeUp .7s ease both;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem,6vw,4.6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: var(--sp-sm);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: clamp(.95rem,2vw,1.15rem);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ════════════════════════════════════════
+       DIVIDER LINE
+    ════════════════════════════════════════ */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+      margin: var(--sp-lg) 0;
+    }
+
+    /* ════════════════════════════════════════
+       COMPANY SECTION
+    ════════════════════════════════════════ */
+    .company-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px,4vw,56px);
+      align-items: center;
+      animation: fadeUp .8s .1s ease both;
+    }
+
+    .company-text { display: flex; flex-direction: column; gap: var(--sp-sm); }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: clamp(10px,1.2vw,11px);
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 30px; height: 2px;
+      background: var(--gradient);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .company-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem,3.5vw,2.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+    }
+
+    .company-text h2 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .company-text p {
+      font-family: var(--font-body);
+      font-size: clamp(.88rem,1.6vw,1rem);
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* mission pillars */
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(10px,1.5vw,14px);
+      margin-top: var(--sp-xs);
+    }
+
+    .pillar {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: clamp(14px,2vw,18px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color .25s, transform .25s;
+    }
+
+    .pillar:hover {
+      border-color: var(--border-h);
+      transform: translateY(-3px);
+    }
+
+    .pillar-icon {
+      font-size: clamp(1.3rem,2.5vw,1.6rem);
+      line-height: 1;
+    }
+
+    .pillar-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(.82rem,1.4vw,.9rem);
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .pillar-desc {
+      font-size: clamp(.72rem,1.2vw,.78rem);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* company visual card */
+    .company-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-card {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, var(--dark-3) 0%, var(--dark-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      padding: clamp(28px,4vw,44px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* decorative glow ring */
+    .visual-card::before {
+      content: '';
+      position: absolute;
+      top: -40%;  left: -40%;
+      width: 180%; height: 180%;
+      background: radial-gradient(circle, rgba(102,126,234,.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* orbit rings */
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(102,126,234,.12);
+      animation: spin linear infinite;
+      pointer-events: none;
+    }
+
+    .ring-1 { width: 220px; height: 220px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-duration: 22s; }
+    .ring-2 { width: 310px; height: 310px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-duration: 34s; animation-direction: reverse; border-color: rgba(118,75,162,.08); }
+
+    @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    .visual-logo-mark {
+      position: relative;
+      z-index: 1;
+      width: clamp(72px,10vw,96px);
+      height: clamp(72px,10vw,96px);
+      border-radius: clamp(18px,3vw,24px);
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.5rem,3vw,2rem);
+      color: #fff;
+      margin: 0 auto var(--sp-sm);
+      box-shadow: 0 12px 40px rgba(102,126,234,.4);
+    }
+
+    .visual-tagline {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.1rem,2.2vw,1.5rem);
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .visual-sub {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(.75rem,1.3vw,.85rem);
+      color: var(--muted);
+      margin-bottom: var(--sp-md);
+    }
+
+    /* stat chips inside card */
+    .stat-chips {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: clamp(8px,1.5vw,12px);
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: rgba(102,126,234,.1);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .chip-val {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(.85rem,1.6vw,1rem);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .chip-label {
+      font-size: clamp(.6rem,1vw,.68rem);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    /* ════════════════════════════════════════
+       FOUNDER SECTION
+    ════════════════════════════════════════ */
+    .founder-section {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: clamp(28px,5vw,64px);
+      align-items: start;
+      animation: fadeUp .8s .2s ease both;
+    }
+
+    /* founder card */
+    .founder-card {
+      position: relative;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      padding: clamp(24px,3.5vw,36px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .founder-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient);
+    }
+
+    /* avatar */
+    .avatar-wrap {
+      position: relative;
+      width: clamp(100px,15vw,130px);
+      height: clamp(100px,15vw,130px);
+      margin: 0 auto var(--sp-sm);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem,4vw,2.8rem);
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(102,126,234,.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* spinning ring around avatar */
+    .avatar-ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px dashed rgba(102,126,234,.25);
+      animation: spin-slow 12s linear infinite;
+    }
+
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+    .founder-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.1rem,2.2vw,1.35rem);
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .founder-title {
+      font-size: clamp(.75rem,1.3vw,.82rem);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-sm);
+    }
+
+    /* tags */
+    .founder-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: var(--sp-sm);
+    }
+
+    .tag {
+      background: rgba(118,75,162,.1);
+      border: 1px solid rgba(118,75,162,.22);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: clamp(.65rem,1.1vw,.72rem);
+      color: var(--text);
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    /* quick facts inside card */
+    .founder-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: var(--sp-sm);
+      margin-top: var(--sp-xs);
+      text-align: left;
+    }
+
+    .fact {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(.75rem,1.2vw,.82rem);
+      color: var(--muted);
+    }
+
+    .fact-icon {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      background: rgba(102,126,234,.1);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+
+    /* founder story */
+    .founder-story {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-sm);
+    }
+
+    .founder-story h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem,3vw,2.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+    }
+
+    .founder-story h2 em {
+      font-style: normal;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .founder-story p {
+      font-family: var(--font-body);
+      font-size: clamp(.9rem,1.6vw,1.02rem);
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .founder-story p strong {
+      color: var(--ink-2);
+      font-weight: 600;
+    }
+
+    /* pull-quote */
+    .quote-block {
+      position: relative;
+      background: linear-gradient(135deg, rgba(102,126,234,.08) 0%, rgba(118,75,162,.08) 100%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: clamp(16px,2.5vw,24px) clamp(18px,3vw,28px);
+      margin: var(--sp-xs) 0;
+    }
+
+    .quote-block blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(.95rem,1.8vw,1.1rem);
+      color: var(--ink-2);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .quote-block cite {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-size: clamp(.72rem,1.2vw,.8rem);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    /* quote decoration */
+    .quote-block::before {
+      content: '\201C';
+      position: absolute;
+      top: -12px; left: 16px;
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--accent);
+      opacity: .18;
+      pointer-events: none;
+    }
+
+    /* ════════════════════════════════════════
+       TIMELINE
+    ════════════════════════════════════════ */
+    .timeline-wrap {
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    .timeline-title {
+      text-align: center;
+      margin-bottom: var(--sp-lg);
+    }
+
+    .timeline-title h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem,3vw,2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .timeline-title p {
+      margin-top: 8px;
+      font-size: clamp(.88rem,1.5vw,.95rem);
+      color: var(--muted);
+    }
+
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* vertical spine */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-2), transparent);
+      border-radius: 2px;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: clamp(16px,3vw,28px);
+      padding-bottom: clamp(24px,4vw,36px);
+      position: relative;
+      animation: fadeUp .6s ease both;
+    }
+
+    .tl-item:nth-child(1) { animation-delay: .1s; }
+    .tl-item:nth-child(2) { animation-delay: .2s; }
+    .tl-item:nth-child(3) { animation-delay: .3s; }
+    .tl-item:nth-child(4) { animation-delay: .4s; }
+
+    .tl-dot {
+      flex-shrink: 0;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--dark-3);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      position: relative;
+      z-index: 1;
+      transition: border-color .3s, background .3s;
+    }
+
+    .tl-item:hover .tl-dot {
+      border-color: var(--accent);
+      background: rgba(102,126,234,.12);
+    }
+
+    .tl-body {
+      flex: 1;
+      padding-top: 8px;
+    }
+
+    .tl-year {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(.72rem,1.2vw,.78rem);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+
+    .tl-heading {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(.95rem,1.8vw,1.08rem);
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .tl-desc {
+      font-size: clamp(.8rem,1.4vw,.88rem);
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ════════════════════════════════════════
+       VALUES STRIP
+    ════════════════════════════════════════ */
+    .values-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(10px,1.5vw,16px);
+      animation: fadeUp .8s .35s ease both;
+    }
+
+    .value-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      padding: clamp(20px,3vw,28px) clamp(16px,2.5vw,22px);
+      text-align: center;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), border-color .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-h);
+      box-shadow: 0 16px 48px rgba(0,0,0,.4);
+    }
+
+    .value-card:hover::after { transform: scaleX(1); }
+
+    .value-icon {
+      font-size: clamp(1.6rem,3vw,2rem);
+      margin-bottom: clamp(8px,1.5vw,12px);
+      display: block;
+    }
+
+    .value-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(.88rem,1.5vw,1rem);
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .value-desc {
+      font-size: clamp(.72rem,1.2vw,.8rem);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════════════
+       CTA BAND
+    ════════════════════════════════════════ */
+    .cta-band {
+      background: linear-gradient(135deg, rgba(102,126,234,.12) 0%, rgba(118,75,162,.12) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      padding: clamp(36px,5vw,56px) clamp(24px,4vw,48px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp .8s .4s ease both;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(102,126,234,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-band h2 {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem,3.5vw,2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: var(--sp-xs);
+    }
+
+    .cta-band p {
+      position: relative;
+      font-size: clamp(.88rem,1.6vw,.98rem);
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto var(--sp-md);
+      line-height: 1.7;
+    }
+
+    .cta-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: clamp(12px,2vw,15px) clamp(28px,4vw,40px);
+      background: var(--gradient);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(.85rem,1.6vw,.95rem);
+      letter-spacing: -0.01em;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(102,126,234,.38);
+      transition: transform .25s, box-shadow .25s;
+      overflow: hidden;
+    }
+
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -80%;
+      width: 50%; height: 200%;
+      background: rgba(255,255,255,.15);
+      transform: skewX(-20deg);
+      transition: left .5s ease;
+    }
+
+    .cta-btn:hover::after { left: 130%; }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(102,126,234,.52);
+    }
+
+    /* ════════════════════════════════════════
+       ANIMATIONS
+    ════════════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════ */
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      .company-section { grid-template-columns: 1fr; }
+      .company-visual { order: -1; }
+      .visual-card { max-width: 440px; margin: 0 auto; width: 100%; }
+
+      .founder-section { grid-template-columns: 1fr; }
+      .founder-card { max-width: 360px; margin: 0 auto; width: 100%; }
+
+      .values-strip { grid-template-columns: repeat(2, 1fr); }
+      .timeline::before { left: 20px; }
+      .tl-dot { width: 42px; height: 42px; font-size: 1rem; }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .pillars { grid-template-columns: 1fr; }
+      .values-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .nav-links { display: none; }
+      .stat-chips { flex-direction: column; align-items: center; gap: 8px; }
+      .chip { flex-direction: row; gap: 8px; }
+    }
+
+    /* Small mobile */
+    @media (max-width: 400px) {
+      .values-strip { grid-template-columns: 1fr; }
+      .founder-tags { gap: 4px; }
+    }
+
+    /* Touch devices */
+    @media (hover: none) {
+      .pillar:hover,
+      .value-card:hover,
+      .cta-btn:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════ NAV ════════════ -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/HTML/ADMIN/LandingPage.html">TradeMate</a>
+      <ul class="nav-links">
+        <li><a href="/HTML/ADMIN/LandingPage.html">Home</a></li>
+        <li><a href="#" class="active">About</a></li>
+        <li><a href="/HTML/CLIENT/services.html">Services</a></li>
+        <li><a href="/HTML/ADMIN/Contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ════════════ PAGE ════════════ -->
+  <main class="page">
+
+    <!-- ── Hero ── -->
+    <section class="hero" aria-labelledby="page-title">
+      <div class="eyebrow">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        Our Story
+      </div>
+      <h1 id="page-title">
+        Built with purpose,<br><em>rooted in Ghana.</em>
+      </h1>
+      <p class="hero-sub">
+        TradeMate exists to close the gap between everyday Ghanaians and the skilled professionals who can transform their homes, businesses, and lives.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Company Section ── -->
+    <section class="company-section" aria-labelledby="company-heading">
+
+      <div class="company-text">
+        <div class="section-label">About TradeMate</div>
+        <h2 id="company-heading">
+          Ghana's <span>#1 Local</span><br>Services Platform
+        </h2>
+
+        <p>
+          TradeMate is a digital marketplace that connects Ghanaians with trusted, verified local service professionals — from plumbers and electricians to tutors and photographers. We believe every person deserves access to reliable, quality help in their neighbourhood, without the frustration of referrals, no-shows, or overcharging.
+        </p>
+
+        <p>
+          Founded in Kasoa, we understand the unique challenges of the Ghanaian services market. Our platform was built ground-up to serve every region — from Accra to Tamale, Takoradi to Bolgatanga — making it easier than ever to discover, book, and pay for local expertise.
+        </p>
+
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🛡️</div>
+            <div class="pillar-title">Verified Professionals</div>
+            <div class="pillar-desc">Every provider is ID-checked, skills-assessed, and community-rated before listing.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-title">Book in 60 Seconds</div>
+            <div class="pillar-desc">Search, compare, and confirm a booking faster than a phone call.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🇬🇭</div>
+            <div class="pillar-title">16 Regions Covered</div>
+            <div class="pillar-desc">Built to serve all of Ghana, not just the capital.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">💰</div>
+            <div class="pillar-title">Secure Payments</div>
+            <div class="pillar-desc">Mobile Money, card, or cash. Funds held safely until work is confirmed done.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="company-visual" aria-hidden="true">
+        <div class="visual-card">
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="visual-logo-mark">TM</div>
+          <div class="visual-tagline">TradeMate</div>
+          <div class="visual-sub">Your Local Services Network</div>
+          <div class="stat-chips">
+            <div class="chip">
+              <span class="chip-val">12K+</span>
+              <span class="chip-label">Providers</span>
+            </div>
+            <div class="chip">
+              <span class="chip-val">45+</span>
+              <span class="chip-label">Categories</span>
+            </div>
+            <div class="chip">
+              <span class="chip-val">4.9★</span>
+              <span class="chip-label">Avg Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Founder Section ── -->
+    <section class="founder-section" aria-labelledby="founder-heading">
+
+      <!-- Left: Founder Card -->
+      <div class="founder-card">
+        <div class="avatar-wrap" aria-hidden="true">
+          <div class="avatar">EK</div>
+          <div class="avatar-ring"></div>
+        </div>
+
+        <div class="founder-name">Effum Kofi Brebo</div>
+        <div class="founder-title">Founder &amp; CEO, TradeMate</div>
+
+        <div class="founder-tags">
+          <span class="tag">Entrepreneur</span>
+          <span class="tag">Technologist</span>
+          <span class="tag">Kasoa, Ghana</span>
+          <span class="tag">Community Builder</span>
+        </div>
+
+        <div class="founder-facts">
+          <div class="fact">
+            <div class="fact-icon">📍</div>
+            <span>Based in Kasoa, Greater Accra</span>
+          </div>
+          <div class="fact">
+            <div class="fact-icon">🎯</div>
+            <span>Mission: Dignify local labour through technology</span>
+          </div>
+          <div class="fact">
+            <div class="fact-icon">📱</div>
+            <span>Contact: +233 55 398 1702</span>
+          </div>
+          <div class="fact">
+            <div class="fact-icon">✉️</div>
+            <span>TradeMate@services.com</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Founder Story -->
+      <div class="founder-story">
+        <div class="section-label">Meet the Founder</div>
+        <h2 id="founder-heading">
+          The vision behind<br><em>TradeMate</em>
+        </h2>
+
+        <p>
+          <strong>Effum Kofi Brebo</strong> is a Ghanaian entrepreneur and technology builder whose work sits at the intersection of community development and digital innovation. Raised in Kasoa, he grew up watching talented tradespeople — carpenters, electricians, plumbers — struggle to find consistent work despite their skill, while families spent hours chasing recommendations that often led nowhere.
+        </p>
+
+        <div class="quote-block">
+          <blockquote>
+            "In Ghana, the talent has always been there. What was missing was the bridge — a trusted, efficient way for a skilled artisan in Tema to reach the family in East Legon who desperately needs their services."
+          </blockquote>
+          <cite>— Effum Kofi Brebo, Founder &amp; CEO</cite>
+        </div>
+
+        <p>
+          That observation became an obsession. Kofi spent years studying how digital platforms had transformed service economies in other parts of the world, then set out to build something <strong>designed specifically for Ghana</strong> — accounting for Mobile Money payments, regional languages, varying internet connectivity, and the deep importance of community trust.
+        </p>
+
+        <p>
+          Today, TradeMate serves <strong>12,000+ verified providers</strong> across all 16 regions of Ghana, facilitating tens of thousands of bookings each month. Kofi continues to lead the company from Kasoa — the same community that first inspired him — with a team that shares his conviction that <strong>local work deserves a world-class platform.</strong>
+        </p>
+      </div>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Timeline ── -->
+    <section class="timeline-wrap" aria-labelledby="timeline-heading">
+      <div class="timeline-title">
+        <h2 id="timeline-heading">Our Journey</h2>
+        <p>From a local idea to a nationwide platform — key milestones.</p>
+      </div>
+
+      <div class="timeline" role="list">
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot" aria-hidden="true">💡</div>
+          <div class="tl-body">
+            <div class="tl-year">2021</div>
+            <div class="tl-heading">The Idea Takes Root</div>
+            <div class="tl-desc">Kofi identifies the trust gap between skilled tradespeople and households in Kasoa. Initial research begins — interviewing over 200 artisans and 150 families across Greater Accra.</div>
+          </div>
+        </div>
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot" aria-hidden="true">🛠️</div>
+          <div class="tl-body">
+            <div class="tl-year">2022</div>
+            <div class="tl-heading">TradeMate is Born</div>
+            <div class="tl-desc">The first version of TradeMate launches in Kasoa and Accra Central with 47 verified providers across 8 categories. The MVP receives immediate traction from local homeowners.</div>
+          </div>
+        </div>
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot" aria-hidden="true">📈</div>
+          <div class="tl-body">
+            <div class="tl-year">2023</div>
+            <div class="tl-heading">National Expansion</div>
+            <div class="tl-desc">TradeMate expands to all 16 regions of Ghana. Provider count crosses 5,000. Mobile Money integration launched, making bookings seamless for both customers and providers.</div>
+          </div>
+        </div>
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-dot" aria-hidden="true">🌍</div>
+          <div class="tl-body">
+            <div class="tl-year">2024 – Now</div>
+            <div class="tl-heading">12,000 Providers &amp; Growing</div>
+            <div class="tl-desc">Over 12,000 verified professionals. 45+ service categories. 4.9-star average rating. TradeMate becomes Ghana's most trusted local services platform — and the journey is only beginning.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Values ── -->
+    <section aria-labelledby="values-heading">
+      <div class="timeline-title">
+        <h2 id="values-heading">What We Stand For</h2>
+        <p>The principles that guide every decision we make.</p>
+      </div>
+
+      <div class="values-strip">
+        <div class="value-card">
+          <span class="value-icon">🤝</span>
+          <div class="value-title">Trust</div>
+          <div class="value-desc">Every provider is verified. Every review is real. We never compromise on who gets listed.</div>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🌍</span>
+          <div class="value-title">Inclusivity</div>
+          <div class="value-desc">From Accra to Bolgatanga — every region matters. We build for all of Ghana, not just the cities.</div>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">⚡</span>
+          <div class="value-title">Speed</div>
+          <div class="value-desc">Your time is valuable. We make finding, booking, and paying for help as fast as possible.</div>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🏆</span>
+          <div class="value-title">Excellence</div>
+          <div class="value-desc">We hold providers to a high standard — because you deserve work done right, every single time.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── CTA Band ── -->
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Ready to experience TradeMate?</h2>
+      <p>Join thousands of Ghanaians who have found trusted help — or list your skills and grow your business today.</p>
+      <a href="/HTML/CLIENT/services.html" class="cta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Find a Service
+      </a>
+    </section>
+
+  </main>
+
+</body>
+</html>

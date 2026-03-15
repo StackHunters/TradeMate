@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TradeMate — Create Account</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/HTML/CSS/ADMIN/register.css">
+</head>
+<body>
+
+<!-- Floating orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ═══════════════════════════════════════
+     MAIN PAGE
+═══════════════════════════════════════ -->
+<div class="page-wrap">
+
+  <!-- Brand -->
+  <div class="brand">
+    <span class="brand-logo">Trade Mate</span>
+    <span class="brand-tagline">Your community. Your services.</span>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+
+    <!-- Header -->
+    <div class="card-header">
+      <h1 class="card-title" id="cardTitle">Create your account</h1>
+      <p class="card-sub" id="cardSub">Join thousands using Trade Mate every day</p>
+    </div>
+
+    <!-- Role Toggle -->
+    <div class="role-toggle" id="roleToggle">
+      <button class="role-btn active" id="userBtn" onclick="setRole('user')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Register as User
+      </button>
+      <button class="role-btn" id="providerBtn" onclick="setRole('provider')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        Register as Provider
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form class="form-body" id="registerForm" onsubmit="handleSubmit(event)" novalidate>
+
+      <!-- Personal Info -->
+      <div class="form-section-label">Personal Information</div>
+      <div class="field-grid cols-2">
+        <div class="field">
+          <label class="field-label" for="fullName">Full Name <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input class="field-input" type="text" id="fullName" placeholder="DarkHeart" autocomplete="name" oninput="validateField('fullName')" onblur="validateField('fullName')"/>
+          </div>
+          <span class="field-error" id="fullName-err"></span>
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Email Address <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input class="field-input" type="email" id="email" placeholder="you@example.com" autocomplete="email" oninput="validateField('email')" onblur="asyncEmailCheck()"/>
+          </div>
+          <span class="field-error" id="email-err"></span>
+        </div>
+      </div>
+
+      <div class="field-grid" style="margin-top:14px">
+        <div class="field">
+          <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
+          <div class="phone-wrap">
+            <div class="phone-prefix">🇬🇭 +233</div>
+            <input class="field-input" type="tel" id="phone" placeholder="55 398 1702" autocomplete="tel" maxlength="12" oninput="validateField('phone')" onblur="asyncPhoneCheck()"/>
+          </div>
+          <span class="field-error" id="phone-err"></span>
+          <span class="field-hint">Enter without leading 0 (e.g. 553981702)</span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-section-label" style="margin-top:22px">Security</div>
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="password">Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input class="field-input has-eye" type="password" id="password" placeholder="Create a strong password" autocomplete="new-password" oninput="onPasswordInput()"/>
+            <button type="button" class="eye-btn" onclick="toggleEye('password','eyeIcon1')" tabindex="-1">
+              <svg id="eyeIcon1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+
+          <!-- Strength bars -->
+          <div class="pw-strength" id="pwStrength" style="display:none">
+            <div class="pw-bars">
+              <div class="pw-bar" id="bar1"></div>
+              <div class="pw-bar" id="bar2"></div>
+              <div class="pw-bar" id="bar3"></div>
+              <div class="pw-bar" id="bar4"></div>
+            </div>
+            <span class="pw-label" id="pwLabel">Too short</span>
+          </div>
+
+          <!-- Requirements -->
+          <div class="pw-reqs" id="pwReqs" style="display:none">
+            <div class="req-item" id="req-len">
+              <svg class="req-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Min 8 characters
+            </div>
+            <div class="req-item" id="req-upper">
+              <svg class="req-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Uppercase letter
+            </div>
+            <div class="req-item" id="req-lower">
+              <svg class="req-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Lowercase letter
+            </div>
+            <div class="req-item" id="req-num">
+              <svg class="req-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              One number
+            </div>
+          </div>
+
+          <span class="field-error" id="password-err"></span>
+        </div>
+
+        <div class="field" style="margin-top:14px">
+          <label class="field-label" for="confirmPw">Confirm Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input class="field-input has-eye" type="password" id="confirmPw" placeholder="Repeat your password" autocomplete="new-password" oninput="validateField('confirmPw')" onblur="validateField('confirmPw')"/>
+            <button type="button" class="eye-btn" onclick="toggleEye('confirmPw','eyeIcon2')" tabindex="-1">
+              <svg id="eyeIcon2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <span class="field-error" id="confirmPw-err"></span>
+        </div>
+      </div>
+
+      <!-- User-specific section -->
+      <div id="userFields">
+        <div class="form-section-label" style="margin-top:22px">Preferences</div>
+        <div class="field">
+          <label class="field-label" for="serviceCategory">Primary Service Interest <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select class="field-select" id="serviceCategory" onchange="validateField('serviceCategory')">
+              <option value="" disabled selected>Select a service category</option>
+              <option value="plumbing">🔧 Plumbing</option>
+              <option value="electrical">⚡ Electrical</option>
+              <option value="cleaning">🧹 Cleaning &amp; Laundry</option>
+              <option value="carpentry">🪚 Carpentry &amp; Furniture</option>
+              <option value="painting">🖌️ Painting &amp; Decorating</option>
+              <option value="landscaping">🌿 Landscaping &amp; Gardening</option>
+              <option value="automotive">🚗 Automotive Services</option>
+              <option value="security">🔐 Security &amp; CCTV</option>
+              <option value="ac">❄️ AC &amp; Appliance Repair</option>
+              <option value="other">✦ Other</option>
+            </select>
+          </div>
+          <span class="field-error" id="serviceCategory-err"></span>
+        </div>
+      </div>
+
+      <!-- Provider-specific section -->
+      <div class="provider-fields" id="providerFields">
+        <div class="form-section-label" style="margin-top:22px">Provider Details</div>
+        <div class="field-grid cols-2">
+          <div class="field">
+            <label class="field-label" for="businessName">Business / Trade Name</label>
+            <input class="field-input" type="text" id="businessName" placeholder="e.g. DarkHeart Plumbing Co."/>
+            <span class="field-hint">Optional — leave blank if sole trader</span>
+          </div>
+          <div class="field">
+            <label class="field-label" for="providerCategory">Primary Service Category <span class="req">*</span></label>
+            <div class="select-wrap">
+              <select class="field-select" id="providerCategory" onchange="validateField('providerCategory')">
+                <option value="" disabled selected>Select category</option>
+                <option value="plumbing">🔧 Plumbing</option>
+                <option value="electrical">⚡ Electrical</option>
+                <option value="cleaning">🧹 Cleaning</option>
+                <option value="carpentry">🪚 Carpentry</option>
+                <option value="painting">🖌️ Painting</option>
+                <option value="landscaping">🌿 Landscaping</option>
+                <option value="automotive">🚗 Automotive</option>
+                <option value="security">🔐 Security</option>
+                <option value="ac">❄️ AC &amp; Appliances</option>
+                <option value="other">✦ Other</option>
+              </select>
+            </div>
+            <span class="field-error" id="providerCategory-err"></span>
+          </div>
+        </div>
+        <div class="field" style="margin-top:14px">
+          <label class="field-label" for="serviceArea">Service Area / Location <span class="req">*</span></label>
+          <input class="field-input" type="text" id="serviceArea" placeholder="e.g. Accra, Kumasi, Tema" oninput="validateField('serviceArea')" onblur="validateField('serviceArea')"/>
+          <span class="field-error" id="serviceArea-err"></span>
+          <span class="field-hint">You can specify multiple cities</span>
+        </div>
+        <div class="field" style="margin-top:14px">
+          <label class="field-label" for="yearsExp">Years of Experience</label>
+          <div class="select-wrap">
+            <select class="field-select" id="yearsExp">
+              <option value="" disabled selected>Select experience level</option>
+              <option value="0-1">Less than 1 year</option>
+              <option value="1-3">1 – 3 years</option>
+              <option value="3-5">3 – 5 years</option>
+              <option value="5-10">5 – 10 years</option>
+              <option value="10+">10+ years</option>
+            </select>
+          </div>
+        </div>
+        <div style="background:rgba(102,126,234,.07);border:1px solid rgba(102,126,234,.18);border-radius:var(--radius-xs);padding:11px 14px;margin-top:14px;font-size:.78rem;color:var(--muted);line-height:1.6">
+          ⚠️ After registration you will be redirected to <strong style="color:#e2e8f0">profile setup</strong> to add your photo, certifications, and services before going live.
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div class="terms-row" style="margin-top:22px">
+        <div class="custom-checkbox" id="termsBox" onclick="toggleTerms()">
+          <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="1 5 4.5 8.5 11 1"/></svg>
+        </div>
+        <p class="terms-text">
+          I agree to the <a href="#" onclick="return false">Terms of Service</a> and <a href="#" onclick="return false">Privacy Policy</a>. I understand my account will require email or phone verification.
+        </p>
+      </div>
+      <span class="field-error" id="terms-err" style="margin-top:5px"></span>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <div class="spinner"></div>
+        <span class="btn-text" id="btnText">Create Account</span>
+      </button>
+
+      <div class="divider"><span>or</span></div>
+    </form>
+
+    <div class="login-row">
+      Already have an account? <a href="/HTML/ADMIN/login.html">Sign in →</a>
+    </div>
+
+  </div><!-- /card -->
+</div><!-- /page-wrap -->
+
+<!-- ═══ OTP Overlay ═══ -->
+<div class="otp-overlay" id="otpOverlay">
+  <div class="otp-box">
+    <div class="otp-icon">📱</div>
+    <div class="otp-title">Verify your account</div>
+    <div class="otp-sub" id="otpSub">
+      We sent a 6-digit code to <strong id="otpTarget"></strong>.<br>Enter it below to activate your account.
+    </div>
+    <div class="otp-inputs">
+      <input class="otp-digit" maxlength="1" id="otp0" oninput="otpInput(0)" onkeydown="otpKey(event,0)"/>
+      <input class="otp-digit" maxlength="1" id="otp1" oninput="otpInput(1)" onkeydown="otpKey(event,1)"/>
+      <input class="otp-digit" maxlength="1" id="otp2" oninput="otpInput(2)" onkeydown="otpKey(event,2)"/>
+      <input class="otp-digit" maxlength="1" id="otp3" oninput="otpInput(3)" onkeydown="otpKey(event,3)"/>
+      <input class="otp-digit" maxlength="1" id="otp4" oninput="otpInput(4)" onkeydown="otpKey(event,4)"/>
+      <input class="otp-digit" maxlength="1" id="otp5" oninput="otpInput(5)" onkeydown="otpKey(event,5)"/>
+    </div>
+    <div class="otp-resend">
+      Didn't receive it? <button id="resendBtn" onclick="resendOTP()" disabled>Resend in <span id="resendTimer">30</span>s</button>
+    </div>
+    <button class="otp-verify-btn" id="otpVerifyBtn" onclick="verifyOTP()" disabled>Verify & Continue →</button>
+    <div class="otp-err" id="otpErr"></div>
+  </div>
+</div>
+
+<!-- ═══ Success Overlay ═══ -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-ring">🎉</div>
+    <div class="success-title" id="successTitle">Account created!</div>
+    <div class="success-sub" id="successSub">Your account is verified and ready. Redirecting you now…</div>
+    <button class="success-btn" id="successBtn" onclick="handleRedirect()">Continue →</button>
+  </div>
+</div>
+
+<!-- ═══ Toast Stack ═══ -->
+<div class="toast-stack" id="toastStack"></div>
+<script src="/HTML/JS/ADMIN/register.js"></script>
+</body>
+</html>

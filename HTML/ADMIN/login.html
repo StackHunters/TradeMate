@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LocalServe — Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/HTML/CSS/ADMIN/login.css">
+<body>
+
+<!-- Orbs -->
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
+<div class="orb orb-c"></div>
+
+<!-- ════════════════════════════════════
+     PAGE WRAP
+════════════════════════════════════ -->
+<div class="page-wrap">
+
+  <!-- ══ LEFT PANEL ══ -->
+  <div class="left-panel">
+    <div class="lp-logo">
+      TradeMate
+      <span>Your community, your services</span>
+    </div>
+
+    <div class="lp-center">
+      <h2 class="lp-headline">
+        Services at your<br/><em>fingertips.</em>
+      </h2>
+      <p class="lp-sub">
+        Connect with verified local providers for plumbing, electrical, cleaning, carpentry and more — all in one place.
+      </p>
+
+      <div class="lp-stats">
+        <div class="lp-stat">
+          <div class="lp-stat-val">4.8★</div>
+          <div class="lp-stat-label">Avg. rating</div>
+        </div>
+        <div class="lp-stat">
+          <div class="lp-stat-val">12k+</div>
+          <div class="lp-stat-label">Providers</div>
+        </div>
+        <div class="lp-stat">
+          <div class="lp-stat-val">98%</div>
+          <div class="lp-stat-label">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lp-features">
+      <div class="lp-feat">
+        <div class="lp-feat-icon">🛡️</div>
+        <div class="lp-feat-text"><strong>Verified providers</strong> — background checked &amp; rated by real customers</div>
+      </div>
+      <div class="lp-feat">
+        <div class="lp-feat-icon">⚡</div>
+        <div class="lp-feat-text"><strong>Instant booking</strong> — get a provider within hours, not days</div>
+      </div>
+      <div class="lp-feat">
+        <div class="lp-feat-icon">💳</div>
+        <div class="lp-feat-text"><strong>Secure payments</strong> — held in escrow until job is complete</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ RIGHT PANEL ══ -->
+  <div class="right-panel">
+
+    <div class="form-head">
+      <h1 class="form-title" id="formTitle">Welcome back</h1>
+      <p class="form-sub" id="formSub">Sign in to continue to your dashboard</p>
+    </div>
+
+    <!-- Rate limit banner -->
+    <div class="rate-banner" id="rateBanner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span id="rateMsg">Too many attempts. Please wait <strong id="rateTimer">30</strong>s before trying again.</span>
+    </div>
+
+    <!-- Verification banner -->
+    <div class="verify-banner" id="verifyBanner">
+      <svg width="16" height="16" style="flex-shrink:0;margin-top:1px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>Your account is not yet verified. <a onclick="showToast('info','Verification','Resending verification link…')">Resend verification link →</a></span>
+    </div>
+
+    <!-- Role Selector -->
+    <div class="role-wrap" id="roleWrap">
+      <button class="role-btn active" id="userRoleBtn" onclick="setRole('user')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        User
+      </button>
+      <button class="role-btn" id="provRoleBtn" onclick="setRole('provider')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        Provider
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form id="loginForm" onsubmit="handleLogin(event)" novalidate>
+
+      <!-- Identifier type toggle -->
+      <div class="identifier-toggle">
+        <button type="button" class="id-toggle-btn active" id="emailToggle" onclick="setIdentifier('email')">✉ Email</button>
+        <button type="button" class="id-toggle-btn" id="phoneToggle" onclick="setIdentifier('phone')">📱 Phone</button>
+      </div>
+
+      <!-- Identifier Field -->
+      <div class="field">
+        <label class="field-label" for="identifier">
+          <span id="identifierLabel">Email Address</span>
+          <span class="field-req">*</span>
+        </label>
+        <div class="input-wrap">
+          <span class="input-prefix" id="phonePrefix">🇬🇭 +233</span>
+          <input
+            class="field-input"
+            type="email"
+            id="identifier"
+            placeholder="you@example.com"
+            autocomplete="username"
+            oninput="validateIdentifier()"
+            onblur="validateIdentifier()"
+          />
+        </div>
+        <span class="field-error" id="identifierErr"></span>
+      </div>
+
+      <!-- Password Field -->
+      <div class="field">
+        <label class="field-label" for="password">
+          Password <span class="field-req">*</span>
+        </label>
+        <div class="input-wrap">
+          <input
+            class="field-input has-eye"
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            style="padding-right:44px"
+            oninput="clearFieldErr('passwordErr')"
+            onblur="validatePassword()"
+          />
+          <button type="button" class="eye-btn" onclick="toggleEye('password','eyeIcon')" tabindex="-1">
+            <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <span class="field-error" id="passwordErr"></span>
+      </div>
+
+      <!-- Remember + Forgot -->
+      <div class="extras-row">
+        <div class="remember-wrap" onclick="toggleRemember()">
+          <div class="custom-check" id="rememberCheck">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 5 4.5 8.5 11 1"/></svg>
+          </div>
+          <span class="remember-label">Remember me</span>
+        </div>
+        <a class="forgot-link" href="#" onclick="openForgot();return false">Forgot password?</a>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <div class="btn-spinner"></div>
+        <span class="btn-label" id="btnLabel">Sign In</span>
+      </button>
+
+    </form>
+
+    <div class="divider"><span>new here?</span></div>
+    <div class="register-row">
+      Don't have an account? <a href="/HTML/ADMIN/register.html">Create one — it's free →</a>
+    </div>
+
+  </div><!-- /right-panel -->
+</div><!-- /page-wrap -->
+
+
+<!-- ════════════════════════════════════
+     FORGOT PASSWORD MODAL
+════════════════════════════════════ -->
+<div class="modal-overlay" id="forgotOverlay" onclick="handleModalOverlayClick(event)">
+  <div class="modal" id="forgotModal">
+
+    <!-- Step 1: Enter identifier -->
+    <div class="modal-step active" id="step1">
+      <div class="modal-title">Reset password</div>
+      <div class="modal-sub">Enter the email or phone number linked to your account and we'll send a reset code.</div>
+      <label class="modal-label" for="resetId">Email or Phone</label>
+      <input class="modal-input" type="text" id="resetId" placeholder="e.g. you@example.com or 0244…" oninput="clearFieldErr('resetIdErr')"/>
+      <div class="modal-err" id="resetIdErr"></div>
+      <div class="modal-actions">
+        <button class="modal-btn cancel" onclick="closeForgot()">Cancel</button>
+        <button class="modal-btn primary" id="sendCodeBtn" onclick="sendResetCode()">
+          <div class="modal-btn-spinner"></div>
+          <span class="modal-btn-label">Send Code</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Enter OTP -->
+    <div class="modal-step" id="step2">
+      <div class="modal-title">Enter reset code</div>
+      <div class="modal-sub">We sent a 6-digit code to <strong id="resetTarget"></strong>. Enter it below.</div>
+      <div class="otp-row">
+        <input class="otp-cell" maxlength="1" id="rotp0" oninput="rotpInput(0)" onkeydown="rotpKey(event,0)"/>
+        <input class="otp-cell" maxlength="1" id="rotp1" oninput="rotpInput(1)" onkeydown="rotpKey(event,1)"/>
+        <input class="otp-cell" maxlength="1" id="rotp2" oninput="rotpInput(2)" onkeydown="rotpKey(event,2)"/>
+        <input class="otp-cell" maxlength="1" id="rotp3" oninput="rotpInput(3)" onkeydown="rotpKey(event,3)"/>
+        <input class="otp-cell" maxlength="1" id="rotp4" oninput="rotpInput(4)" onkeydown="rotpKey(event,4)"/>
+        <input class="otp-cell" maxlength="1" id="rotp5" oninput="rotpInput(5)" onkeydown="rotpKey(event,5)"/>
+      </div>
+      <div class="otp-resend">
+        Didn't receive it?
+        <button id="rotpResendBtn" onclick="resendCode()" disabled>Resend in <span id="rotpTimer">30</span>s</button>
+      </div>
+      <div class="modal-err" id="otpErr"></div>
+      <div class="modal-actions">
+        <button class="modal-btn cancel" onclick="goStep(1)">← Back</button>
+        <button class="modal-btn primary" id="verifyOtpBtn" onclick="verifyResetOTP()" disabled>
+          <div class="modal-btn-spinner"></div>
+          <span class="modal-btn-label">Verify Code</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: New password -->
+    <div class="modal-step" id="step3">
+      <div class="modal-title">Set new password</div>
+      <div class="modal-sub">Choose a strong new password for your account.</div>
+
+      <label class="modal-label" for="newPw">New Password</label>
+      <div class="modal-pw-wrap">
+        <input class="modal-input" type="password" id="newPw" placeholder="Min 8 characters" style="padding-right:44px" oninput="onNewPwInput()"/>
+        <button type="button" class="modal-eye" onclick="toggleEye('newPw','newPwEye')">
+          <svg id="newPwEye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <div class="pw-bars">
+        <div class="pw-bar" id="rpb1"></div>
+        <div class="pw-bar" id="rpb2"></div>
+        <div class="pw-bar" id="rpb3"></div>
+        <div class="pw-bar" id="rpb4"></div>
+      </div>
+      <div class="pw-strength-lbl" id="rpwLbl" style="margin-bottom:14px"></div>
+
+      <label class="modal-label" for="confirmNewPw">Confirm New Password</label>
+      <div class="modal-pw-wrap">
+        <input class="modal-input" type="password" id="confirmNewPw" placeholder="Repeat password" style="padding-right:44px" oninput="clearFieldErr('confirmNewPwErr')"/>
+        <button type="button" class="modal-eye" onclick="toggleEye('confirmNewPw','cnpEye')">
+          <svg id="cnpEye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <div class="modal-err" id="confirmNewPwErr"></div>
+
+      <div class="modal-actions">
+        <button class="modal-btn cancel" onclick="closeForgot()">Cancel</button>
+        <button class="modal-btn primary" id="resetPwBtn" onclick="confirmReset()">
+          <div class="modal-btn-spinner"></div>
+          <span class="modal-btn-label">Reset Password</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 4: Done -->
+    <div class="modal-step" id="step4">
+      <div class="modal-success">
+        <div class="modal-success-ring">✓</div>
+        <div class="modal-title">Password reset!</div>
+        <div class="modal-sub" style="margin-bottom:22px">Your password has been updated. You can now sign in with your new credentials.</div>
+        <button class="modal-btn primary" style="width:100%" onclick="closeForgot()">
+          <span class="modal-btn-label">Back to Sign In</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Toast Stack -->
+<div class="toast-stack" id="toastStack"></div>
+<script src="/HTML/JS/ADMIN/login.js"></script>
+</body>
+</html>

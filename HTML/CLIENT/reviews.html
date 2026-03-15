@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradeMate — Reviews & Ratings</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/HTML/CSS/CLIENT/reviews.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar" id="navbar">
+    <a href="#" class="logo">
+      <div class="logo-mark">TM</div>
+      <span class="logo-text">Trade<span>Mate</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/HTML/ADMIN/LandingPage.html">Home</a></li>
+      <li><a href="/HTML/CLIENT/services.html">Services</a></li>
+      <li><a href="/HTML/CLIENT/services.html">Find a Pro</a></li>
+      <li><a href="#" class="active">Reviews</a></li>
+      <li><a href="/HTML/ADMIN/About.html">About</a></li>
+      <li><a href="/HTML/ADMIN/About.html" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- HERO SUMMARY -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Customer Reviews</div>
+    <h1>What Our Clients<br><em>Are Saying</em></h1>
+    <p>Trusted by thousands of homeowners across the region. Real reviews from real clients on carpentry, plumbing, electrical work and more.</p>
+  </div>
+  <div class="rating-card">
+    <div class="rating-num">4.8</div>
+    <div class="rating-denom">out of 5</div>
+    <div class="stars-row">
+      <span class="star-icon">★</span>
+      <span class="star-icon">★</span>
+      <span class="star-icon">★</span>
+      <span class="star-icon">★</span>
+      <span class="star-icon" style="color: rgba(245,200,66,0.35); position:relative;">
+        ★<span style="position:absolute;left:0;top:0;width:80%;overflow:hidden;color:var(--star);">★</span>
+      </span>
+    </div>
+    <div class="review-count">Based on <strong style="color:var(--white)">2,847</strong> verified reviews</div>
+  </div>
+</section>
+
+<!-- RATINGS BREAKDOWN -->
+<section class="breakdown-section">
+  <div class="breakdown-inner">
+    <div>
+      <div class="breakdown-title">Rating Distribution</div>
+      <div class="bar-row">
+        <div class="bar-label">5 ★</div>
+        <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+        <div class="bar-count">2050</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">4 ★</div>
+        <div class="bar-track"><div class="bar-fill" style="width:18%"></div></div>
+        <div class="bar-count">512</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">3 ★</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6%"></div></div>
+        <div class="bar-count">171</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2 ★</div>
+        <div class="bar-track"><div class="bar-fill" style="width:2.5%"></div></div>
+        <div class="bar-count">71</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">1 ★</div>
+        <div class="bar-track"><div class="bar-fill" style="width:1.5%"></div></div>
+        <div class="bar-count">43</div>
+      </div>
+    </div>
+    <div>
+      <div class="breakdown-title">Category Scores</div>
+      <div class="cat-grid">
+        <div class="cat-item">
+          <div class="cat-name">Punctuality</div>
+          <div class="cat-score">4.9 <span>/ 5</span></div>
+          <div class="cat-stars">
+            <span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-name">Workmanship</div>
+          <div class="cat-score">4.8 <span>/ 5</span></div>
+          <div class="cat-stars">
+            <span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-name">Value</div>
+          <div class="cat-score">4.7 <span>/ 5</span></div>
+          <div class="cat-stars">
+            <span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s" style="color:rgba(245,200,66,0.3)">★</span>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-name">Communication</div>
+          <div class="cat-score">4.9 <span>/ 5</span></div>
+          <div class="cat-stars">
+            <span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROLS BAR -->
+<div class="controls-bar">
+  <button class="cta-btn" id="openModal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    Write a Review
+  </button>
+  <div class="filter-group">
+    <button class="filter-chip active">All Services</button>
+    <button class="filter-chip">Carpentry</button>
+    <button class="filter-chip">Plumbing</button>
+    <button class="filter-chip">Electrical</button>
+    <button class="filter-chip">Painting</button>
+    <select class="sort-select" aria-label="Sort reviews">
+      <option>Most Recent</option>
+      <option>Highest Rated</option>
+      <option>Lowest Rated</option>
+      <option>Most Helpful</option>
+    </select>
+  </div>
+</div>
+
+<!-- REVIEW CARDS -->
+<section class="reviews-section" id="reviews-section">
+
+  <!-- Card 1 -->
+  <article class="review-card">
+    <div class="card-top">
+      <div class="avatar" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+        AO
+        <div class="avatar-badge">
+          <svg viewBox="0 0 24 24" fill="#667eea"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+      </div>
+      <div class="user-info">
+        <div class="user-name">
+          Abena Osei-Mensah
+          <span class="member-badge badge-verified">Verified</span>
+          <span class="member-badge badge-pro">Pro Member</span>
+        </div>
+        <div class="review-meta">
+          <div class="review-stars">
+            <span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span>
+          </div>
+          <span class="review-date">March 10, 2025</span>
+          <span class="service-tag">Carpentry</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-title">Exceptional craftsmanship — completely transformed my kitchen!</div>
+    <div class="review-body collapsed" id="body-1">
+      The team at TradeMate sent over a carpenter who exceeded every expectation. From the initial consultation to the final nail, the communication was flawless. My custom kitchen cabinets are absolutely stunning — perfectly measured, beautifully finished, and delivered on time. I've already referred three neighbours to the platform and will definitely be booking again for my upcoming bathroom renovation.
+    </div>
+    <button class="read-more" onclick="toggleRead('body-1', this)">Read more</button>
+    <div class="card-footer">
+      <button class="helpful-btn" onclick="toggleHelpful(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Helpful <span class="count">47</span>
+      </button>
+      <button class="report-btn">Report</button>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="review-card">
+    <div class="card-top">
+      <div class="avatar" style="background:linear-gradient(135deg,#f5c842,#e57c23)">
+        KA
+        <div class="avatar-badge">
+          <svg viewBox="0 0 24 24" fill="#667eea"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+      </div>
+      <div class="user-info">
+        <div class="user-name">
+          Kwame Asante
+          <span class="member-badge badge-verified">Verified</span>
+        </div>
+        <div class="review-meta">
+          <div class="review-stars">
+            <span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:rgba(245,200,66,0.3)">★</span>
+          </div>
+          <span class="review-date">February 28, 2025</span>
+          <span class="service-tag">Plumbing</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-title">Sorted our burst pipe emergency within 2 hours!</div>
+    <div class="review-body collapsed" id="body-2">
+      Had a serious burst pipe situation on a Sunday morning. Found TradeMate, booked an emergency slot, and a qualified plumber arrived within 90 minutes. The job was done cleanly and professionally. Deducting one star only because the weekend surcharge wasn't very clearly communicated upfront, but the service quality itself was genuinely impressive. Will use again.
+    </div>
+    <button class="read-more" onclick="toggleRead('body-2', this)">Read more</button>
+    <div class="card-footer">
+      <button class="helpful-btn" onclick="toggleHelpful(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Helpful <span class="count">31</span>
+      </button>
+      <button class="report-btn">Report</button>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="review-card">
+    <div class="card-top">
+      <div class="avatar" style="background:linear-gradient(135deg,#764ba2,#667eea)">
+        FD
+        <div class="avatar-badge">
+          <svg viewBox="0 0 24 24" fill="#667eea"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+      </div>
+      <div class="user-info">
+        <div class="user-name">
+          Fatima Diallo
+          <span class="member-badge badge-new">New Member</span>
+        </div>
+        <div class="review-meta">
+          <div class="review-stars">
+            <span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span>
+          </div>
+          <span class="review-date">February 14, 2025</span>
+          <span class="service-tag">Electrical</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-title">Professional, safe, and thorough electrical rewiring</div>
+    <div class="review-body collapsed" id="body-3">
+      Booked a full rewiring of my 3-bedroom home through TradeMate. The electrician arrived with all equipment, explained each phase of work clearly, and kept the workspace tidy throughout. Everything was completed in two days as quoted. The final inspection certificate was provided promptly. Honestly the smoothest home improvement experience I've had. Highly recommended for anyone needing serious electrical work.
+    </div>
+    <button class="read-more" onclick="toggleRead('body-3', this)">Read more</button>
+    <div class="card-footer">
+      <button class="helpful-btn" onclick="toggleHelpful(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Helpful <span class="count">58</span>
+      </button>
+      <button class="report-btn">Report</button>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="review-card">
+    <div class="card-top">
+      <div class="avatar" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">
+        JM
+        <div class="avatar-badge">
+          <svg viewBox="0 0 24 24" fill="#667eea"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+      </div>
+      <div class="user-info">
+        <div class="user-name">
+          James Mensah
+          <span class="member-badge badge-pro">Pro Member</span>
+        </div>
+        <div class="review-meta">
+          <div class="review-stars">
+            <span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span>
+          </div>
+          <span class="review-date">January 30, 2025</span>
+          <span class="service-tag">Painting</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-title">Flawless interior painting — attention to detail is second to none</div>
+    <div class="review-body collapsed" id="body-4">
+      Third time using TradeMate and the consistency in quality never fails to impress me. Had my entire apartment interior painted — ceilings, walls, trimmings — in three days. The painters came with premium tools, used protective coverings throughout, and touched up every imperfection before leaving. The colour matching was spot-on. Reasonable pricing for the level of finish delivered.
+    </div>
+    <button class="read-more" onclick="toggleRead('body-4', this)">Read more</button>
+    <div class="card-footer">
+      <button class="helpful-btn" onclick="toggleHelpful(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Helpful <span class="count">24</span>
+      </button>
+      <button class="report-btn">Report</button>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="review-card">
+    <div class="card-top">
+      <div class="avatar" style="background:linear-gradient(135deg,#fa709a,#fee140)">
+        SA
+      </div>
+      <div class="user-info">
+        <div class="user-name">
+          Sylvia Acheampong
+          <span class="member-badge badge-verified">Verified</span>
+        </div>
+        <div class="review-meta">
+          <div class="review-stars">
+            <span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:var(--star)">★</span><span class="s" style="color:rgba(245,200,66,0.3)">★</span>
+          </div>
+          <span class="review-date">January 18, 2025</span>
+          <span class="service-tag">Plumbing</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-title">Good work overall, slight delay but delivered quality results</div>
+    <div class="review-body collapsed" id="body-5">
+      Booked TradeMate for bathroom fixture installation and general plumbing check. The team was courteous and clearly skilled. There was a slight scheduling delay of about an hour on day two, but they communicated proactively and made up for it. End result was great — fixtures are solid, no leaks, everything sealed properly. Would book again with a small time buffer just in case.
+    </div>
+    <button class="read-more" onclick="toggleRead('body-5', this)">Read more</button>
+    <div class="card-footer">
+      <button class="helpful-btn" onclick="toggleHelpful(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Helpful <span class="count">19</span>
+      </button>
+      <button class="report-btn">Report</button>
+    </div>
+  </article>
+
+</section>
+
+<!-- PAGINATION -->
+<div class="pagination">
+  <button class="page-btn arrow">‹</button>
+  <button class="page-btn active">1</button>
+  <button class="page-btn">2</button>
+  <button class="page-btn">3</button>
+  <button class="page-btn">4</button>
+  <button class="page-btn" style="pointer-events:none;color:var(--muted)">…</button>
+  <button class="page-btn">57</button>
+  <button class="page-btn arrow">›</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-copy">© 2025 TradeMate. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Support</a>
+    <a href="#">Sitemap</a>
+  </div>
+</footer>
+
+<!-- REVIEW MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-title">Leave a Review</h2>
+      <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Service Type</label>
+      <select class="form-select">
+        <option>Select a service…</option>
+        <option>Carpentry</option>
+        <option>Plumbing</option>
+        <option>Electrical</option>
+        <option>Painting</option>
+        <option>Roofing</option>
+        <option>Tiling</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Rating</label>
+      <div class="star-picker" id="starPicker">
+        <span class="star-pick" data-val="1">★</span>
+        <span class="star-pick" data-val="2">★</span>
+        <span class="star-pick" data-val="3">★</span>
+        <span class="star-pick" data-val="4">★</span>
+        <span class="star-pick" data-val="5">★</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Review Title</label>
+      <input class="form-input" type="text" placeholder="Summarise your experience…">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Review</label>
+      <textarea class="form-textarea" placeholder="Tell others about the quality, punctuality, value, and professionalism…"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input class="form-input" type="text" placeholder="Full name or display name">
+    </div>
+    <button class="submit-btn" type="button">Submit Review</button>
+  </div>
+</div>
+<script src="/HTML/JS/CLIENT/reviews.js"></script>
+</body>
+</html>

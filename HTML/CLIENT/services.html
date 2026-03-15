@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Find Services | TradeMate</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/HTML/CSS/CLIENT/services.css"/>
+</head>
+<body>
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-grid"></div>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar" role="navigation">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="window.location.href='/HTML/ADMIN/LandingPage.html'" aria-label="TradeMate Home">
+      <div class="nav-logo-mark">TM</div>
+      <div class="nav-logo-text">Trade<em>Mate</em></div>
+    </div>
+
+    <!-- Inline search (desktop) -->
+    <div class="nav-search">
+      <svg class="nav-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input class="nav-search-input" id="navSearchInput" type="text"
+        placeholder="Search services, providers…"
+        onkeydown="if(event.key==='Enter') triggerNavSearch()"/>
+      <button class="nav-search-btn" onclick="triggerNavSearch()">Search</button>
+    </div>
+<!-- 
+    <div class="nav-spacer"></div>
+
+    <a class="nav-back" href="/HTML/CLIENT/user-dashboard.html" aria-label="Back to Dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Dashboard
+    </a>
+
+    <div class="nav-avatar" onclick="window.location.href='/HTML/CLIENT/provider-profile.html'" title="My Profile">
+      <img src="https://i.pravatar.cc/80?img=33" alt="Profile" onerror="this.style.display='none'"/>
+      JA
+    </div> -->
+  </div>
+</nav>
+
+<!-- ════ PAGE ════ -->
+<div class="page">
+
+  <!-- SEARCH HERO -->
+  <div class="search-hero">
+    <div class="search-hero-inner">
+      <h1 class="search-hero-title">Find a <em>trusted</em> service provider in Ghana</h1>
+
+      <div class="hero-search-row">
+        <div class="hsr-input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input class="hsr-input" id="hsrInput" type="text"
+            placeholder="What service do you need?"
+            onkeydown="if(event.key==='Enter') applyFilters()"/>
+        </div>
+        <div class="hsr-cat-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <select class="hsr-cat" id="hsrCat" onchange="applyFilters()">
+            <option value="">All Categories</option>
+            <option>Tutoring</option><option>Cleaning</option>
+            <option>Electrical</option><option>Plumbing</option>
+            <option>Carpentry</option><option>Painting</option>
+            <option>Photography</option><option>Catering</option>
+            <option>Landscaping</option><option>Security</option>
+          </select>
+        </div>
+        <div class="hsr-loc-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <input class="hsr-loc" id="hsrLoc" type="text"
+            placeholder="City or region" list="ghanaLocations"
+            onchange="applyFilters()"/>
+          <datalist id="ghanaLocations">
+            <option value="Accra"/><option value="Kumasi"/>
+            <option value="Takoradi"/><option value="Tamale"/>
+            <option value="Cape Coast"/><option value="Ho"/>
+            <option value="Sunyani"/><option value="Koforidua"/>
+            <option value="East Legon"/><option value="Kasoa"/>
+          </datalist>
+        </div>
+        <button class="hsr-btn" onclick="applyFilters()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          Search
+        </button>
+      </div>
+
+      <!-- Active filter chips -->
+      <div class="active-chips" id="activeChips" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="page-body">
+
+    <!-- ─── FILTER SIDEBAR ─── -->
+    <aside class="filter-sidebar" id="filterSidebar" aria-label="Filter options">
+      <div class="filter-head">
+        <div class="filter-title">Filters</div>
+        <button class="filter-clear-all" onclick="clearAllFilters()">Clear All</button>
+      </div>
+
+      <!-- Category -->
+      <div class="filter-group">
+        <div class="fg-label">Category</div>
+        <div class="cat-chips" id="catChips">
+          <div class="cat-chip" onclick="toggleCat(this,'Tutoring')">📚 Tutoring</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Cleaning')">🧹 Cleaning</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Electrical')">⚡ Electrical</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Plumbing')">🔧 Plumbing</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Carpentry')">🪚 Carpentry</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Painting')">🖌️ Painting</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Photography')">📷 Photography</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Catering')">🍽️ Catering</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Landscaping')">🌿 Landscaping</div>
+          <div class="cat-chip" onclick="toggleCat(this,'Security')">🔒 Security</div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="filter-group">
+        <div class="fg-label">Location</div>
+        <div class="filter-loc-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <input class="filter-loc" id="sidebarLoc" type="text"
+            placeholder="City or region…" list="ghanaLocations"
+            oninput="applyFilters()"/>
+        </div>
+      </div>
+
+      <!-- Price range -->
+      <div class="filter-group">
+        <div class="fg-label">Price Range (₵)</div>
+        <div class="price-range-row">
+          <div class="price-input-wrap">
+            <span>Min</span>
+            <input class="price-input" id="priceMin" type="number" min="0"
+              placeholder="0" oninput="applyFilters()"/>
+          </div>
+          <span class="price-sep">—</span>
+          <div class="price-input-wrap">
+            <span>Max</span>
+            <input class="price-input" id="priceMax" type="number" min="0"
+              placeholder="500" oninput="applyFilters()"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minimum rating -->
+      <div class="filter-group">
+        <div class="fg-label">Minimum Rating</div>
+        <div class="rating-options" id="ratingOpts">
+          <div class="rating-opt on" onclick="selectRating(this,0)">
+            <div class="radio-dot"></div>
+            <div class="rating-opt-stars">★★★★★</div>
+            <div class="rating-opt-lbl">Any rating</div>
+          </div>
+          <div class="rating-opt" onclick="selectRating(this,4)">
+            <div class="radio-dot"></div>
+            <div class="rating-opt-stars">★★★★☆</div>
+            <div class="rating-opt-lbl">4+ stars</div>
+          </div>
+          <div class="rating-opt" onclick="selectRating(this,3)">
+            <div class="radio-dot"></div>
+            <div class="rating-opt-stars">★★★☆☆</div>
+            <div class="rating-opt-lbl">3+ stars</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sort -->
+      <div class="filter-group">
+        <div class="fg-label">Sort By</div>
+        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+          <option value="rating">Highest Rated</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="reviews">Most Reviews</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+
+      <!-- Verified only toggle -->
+      <div class="filter-group">
+        <div class="toggle-row">
+          <span class="toggle-row-label">Verified only</span>
+          <label class="toggle-sw">
+            <input type="checkbox" id="verifiedToggle" checked onchange="applyFilters()"/>
+            <div class="toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <button class="apply-filters-btn" onclick="applyFilters()">Apply Filters</button>
+    </aside>
+
+    <!-- ─── RESULTS PANEL ─── -->
+    <section class="results-panel" id="resultsPanel" aria-live="polite" aria-label="Search results">
+
+      <!-- Results header -->
+      <div class="results-header rv">
+        <div class="results-count" id="resultsCount">
+          <em id="countNum">0</em> Providers Found
+        </div>
+        <div class="results-view-toggle">
+          <button class="view-btn active" id="gridViewBtn"
+                  title="Grid view" onclick="setView('grid')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </button>
+          <button class="view-btn" id="listViewBtn"
+                  title="List view" onclick="setView('list')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cards container -->
+      <div id="cardsContainer"></div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination"></div>
+
+    </section>
+  </div>
+</div>
+
+<!-- Mobile filter FAB -->
+<button class="mobile-filter-btn" id="mobileFilterBtn" onclick="openFilterDrawer()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <line x1="4" y1="6" x2="20" y2="6"/>
+    <line x1="8" y1="12" x2="20" y2="12"/>
+    <line x1="12" y1="18" x2="20" y2="18"/>
+  </svg>
+  Filters
+  <span id="filterCountBadge" style="display:none;background:rgba(255,255,255,.25);border-radius:50px;padding:1px 7px;font-size:.65rem">0</span>
+</button>
+
+<!-- Mobile filter drawer -->
+<div class="filter-drawer-overlay" id="drawerOverlay" onclick="closeFilterDrawer()"></div>
+<div class="filter-drawer" id="filterDrawer">
+  <div class="filter-drawer-handle"></div>
+  <div class="filter-drawer-title">Filter Providers</div>
+
+  <!-- Injected dynamically from sidebar content -->
+  <div id="drawerFilters"></div>
+
+  <button class="apply-filters-btn" style="margin-top:16px" onclick="applyFilters();closeFilterDrawer()">
+    Apply & See Results
+  </button>
+</div>
+
+<!-- Toast -->
+<div class="toast-stack" id="toastStack"></div>
+<script src="/HTML/JS/CLIENT/services.js"></script>
+</body> 
+</html>
