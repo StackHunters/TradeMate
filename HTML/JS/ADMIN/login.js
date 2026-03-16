@@ -1,6 +1,6 @@
-/* ══════════════════════════════════
+/* 
    STATE
-══════════════════════════════════ */
+ */
 let currentRole    = 'user';
 let identifierMode = 'email'; // 'email' | 'phone'
 let rememberMe     = false;
@@ -10,9 +10,9 @@ let lockUntil      = null;
 let forgotStep     = 1;
 let resetResendTimer;
 
-/* ══════════════════════════════════
+/* 
    ROLE TOGGLE
-══════════════════════════════════ */
+ */
 function setRole(role) {
   currentRole = role;
   const wrap   = document.getElementById('roleWrap');
@@ -38,9 +38,9 @@ function setRole(role) {
   hideBanners();
 }
 
-/* ══════════════════════════════════
+/* 
    IDENTIFIER MODE (email / phone)
-══════════════════════════════════ */
+ */
 function setIdentifier(mode) {
   identifierMode = mode;
   const input  = document.getElementById('identifier');
@@ -73,9 +73,9 @@ function setIdentifier(mode) {
   input.classList.remove('valid', 'invalid');
 }
 
-/* ══════════════════════════════════
+/* 
    VALIDATION
-══════════════════════════════════ */
+ */
 function validateIdentifier() {
   const val   = document.getElementById('identifier').value.trim();
   const input = document.getElementById('identifier');
@@ -134,9 +134,9 @@ function clearFieldErr(id) {
   if (el) el.innerHTML = '';
 }
 
-/* ══════════════════════════════════
+/* 
    EYE TOGGLE
-══════════════════════════════════ */
+ */
 function toggleEye(inputId, iconId) {
   const input  = document.getElementById(inputId);
   const icon   = document.getElementById(iconId);
@@ -147,17 +147,17 @@ function toggleEye(inputId, iconId) {
     : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
 }
 
-/* ══════════════════════════════════
+/* 
    REMEMBER ME
-══════════════════════════════════ */
+ */
 function toggleRemember() {
   rememberMe = !rememberMe;
   document.getElementById('rememberCheck').classList.toggle('on', rememberMe);
 }
 
-/* ══════════════════════════════════
+/* 
    RATE LIMITING
-══════════════════════════════════ */
+ */
 function isLocked() {
   if (!lockUntil) return false;
   if (Date.now() < lockUntil) return true;
@@ -193,9 +193,9 @@ function hideBanners() {
   document.getElementById('verifyBanner')?.classList.remove('show');
 }
 
-/* ══════════════════════════════════
+/* 
    LOGIN HANDLER
-══════════════════════════════════ */
+ */
 async function handleLogin(e) {
   e.preventDefault();
 
@@ -222,7 +222,7 @@ async function handleLogin(e) {
 
   try {
     /*
-    ══════════════════════════════════════════════════════════
+  
     PRODUCTION — replace await sleep() below with a real call:
 
     const res = await fetch('/api/auth/login', {
@@ -252,7 +252,7 @@ async function handleLogin(e) {
     storage.setItem('tm_role',  data.user.role);
 
     handleLoginSuccess(data.user);
-    ══════════════════════════════════════════════════════════
+  
     */
 
     await sleep(1300); // ← remove in production
@@ -284,9 +284,9 @@ async function handleLogin(e) {
   }
 }
 
-/* ══════════════════════════════════
+/* 
    LOGIN SUCCESS — toast + redirect
-══════════════════════════════════ */
+ */
 function handleLoginSuccess(user) {
   loginAttempts = 0;
 
@@ -307,9 +307,9 @@ function handleLoginSuccess(user) {
   }, 2000);
 }
 
-/* ══════════════════════════════════
+/* 
    FAILED ATTEMPTS
-══════════════════════════════════ */
+ */
 function showGenericError() {
   /* Generic message — never reveal whether email/phone exists or if it's a role mismatch */
   showFieldErr('identifierErr', 'Invalid credentials. Please check and try again.');
@@ -327,9 +327,9 @@ function handleFailedAttempt() {
   }
 }
 
-/* ══════════════════════════════════
+/* 
    FORGOT PASSWORD FLOW
-══════════════════════════════════ */
+ */
 function openForgot() {
   goStep(1);
   document.getElementById('resetId').value = '';
@@ -368,7 +368,7 @@ async function sendResetCode() {
   btn.classList.add('loading'); btn.disabled = true;
 
   /*
-  ══════════════════════════════════════════════════════════
+
   PRODUCTION:
 
   const res = await fetch('/api/auth/forgot-password', {
@@ -381,7 +381,7 @@ async function sendResetCode() {
     btn.classList.remove('loading'); btn.disabled = false;
     return;
   }
-  ══════════════════════════════════════════════════════════
+
   */
 
   await sleep(1200); // ← remove in production
@@ -431,7 +431,7 @@ async function verifyResetOTP() {
   btn.classList.add('loading'); btn.disabled = true;
 
   /*
-  ══════════════════════════════════════════════════════════
+
   PRODUCTION:
 
   const res = await fetch('/api/auth/verify-reset-otp', {
@@ -441,7 +441,7 @@ async function verifyResetOTP() {
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || 'Invalid code');
-  ══════════════════════════════════════════════════════════
+
   */
 
   await sleep(900); // ← remove in production
@@ -530,7 +530,7 @@ async function confirmReset() {
   btn.classList.add('loading'); btn.disabled = true;
 
   /*
-  ══════════════════════════════════════════════════════════
+
   PRODUCTION:
 
   const res = await fetch('/api/auth/reset-password', {
@@ -543,7 +543,7 @@ async function confirmReset() {
     btn.classList.remove('loading'); btn.disabled = false;
     return;
   }
-  ══════════════════════════════════════════════════════════
+
   */
 
   await sleep(1000); // ← remove in production
@@ -553,9 +553,9 @@ async function confirmReset() {
   showToast('success', 'Password updated ✓', 'You can now sign in with your new password.');
 }
 
-/* ══════════════════════════════════
+/* 
    TOAST
-══════════════════════════════════ */
+ */
 function showToast(type, title, msg) {
   const icons = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
   const stack = document.getElementById('toastStack');
@@ -582,7 +582,7 @@ function removeToast(el) {
   setTimeout(() => el.remove(), 350);
 }
 
-/* ══════════════════════════════════
+/* 
    UTIL
-══════════════════════════════════ */
+ */
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }

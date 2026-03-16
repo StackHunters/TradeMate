@@ -11,14 +11,14 @@
 </head>
 <body>
 
-<!-- ════ SIDEBAR OVERLAY ════ -->
+<!--  SIDEBAR OVERLAY  -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <div class="layout">
 
-<!-- ════════════════════════════════
+<!--
      SIDEBAR
-════════════════════════════════ -->
+ -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <div class="logo-icon">⚡</div>
@@ -47,7 +47,7 @@
       <span class="nav-icon">🛠️</span> Services
     </div>
     <div class="nav-item" onclick="navigate('earnings', this)">
-      <span class="nav-icon">💰</span> Earnings
+      <span class="nav-icon">💷</span> Earnings
     </div>
     <div class="nav-section-label">Communication</div>
     <div class="nav-item" onclick="navigate('messages', this)">
@@ -69,9 +69,9 @@
   </div>
 </aside>
 
-<!-- ════════════════════════════════
+<!--
      MAIN WRAPPER
-════════════════════════════════ -->
+ -->
 <div class="main-wrapper">
 
   <!-- TOPBAR -->
@@ -79,13 +79,14 @@
     <button class="hamburger" onclick="toggleSidebar()">☰</button>
     <div class="topbar-title" id="topbarTitle">Dashboard <span>Overview</span></div>
     <div class="topbar-search">
-      <span class="search-icon">🔍</span>
+      <span class="search-icon">🕵🏻‍♀️
+</span>
       <input type="text" placeholder="Search anything...">
     </div>
     <div class="topbar-actions">
       <button class="topbar-btn" onclick="showToast('No new updates','info')">🔔<span class="notif-dot"></span></button>
       <button class="topbar-btn" onclick="showToast('Refreshed!','success')">🔄</button>
-      <button class="topbar-btn" onclick="navigate('settings', document.querySelector('[onclick*=settings]'))">👤</button>
+      <button class="topbar-btn" onclick="navigate('settings', document.querySelector('[onclick*=settings]'))">👥</button>
     </div>
   </header> 
 
@@ -93,9 +94,9 @@
   <!-- CONTENT -->
   <div class="content">
 
-    <!-- ══════════════════════════════════
+    <!--══
          PAGE: DASHBOARD
-    ══════════════════════════════════ -->
+   ══ -->
     <div class="page active" id="page-dashboard">
 
       <div class="section-header">
@@ -103,14 +104,14 @@
           <h2>Welcome back, Kofi 👋</h2>
           <p>Here's what's happening with your business today.</p>
         </div>
-        <button class="btn btn-primary" onclick="navigate('bookings', document.querySelectorAll('.nav-item')[1])">📋 View All Bookings</button>
+        <button class="btn btn-primary" onclick="navigate('bookings', document.querySelectorAll('.nav-item')[1])">View All Bookings</button>
       </div>
 
       <!-- EARNINGS CARDS -->
       <div class="earnings-grid">
         <div class="earning-card total" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
           <div class="earning-card-top">
-            <div class="earning-icon">💰</div>
+            <div class="earning-icon">💷</div>
             <span class="earning-card-arrow">→</span>
           </div>
           <div class="earning-label">Total Earnings</div>
@@ -120,7 +121,7 @@
         </div>
         <div class="earning-card monthly" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
           <div class="earning-card-top">
-            <div class="earning-icon">📅</div>
+            <div class="earning-icon">🗓️</div>
             <span class="earning-card-arrow">→</span>
           </div>
           <div class="earning-label">This Month</div>
@@ -222,9 +223,9 @@
 
     </div><!-- /page-dashboard -->
 
-    <!-- ══════════════════════════════════
+    <!--══
          PAGE: BOOKINGS
-    ══════════════════════════════════ -->
+   ══ -->
     <div class="page" id="page-bookings">
       <div class="section-header">
         <div>
@@ -285,9 +286,9 @@
       </div>
     </div><!-- /page-bookings -->
 
-    <!-- ══════════════════════════════════
+    <!--══
          PAGE: SERVICES
-    ══════════════════════════════════ -->
+   ══ -->
     <div class="page" id="page-services">
       <div class="section-header">
         <div>
@@ -300,9 +301,9 @@
       <div class="service-grid" id="serviceGrid"></div>
     </div><!-- /page-services -->
 
-    <!-- ══════════════════════════════════
+    <!--══
          PAGE: EARNINGS
-    ══════════════════════════════════ -->
+   ══ -->
     <div class="page" id="page-earnings">
       <div class="section-header">
         <div>
@@ -314,7 +315,7 @@
       <div class="earnings-grid" style="margin-bottom:28px">
         <div class="earning-card total">
           <div class="earning-card-top">
-            <div class="earning-icon">💰</div>
+            <div class="earning-icon">💷</div>
           </div>
           <div class="earning-label">Total Earnings</div>
           <div class="earning-amount">GH₵ 12,450</div>
@@ -322,7 +323,7 @@
         </div>
         <div class="earning-card monthly">
           <div class="earning-card-top">
-            <div class="earning-icon">📅</div>
+            <div class="earning-icon"></div>
           </div>
           <div class="earning-label">This Month</div>
           <div class="earning-amount">GH₵ 3,820</div>
@@ -418,9 +419,9 @@
       </div>
     </div><!-- /page-earnings -->
 
-    <!-- ══════════════════════════════════
+    <!--══
          PAGE: MESSAGES
-    ══════════════════════════════════ -->
+   ══ -->
     <div class="page" id="page-messages">
       <div class="section-header">
         <div>
@@ -451,9 +452,9 @@
       </div>
     </div>
 
-    <!-- ══════════════════════════════════
+    <!--══
          PAGE: REVIEWS
-    ══════════════════════════════════ -->
+   ══ -->
     <div class="page" id="page-reviews">
       <div class="section-header">
         <div>
@@ -479,9 +480,9 @@
       <div id="reviewsList"></div>
     </div>
 
-    <!-- ══════════════════════════════════
+    <!--══
          PAGE: SETTINGS
-    ══════════════════════════════════ -->
+   ══ -->
     <div class="page" id="page-settings">
       <div class="section-header">
         <div>
@@ -491,7 +492,7 @@
       </div>
       <div class="settings-grid">
         <div class="settings-nav" id="settingsNav">
-          <div class="settings-nav-item active" onclick="switchSettingsPanel('profile', this)">👤 Profile</div>
+          <div class="settings-nav-item active" onclick="switchSettingsPanel('profile', this)">👥 Profile</div>
           <div class="settings-nav-item" onclick="switchSettingsPanel('notifications', this)">🔔 Notifications</div>
           <div class="settings-nav-item" onclick="switchSettingsPanel('payments', this)">💳 Payments</div>
           <div class="settings-nav-item" onclick="switchSettingsPanel('security', this)">🔒 Security</div>
@@ -575,9 +576,9 @@
 </div><!-- /main-wrapper -->
 </div><!-- /layout -->
 
-<!-- ════════════════════════════════
+<!--
      BOOKING DETAIL MODAL
-════════════════════════════════ -->
+ -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal">
     <div class="modal-header">
@@ -588,9 +589,9 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════
+<!--
      REJECT MODAL
-════════════════════════════════ -->
+ -->
 <div class="modal-overlay" id="rejectModal">
   <div class="modal">
     <div class="modal-header">
@@ -606,9 +607,9 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════
+<!--
      WITHDRAW MODAL
-════════════════════════════════ -->
+ -->
 <div class="modal-overlay" id="withdrawModal">
   <div class="modal">
     <div class="modal-header">
@@ -638,9 +639,9 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════
+<!--
      SERVICE EDIT MODAL
-════════════════════════════════ -->
+ -->
 <div class="modal-overlay" id="serviceModal">
   <div class="modal">
     <div class="modal-header">

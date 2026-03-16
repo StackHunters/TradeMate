@@ -1,6 +1,6 @@
-/* ═══════════════════════════════════════
+/* 
    RESET & TOKENS
-═══════════════════════════════════════ */
+ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --dark:     #0D1117;
@@ -37,9 +37,9 @@ button{cursor:pointer;font-family:var(--font)}
 ::-webkit-scrollbar-track{background:var(--dark)}
 ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
 
-/* ═══════════════════════════════════════
+/* 
    NAVBAR
-═══════════════════════════════════════ */
+ */
 .navbar{
   position:fixed;top:0;left:0;right:0;z-index:200;
   height:64px;display:flex;align-items:center;
@@ -88,9 +88,9 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .nav-book-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(102,126,234,.4)}
 
-/* ═══════════════════════════════════════
+/* 
    HERO BANNER
-═══════════════════════════════════════ */
+ */
 .profile-hero{
   margin-top:64px;
   position:relative;overflow:hidden;
@@ -117,7 +117,7 @@ button{cursor:pointer;font-family:var(--font)}
   gap:32px;align-items:start;
 }
 
-/* ── Avatar ── */
+/* Avatar */
 .avatar-wrap{position:relative;flex-shrink:0}
 .avatar{
   width:110px;height:110px;border-radius:50%;
@@ -139,7 +139,7 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .verified-ring svg{width:13px;height:13px;color:#fff}
 
-/* ── Provider info ── */
+/* Provider info */
 .provider-info{min-width:0}
 .provider-breadcrumb{
   display:flex;align-items:center;gap:6px;
@@ -191,7 +191,7 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .location-row svg{width:14px;height:14px;color:var(--accent)}
 
-/* ── Quick stats (right side) ── */
+/* Quick stats (right side) */
 .quick-stats{
   display:flex;flex-direction:column;gap:12px;
   flex-shrink:0;
@@ -207,7 +207,7 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .qstat-lbl{font-size:.65rem;font-weight:700;letter-spacing:.7px;color:var(--muted);text-transform:uppercase;margin-top:3px}
 
-/* ── Trust badges strip ── */
+/* Trust badges strip */
 .trust-strip{
   border-top:1px solid var(--border);
   padding:16px 32px;
@@ -221,9 +221,9 @@ button{cursor:pointer;font-family:var(--font)}
 .trust-item svg{width:14px;height:14px;color:var(--accent)}
 .trust-item strong{color:var(--dim);font-weight:600}
 
-/* ═══════════════════════════════════════
+/* 
    PAGE LAYOUT
-═══════════════════════════════════════ */
+ */
 .page-body{
   max-width:1280px;margin:0 auto;
   padding:40px 32px;
@@ -232,9 +232,9 @@ button{cursor:pointer;font-family:var(--font)}
   gap:32px;align-items:start;
 }
 
-/* ═══════════════════════════════════════
+/* 
    LEFT COLUMN
-═══════════════════════════════════════ */
+ */
 .left-col{display:flex;flex-direction:column;gap:28px}
 
 /* Section card */
@@ -253,7 +253,7 @@ button{cursor:pointer;font-family:var(--font)}
   flex-shrink:0;
 }
 
-/* ── About ── */
+/* About */
 .about-text{font-size:.9rem;color:var(--dim);line-height:1.75}
 .skills-grid{
   display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;
@@ -267,7 +267,7 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .skill-chip:hover{background:rgba(102,126,234,.18);border-color:rgba(102,126,234,.4)}
 
-/* ── Gallery ── */
+/* Gallery */
 .gallery-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:10px;
@@ -298,7 +298,7 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .gallery-item:hover::after{opacity:1}
 
-/* ── Pricing ── */
+/* Pricing */
 .pricing-grid{display:flex;flex-direction:column;gap:12px}
 .price-card{
   background:var(--dark-3);border:1px solid var(--border);
@@ -348,7 +348,7 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .price-unit{font-size:.72rem;color:var(--muted);margin-top:2px}
 
-/* ── Reviews ── */
+/* Reviews */
 .reviews-header{
   display:flex;align-items:center;justify-content:space-between;
   margin-bottom:20px;gap:16px;flex-wrap:wrap;
@@ -436,9 +436,9 @@ button{cursor:pointer;font-family:var(--font)}
 .page-btn:hover:not(.active){border-color:rgba(102,126,234,.4);color:var(--accent)}
 .page-btn:disabled{opacity:.35;cursor:not-allowed}
 
-/* ═══════════════════════════════════════
+/* 
    RIGHT COLUMN — STICKY BOOKING CARD
-═══════════════════════════════════════ */
+ */
 .right-col{
   position:sticky;top:84px;
   display:flex;flex-direction:column;gap:16px;
@@ -552,7 +552,7 @@ button{cursor:pointer;font-family:var(--font)}
 }
 .booking-note svg{width:13px;height:13px;flex-shrink:0;margin-top:1px}
 
-/* ── Provider availability card ── */
+/* Provider availability card */
 .avail-card{
   background:var(--dark-2);border:1px solid var(--border);
   border-radius:var(--radius);padding:20px;
@@ -571,7 +571,7 @@ button{cursor:pointer;font-family:var(--font)}
 .avail-day-status.open{background:rgba(34,197,94,.1);color:var(--success)}
 .avail-day-status.closed{background:rgba(239,68,68,.08);color:rgba(239,68,68,.7)}
 
-/* ── Similar providers ── */
+/* Similar providers */
 .similar-card{
   background:var(--dark-2);border:1px solid var(--border);
   border-radius:var(--radius);padding:20px;
@@ -595,9 +595,9 @@ button{cursor:pointer;font-family:var(--font)}
 .similar-rating{font-size:.72rem;color:var(--muted)}
 .similar-price{font-size:.8rem;font-weight:700;color:var(--accent);flex-shrink:0}
 
-/* ═══════════════════════════════════════
+/* 
    STICKY MOBILE BOOK BAR
-═══════════════════════════════════════ */
+ */
 .mobile-book-bar{
   display:none;
   position:fixed;bottom:0;left:0;right:0;z-index:100;
@@ -620,17 +620,17 @@ button{cursor:pointer;font-family:var(--font)}
   box-shadow:0 4px 16px rgba(102,126,234,.35);flex-shrink:0;
 }
 
-/* ═══════════════════════════════════════
+/* 
    REVEAL ANIMATIONS
-═══════════════════════════════════════ */
+ */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-left{opacity:0;transform:translateX(-22px);transition:opacity .6s ease,transform .6s ease}
 .reveal-left.visible{opacity:1;transform:translateX(0)}
 
-/* ═══════════════════════════════════════
+/* 
    RESPONSIVE
-═══════════════════════════════════════ */
+ */
 @media(max-width:1024px){
   .page-body{grid-template-columns:1fr;gap:24px}
   .right-col{position:relative;top:0;order:-1}

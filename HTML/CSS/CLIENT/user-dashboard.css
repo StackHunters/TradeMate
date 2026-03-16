@@ -1,6 +1,6 @@
-/* ══════════════════════════════════════
+/* 
    TOKENS & RESET
-══════════════════════════════════════ */
+ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --dark:      #0D1117;
@@ -46,14 +46,14 @@ input,select,textarea{font-family:var(--font)}
 ::-webkit-scrollbar-track{background:var(--dark)}
 ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
 
-/* ══════════════════════════════════════
+/* 
    LAYOUT SHELL
-══════════════════════════════════════ */
+ */
 .shell{display:flex;min-height:100vh}
 
-/* ══════════════════════════════════════
+/* 
    SIDEBAR
-══════════════════════════════════════ */
+ */
 .sidebar{
   position:fixed;top:0;left:0;bottom:0;
   width:var(--sidebar-w);z-index:300;
@@ -141,9 +141,9 @@ input,select,textarea{font-family:var(--font)}
   background:rgba(8,10,15,.75);backdrop-filter:blur(3px);
 }
 
-/* ══════════════════════════════════════
+/* 
    MAIN AREA
-══════════════════════════════════════ */
+ */
 .main{
   flex:1;
   margin-left:var(--sidebar-w);
@@ -152,9 +152,9 @@ input,select,textarea{font-family:var(--font)}
   min-width:0;
 }
 
-/* ══════════════════════════════════════
+/* 
    TOP BAR
-══════════════════════════════════════ */
+ */
 .topbar{
   position:sticky;top:0;z-index:200;
   height:var(--topbar-h);
@@ -222,9 +222,9 @@ input,select,textarea{font-family:var(--font)}
 }
 .tb-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 
-/* ══════════════════════════════════════
+/* 
    PAGE CONTENT
-══════════════════════════════════════ */
+ */
 .content{
   flex:1;
   padding:26px 24px 72px;
@@ -235,16 +235,16 @@ input,select,textarea{font-family:var(--font)}
   margin:0 auto;
 }
 
-/* ── REVEAL ── */
+/*  REVEAL  */
 .rv{
   opacity:0;transform:translateY(18px);
   transition:opacity .5s ease,transform .5s ease;
 }
 .rv.on{opacity:1;transform:translateY(0)}
 
-/* ══════════════════════════════════════
+/* 
    WELCOME CARD
-══════════════════════════════════════ */
+ */
 .welcome-card{
   background:var(--dark-2);
   border:1px solid var(--border);
@@ -298,9 +298,9 @@ input,select,textarea{font-family:var(--font)}
 }
 .ws-lbl{font-size:.63rem;font-weight:700;letter-spacing:.6px;color:var(--muted);text-transform:uppercase;margin-top:4px}
 
-/* ══════════════════════════════════════
+/* 
    QUICK SEARCH
-══════════════════════════════════════ */
+ */
 .search-wrap{
   background:var(--dark-2);border:1px solid var(--border);
   border-radius:var(--r);padding:20px 22px;
@@ -380,9 +380,9 @@ input,select,textarea{font-family:var(--font)}
 }
 .ptag:hover{border-color:var(--border-h);color:var(--accent);background:rgba(102,126,234,.07)}
 
-/* ══════════════════════════════════════
+/* 
    STATS GRID
-══════════════════════════════════════ */
+ */
 .stats-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -417,9 +417,9 @@ input,select,textarea{font-family:var(--font)}
 .delta-up{background:rgba(34,197,94,.12);color:var(--success)}
 .delta-dn{background:rgba(239,68,68,.1);color:var(--danger)}
 
-/* ══════════════════════════════════════
+/* 
    SECTION HEADING
-══════════════════════════════════════ */
+ */
 .section-row{
   display:flex;align-items:center;justify-content:space-between;
   gap:12px;margin-bottom:14px;flex-wrap:wrap;
@@ -442,9 +442,9 @@ input,select,textarea{font-family:var(--font)}
 .view-all:hover{border-color:var(--border-h);color:var(--accent)}
 .view-all svg{width:13px;height:13px}
 
-/* ══════════════════════════════════════
+/* 
    QUICK ACTIONS
-══════════════════════════════════════ */
+ */
 .qa-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -469,9 +469,9 @@ input,select,textarea{font-family:var(--font)}
 }
 .qa-label{font-size:.82rem;font-weight:700;color:var(--dim)}
 
-/* ══════════════════════════════════════
+/* 
    BOOKINGS LIST
-══════════════════════════════════════ */
+ */
 .booking-list{display:flex;flex-direction:column;gap:10px}
 .bk-card{
   background:var(--dark-2);border:1px solid var(--border);
@@ -542,9 +542,9 @@ input,select,textarea{font-family:var(--font)}
 }
 .empty-btn:hover{transform:translateY(-1px)}
 
-/* ══════════════════════════════════════
+/* 
    PROVIDERS GRID
-══════════════════════════════════════ */
+ */
 .prov-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
@@ -630,9 +630,9 @@ input,select,textarea{font-family:var(--font)}
   border-color:transparent;color:#fff;
 }
 
-/* ══════════════════════════════════════
+/* 
    TOAST
-══════════════════════════════════════ */
+ */
 .toast-stack{
   position:fixed;bottom:18px;right:18px;
   display:flex;flex-direction:column;gap:8px;
@@ -656,9 +656,9 @@ input,select,textarea{font-family:var(--font)}
 .toast-x{background:none;color:var(--muted);font-size:.8rem;flex-shrink:0;transition:color .18s;margin-top:1px}
 .toast-x:hover{color:var(--danger)}
 
-/* ══════════════════════════════════════
+/* 
    MOBILE BOTTOM NAV
-══════════════════════════════════════ */
+ */
 .bottom-nav{
   display:none;
   position:fixed;bottom:0;left:0;right:0;z-index:250;
@@ -682,9 +682,9 @@ input,select,textarea{font-family:var(--font)}
 }
 .bn-item-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px}
 
-/* ══════════════════════════════════════
+/* 
    RESPONSIVE BREAKPOINTS
-══════════════════════════════════════ */
+ */
 
 /* Tablet landscape / small desktop */
 @media(max-width:1100px){

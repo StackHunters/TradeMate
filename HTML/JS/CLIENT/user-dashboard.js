@@ -1,6 +1,6 @@
-/* ─────────────────────────────────────
+/* 
    SESSION  (replace with JWT decode / API)
-───────────────────────────────────── */
+ */
 const SESSION = {
   firstName: 'Kofi',
   lastName:  'Brebo',
@@ -10,25 +10,25 @@ const SESSION = {
   avatar:    'https://i.pravatar.cc/80?img=33',
 };
 
-/* ─────────────────────────────────────
+/* 
    ROUTE MAP
    Centralise every path here so you only
    ever update one place when files move.
-───────────────────────────────────── */
+ */
 const ROUTES = {
   dashboard   : '/HTML/CLIENT/user-dashboard.html',
   bookings    : '/HTML/CLIENT/booking.html',
   services    : '/HTML/CLIENT/services.html',
   messages    : '#',
-  profile     : '/HTML/CLIENT/services.html',
+  profile     : '#',
   settings    : '#',
   landing     : '/HTML/ADMIN/LandingPage.html',
   login       : '/HTML/ADMIN/login.html',
 };
 
-/* ─────────────────────────────────────
+/* 
    DATA  (replace arrays with fetch())
-───────────────────────────────────── */
+ */
 const BOOKINGS = [
   { id:'bk1', service:'Weekly Tutoring Package', provider:'Kwame Asante',    icon:'📚', date:'Mar 10, 2025', status:'completed'   },
   { id:'bk2', service:'Electrical Wiring Fix',   provider:'Ama Electricals', icon:'⚡', date:'Mar 08, 2025', status:'in-progress' },
@@ -54,9 +54,9 @@ const PROVIDERS = [
   { id:'p6', name:'Kofi Mensah',   init:'KM', img:'https://i.pravatar.cc/80?img=12', cat:'Painter',        price:'₵70',  rating:4.6, reviews:74,  tags:['Interior','Exterior'],  verified:true },
 ];
 
-/* ─────────────────────────────────────
+/* 
    INIT
-───────────────────────────────────── */
+ */
 document.addEventListener('DOMContentLoaded', () => {
   setWelcome();
   renderBookings();
@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
   syncNavActive();
 });
 
-/* ─────────────────────────────────────
+/* 
    WELCOME
-───────────────────────────────────── */
+ */
 function setWelcome() {
   document.getElementById('firstName').textContent  = SESSION.firstName;
   document.getElementById('sbUserName').textContent = SESSION.fullName;
@@ -84,9 +84,9 @@ function setWelcome() {
   </svg>${days[d.getDay()]}, ${mos[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
-/* ─────────────────────────────────────
+/* 
    RENDER BOOKINGS
-───────────────────────────────────── */
+ */
 function renderBookings() {
   const list = document.getElementById('bookingList');
   if (!BOOKINGS.length) {
@@ -119,15 +119,15 @@ function renderBookings() {
   }).join('');
 }
 
-/* ─────────────────────────────────────
+/* 
    RENDER PROVIDERS
-───────────────────────────────────── */
+ */
 function renderProviders() {
   const grid = document.getElementById('providerGrid');
   const list = PROVIDERS.filter(p => p.verified).slice(0, 6);
 
   grid.innerHTML = list.map(p => `
-    <div class="prov-card" onclick="navigate('${ROUTES.profile}?id=${p.id}')">
+    <div class="prov-card" onclick="navigate('${ROUTES.services}?id=${p.id}')">
       <div class="prov-glow"></div>
       <div class="prov-avatar">
         <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"/>
@@ -149,16 +149,16 @@ function renderProviders() {
         ${p.tags.map(t => `<span class="prov-tag">${t}</span>`).join('')}
       </div>
       <button class="prov-btn"
-        onclick="event.stopPropagation(); navigate('${ROUTES.profile}?id=${p.id}')">
+        onclick="event.stopPropagation(); navigate('${ROUTES.services}?id=${p.id}')">
         View Profile
       </button>
     </div>`
   ).join('');
 }
 
-/* ─────────────────────────────────────
+/* 
    SEARCH
-───────────────────────────────────── */
+ */
 function onSearchInput() {
   const v = document.getElementById('siInput').value;
   document.getElementById('siClear').style.display = v ? 'block' : 'none';
@@ -195,20 +195,20 @@ function quickSearch(term) {
   doSearch();
 }
 
-/* ─────────────────────────────────────
+/* 
    NAVIGATION
    Single function used by every link.
    Performs a hard redirect — no toast spam
    on normal navigation.
-───────────────────────────────────── */
+ */
 function navigate(url) {
   if (!url || url === '#') return;
   window.location.href = url;
 }
 
-/* ─────────────────────────────────────
+/* 
    LOGOUT
-───────────────────────────────────── */
+ */
 function handleLogout() {
   showToast('info', 'Signing out…', 'See you next time, ' + SESSION.firstName + '!');
   setTimeout(() => {
@@ -216,11 +216,11 @@ function handleLogout() {
   }, 1600);
 }
 
-/* ─────────────────────────────────────
+/* 
    MARK ACTIVE NAV ITEM
    Highlights the sidebar item that matches
    the current page URL.
-───────────────────────────────────── */
+ */
 function syncNavActive() {
   const current = window.location.pathname;
   document.querySelectorAll('.sb-item').forEach(item => {
@@ -247,9 +247,9 @@ function syncNavActive() {
   });
 }
 
-/* ─────────────────────────────────────
+/* 
    SIDEBAR TOGGLE (mobile)
-───────────────────────────────────── */
+ */
 function toggleSidebar() {
   const sb   = document.getElementById('sidebar');
   const ov   = document.getElementById('sbOverlay');
@@ -267,9 +267,9 @@ function closeSidebar() {
   document.body.style.overflow = '';
 }
 
-/* ─────────────────────────────────────
+/* 
    SCROLL REVEAL
-───────────────────────────────────── */
+ */
 function initReveal() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
@@ -283,9 +283,9 @@ function initReveal() {
   document.querySelectorAll('.rv:not(.on)').forEach(el => obs.observe(el));
 }
 
-/* ─────────────────────────────────────
+/* 
    TOAST
-───────────────────────────────────── */
+ */
 function showToast(type, title, msg) {
   const icons = { success:'✅', error:'❌', info:'ℹ️', warning:'⚠️' };
   const stack = document.getElementById('toastStack');

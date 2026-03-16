@@ -1,14 +1,14 @@
-/* ─────────────────────────────────────────
+/* 
    STATE
-───────────────────────────────────────── */
+ */
 let currentRole   = 'user';
 let termsAccepted = false;
 let formData      = {};
 let resendInterval;
 
-/* ─────────────────────────────────────────
+/* 
    ROLE TOGGLE
-───────────────────────────────────────── */
+ */
 function setRole(role) {
   currentRole = role;
   const toggle      = document.getElementById('roleToggle');
@@ -41,9 +41,9 @@ function setRole(role) {
   }
 }
 
-/* ─────────────────────────────────────────
+/* 
    PASSWORD STRENGTH
-───────────────────────────────────────── */
+ */
 function onPasswordInput() {
   const val  = document.getElementById('password').value;
   const bars = document.getElementById('pwStrength');
@@ -113,9 +113,9 @@ function setReq(id, met) {
   el.innerHTML   = (met ? checkSVG : infoSVG) + el.innerHTML.replace(/<svg[^>]*>.*?<\/svg>/s, '').trim();
 }
 
-/* ─────────────────────────────────────────
+/* 
    FIELD VALIDATION
-───────────────────────────────────────── */
+ */
 const VALIDATORS = {
   fullName(v)          { return v.trim().length >= 2 ? null : 'Please enter your full name (min 2 characters)'; },
   email(v)             { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? null : 'Please enter a valid email address'; },
@@ -172,10 +172,10 @@ function clearFieldState(id) {
   if (el) el.classList.remove('invalid', 'valid');
 }
 
-/* ─────────────────────────────────────────
+/* 
    EMAIL / PHONE — live format validation only
    (uniqueness is enforced server-side)
-───────────────────────────────────────── */
+ */
 function asyncEmailCheck() {
   const el  = document.getElementById('email');
   const err = VALIDATORS.email(el.value.trim());
@@ -192,18 +192,18 @@ function asyncPhoneCheck() {
   setFieldValid('phone');
 }
 
-/* ─────────────────────────────────────────
+/* 
    TERMS
-───────────────────────────────────────── */
+ */
 function toggleTerms() {
   termsAccepted = !termsAccepted;
   document.getElementById('termsBox').classList.toggle('checked', termsAccepted);
   if (termsAccepted) clearFieldError('terms');
 }
 
-/* ─────────────────────────────────────────
+/* 
    EYE TOGGLE
-───────────────────────────────────────── */
+ */
 function toggleEye(inputId, iconId) {
   const input  = document.getElementById(inputId);
   const icon   = document.getElementById(iconId);
@@ -214,9 +214,9 @@ function toggleEye(inputId, iconId) {
     : `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
 }
 
-/* ─────────────────────────────────────────
+/* 
    FORM SUBMISSION
-───────────────────────────────────────── */
+ */
 async function handleSubmit(e) {
   e.preventDefault();
 
@@ -295,9 +295,9 @@ async function handleSubmit(e) {
   }
 }
 
-/* ─────────────────────────────────────────
+/* 
    OTP SYSTEM
-───────────────────────────────────────── */
+ */
 function openOTP() {
   document.getElementById('otpTarget').textContent = formData.phone;
   document.getElementById('otpOverlay').classList.add('open');
@@ -424,9 +424,9 @@ function resendOTP() {
   document.getElementById('otpErr').textContent = '';
 }
 
-/* ─────────────────────────────────────────
+/* 
    SUCCESS — toast then redirect
-───────────────────────────────────────── */
+ */
 function showSuccess() {
   const isProvider  = currentRole === 'provider';
   const redirectUrl = isProvider
@@ -456,9 +456,9 @@ function showSuccess() {
   }, 2500);
 }
 
-/* ─────────────────────────────────────────
+/* 
    TOAST
-───────────────────────────────────────── */
+ */
 function showToast(type, title, msg) {
   const icons = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
   const stack = document.getElementById('toastStack');
@@ -479,7 +479,7 @@ function showToast(type, title, msg) {
   setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 350); }, 5000);
 }
 
-/* ─────────────────────────────────────────
+/* 
    UTIL
-───────────────────────────────────────── */
+ */
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
