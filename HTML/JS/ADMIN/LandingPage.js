@@ -1,4 +1,4 @@
-/* =====================================================
+/* 
    TradeMate — LandingPage.js  (FULLY FIXED)
    Fixes applied:
    1. Duplicate `const cards` → renamed catCards / featCards
@@ -7,11 +7,11 @@
    4. FIX: handleRequest(e) was expecting an Event but HTML was
       passing a URL string. Changed signature to handleRequest(url)
       so it works correctly with the HTML onclick call.
-   ===================================================== */
+    */
 
-/* ──────────────────────────────────────────────────────
+/* 
    NAV — hamburger + active link
-   ────────────────────────────────────────────────────── */
+    */
 const hamburger = document.getElementById('hamburger');
 const navLinks   = document.getElementById('navLinks');
 const links      = document.querySelectorAll('.nav-links a');
@@ -42,9 +42,9 @@ document.addEventListener('click', (e) => {
 });
 
 
-/* ──────────────────────────────────────────────────────
+/* 
    SEARCH BAR — live suggestions + search handler
-   ────────────────────────────────────────────────────── */
+    */
 const serviceInput = document.getElementById('serviceInput');
 const dropdown     = document.getElementById('resultsDropdown');
 
@@ -142,9 +142,9 @@ function handleSearch() {
 }
 
 
-/* ──────────────────────────────────────────────────────
+/* 
    CATEGORY CARDS — staggered reveal + click ripple
-   ────────────────────────────────────────────────────── */
+    */
 const catCards = document.querySelectorAll('.cat-card');
 
 const catCardObs = new IntersectionObserver((entries) => {
@@ -170,9 +170,9 @@ catCards.forEach(card => {
 });
 
 
-/* ──────────────────────────────────────────────────────
+/* 
    FEATURED CARDS (.feat-card) — staggered reveal + tilt
-   ────────────────────────────────────────────────────── */
+    */
 const featCards = document.querySelectorAll('.feat-card');
 
 const cardObs = new IntersectionObserver(entries => {
@@ -202,9 +202,9 @@ featCards.forEach(card => {
 });
 
 
-/* ──────────────────────────────────────────────────────
+/* 
    CATEGORY COUNT ANIMATION
-   ────────────────────────────────────────────────────── */
+    */
 const catGrid = document.getElementById('catGrid');
 
 if (catGrid) {
@@ -235,9 +235,9 @@ function animateCount(el, target, duration = 1400) {
 }
 
 
-/* ──────────────────────────────────────────────────────
+/* 
    STATS BAR
-   ────────────────────────────────────────────────────── */
+    */
 const statItems = document.querySelectorAll('.stat-item');
 const statsBar  = document.getElementById('statsBar');
 
@@ -263,9 +263,9 @@ if (statsBar && statItems.length) {
 }
 
 
-/* ──────────────────────────────────────────────────────
+/* 
    BANNER STAT COUNTERS
-   ────────────────────────────────────────────────────── */
+    */
 const bannerNums   = document.querySelectorAll('.banner-stat-num[data-target]');
 const trustBanner  = document.querySelector('.local-trust-banner');
 
@@ -283,9 +283,9 @@ if (trustBanner && bannerNums.length) {
 }
 
 
-/* ──────────────────────────────────────────────────────
+/* 
    SHARED UTILITIES
-   ────────────────────────────────────────────────────── */
+    */
 
 function countUp(el, target, decimals = 0, duration = 1600) {
   const start  = performance.now();
@@ -363,7 +363,7 @@ function showToast(msg) {
 
 function handleViewAll() {
   showToast('📋 Loading all categories...');
-  window.location.href = '/HTML/CLIENT/services.html';
+  window.location.href = '/HTML/ADMIN/login.html';
 
 }
 

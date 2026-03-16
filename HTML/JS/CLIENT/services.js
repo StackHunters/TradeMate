@@ -4,16 +4,16 @@
    Update these paths whenever a file moves.
 */
 const CATEGORY_ROUTES = {
-  'Tutoring'    : '/HTML/ADMIN/register.html',
-  'Cleaning'    : '/HTML/ADMIN/register.html',
-  'Electrical'  : '/HTML/ADMIN/register.html',
-  'Plumbing'    : '/HTML/ADMIN/register.html',
-  'Carpentry'   : '/HTML/ADMIN/register.html',
-  'Painting'    : '/HTML/ADMIN/register.html',
-  'Photography' : '/HTML/ADMIN/register.html',
-  'Catering'    : '/HTML/ADMIN/register.html',
-  'Landscaping' : '/HTML/ADMIN/register.html',
-  'Security'    : '/HTML/ADMIN/register.html',
+  'Tutoring'    : '/HTML/CLIENT/provider-profile.html',
+  'Cleaning'    : '#',
+  'Electrical'  : '#',
+  'Plumbing'    : '#',
+  'Carpentry'   : '#',
+  'Painting'    : '#',
+  'Photography' : '#',
+  'Catering'    : '#',
+  'Landscaping' : '#',
+  'Security'    : '#',
 };
 
 /* 
@@ -38,9 +38,9 @@ const ALL_PROVIDERS = [
   { id:'p16', name:'Akosua Darko',        init:'AD', img:'https://i.pravatar.cc/80?img=26', cat:'Photography', price:120, rating:4.6, reviews:31,  loc:'Tamale, Northern',    bio:'Documentary and wedding photographer. Northern Ghana specialist.',                     tags:['Wedding','Documentary'],     verified:true },
 ];
 
-/* ─────────────────────────────
+/* 
    STATE
-───────────────────────────────*/
+──*/
 const LIMIT = 9;
 let state = {
   query:       '',
@@ -55,9 +55,9 @@ let state = {
   view:        'grid',
 };
 
-/* ─────────────────────────────
+/* 
    BOOT
-───────────────────────────────*/
+──*/
 window.addEventListener('DOMContentLoaded', () => {
   readUrlParams();
   applyFilters();
@@ -80,9 +80,9 @@ function readUrlParams() {
   }
 }
 
-/* ─────────────────────────────
+/* 
    FILTER & SORT ENGINE
-───────────────────────────────*/
+──*/
 function applyFilters() {
   state.query        = document.getElementById('hsrInput').value.trim().toLowerCase();
   state.location     = (document.getElementById('sidebarLoc').value || document.getElementById('hsrLoc').value).trim().toLowerCase();
@@ -135,9 +135,9 @@ function filterData() {
   return data;
 }
 
-/* ─────────────────────────────
+/* 
    RENDER
-───────────────────────────────*/
+──*/
 function renderResults() {
   const container = document.getElementById('cardsContainer');
   const countEl   = document.getElementById('countNum');
@@ -177,9 +177,9 @@ function renderResults() {
   }, 350);
 }
 
-/* ─────────────────────────────
+/* 
    CARD BUILDERS
-───────────────────────────────*/
+──*/
 function buildGridCard(p) {
   const href = getProfileUrl(p);
   return `
@@ -261,7 +261,7 @@ function verifiedBadge() {
   </div>`;
 }
 
-/* ─────────────────────────────────────────────────────
+/* 
    NAVIGATION
    Builds the target URL from CATEGORY_ROUTES and
    appends the provider id as a query parameter so the
@@ -271,7 +271,7 @@ function verifiedBadge() {
      Tutoring    → /HTML/CLIENT/tutor.html?id=p1
      Electrical  → /HTML/CLIENT/electrician.html?id=p2
      Photography → /HTML/CLIENT/photographer.html?id=p5
-───────────────────────────────────────────────────── */
+ */
 function getProfileUrl(providerOrId, cat) {
   /* Accept either a provider object or (id, cat) strings */
   let id, category;
@@ -291,9 +291,9 @@ function goToProfile(id, cat) {
   window.location.href = getProfileUrl(id, cat);
 }
 
-/* ─────────────────────────────
+/* 
    PAGINATION
-───────────────────────────────*/
+──*/
 function buildPagination(current, total, totalResults) {
   const wrap = document.getElementById('pagination');
   if (total <= 1) { wrap.innerHTML = ''; return; }
@@ -334,9 +334,9 @@ function goPage(p) {
   document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/* ─────────────────────────────
+/* 
    CATEGORY CHIPS
-───────────────────────────────*/
+──*/
 function toggleCat(el, cat) {
   el.classList.toggle('on');
   if (el.classList.contains('on')) {
@@ -354,9 +354,9 @@ function syncCatChips() {
   });
 }
 
-/* ─────────────────────────────
+/* 
    RATING FILTER
-───────────────────────────────*/
+──*/
 function selectRating(el, val) {
   document.querySelectorAll('.rating-opt').forEach(o => o.classList.remove('on'));
   el.classList.add('on');
@@ -364,9 +364,9 @@ function selectRating(el, val) {
   applyFilters();
 }
 
-/* ─────────────────────────────
+/* 
    ACTIVE CHIPS
-───────────────────────────────*/
+──*/
 function updateActiveChips() {
   const wrap  = document.getElementById('activeChips');
   const chips = [];
@@ -410,9 +410,9 @@ function updateFilterBadge() {
   badge.style.display = count > 0 ? 'inline' : 'none';
 }
 
-/* ─────────────────────────────
+/* 
    CLEAR ALL FILTERS
-───────────────────────────────*/
+──*/
 function clearAllFilters() {
   state.categories = [];
   state.location   = '';
@@ -436,9 +436,9 @@ function clearAllFilters() {
   showToast('info', 'Filters cleared', 'Showing all providers.');
 }
 
-/* ─────────────────────────────
+/* 
    VIEW TOGGLE
-───────────────────────────────*/
+──*/
 function setView(v) {
   state.view = v;
   document.getElementById('gridViewBtn').classList.toggle('active', v === 'grid');
@@ -446,9 +446,9 @@ function setView(v) {
   renderResults();
 }
 
-/* ─────────────────────────────
+/* 
    MOBILE FILTER DRAWER
-───────────────────────────────*/
+──*/
 function buildDrawer() {
   const sidebar = document.getElementById('filterSidebar').innerHTML;
   document.getElementById('drawerFilters').innerHTML = sidebar
@@ -468,17 +468,17 @@ function closeFilterDrawer() {
   document.body.style.overflow = '';
 }
 
-/* ─────────────────────────────
+/* 
    NAV SEARCH
-───────────────────────────────*/
+──*/
 function triggerNavSearch() {
   const q = document.getElementById('navSearchInput').value.trim();
   if (q) { document.getElementById('hsrInput').value = q; applyFilters(); }
 }
 
-/* ─────────────────────────────
+/* 
    URL SYNC
-───────────────────────────────*/
+──*/
 function updateUrl() {
   const p = new URLSearchParams();
   if (state.query)             p.set('q',        state.query);
@@ -489,9 +489,9 @@ function updateUrl() {
   history.replaceState(null, '', newUrl);
 }
 
-/* ─────────────────────────────
+/* 
    SCROLL REVEAL
-───────────────────────────────*/
+──*/
 function initReveal() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
@@ -504,9 +504,9 @@ function initReveal() {
   document.querySelectorAll('.rv:not(.on)').forEach(el => obs.observe(el));
 }
 
-/* ─────────────────────────────
+/* 
    TOAST
-───────────────────────────────*/
+──*/
 function showToast(type, title, msg) {
   const icons = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
   const stack = document.getElementById('toastStack');

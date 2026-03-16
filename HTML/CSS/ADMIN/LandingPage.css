@@ -1,12 +1,12 @@
-/* =====================================================
-   TRADE MATE — LandingPage.css  (FULLY RESPONSIVE)
+/* 
+   TRADE MATE  (FULLY RESPONSIVE)
    Breakpoints:
    - xl:  1200px+  (large desktop)
    - lg:  1024px   (laptop)
    - md:   768px   (tablet)
    - sm:   480px   (large phone)
    - xs:   360px   (small phone)
-   ===================================================== */
+    */
 
 /* ── RESET & BOX MODEL ── */
 *, *::before, *::after {
@@ -102,7 +102,7 @@ body::after {
 
 img { max-width: 100%; height: auto; display: block; }
 
-/* ===================== NAV ===================== */
+/*NAV*/
 nav {
   position: fixed;
   top: 0;
@@ -255,7 +255,7 @@ nav {
   }
 }
 
-/* ===================== CONTENT / INTRO ===================== */
+/*CONTENT / INTRO*/
 .content {
   padding-top: clamp(80px, 12vw, 120px);
   max-width: 1200px;
@@ -361,7 +361,7 @@ nav {
   }
 }
 
-/* ===================== 3D BANNER SLIDER ===================== */
+/*3D BANNER SLIDER*/
 .banner {
   width: 100%;
   height: clamp(300px, 60vw, 100vh);
@@ -410,7 +410,7 @@ nav {
   }
 }
 
-/* ===================== HERO SECTION ===================== */
+/*HERO SECTION*/
 .hero-section {
   text-align: center;
   margin: clamp(2rem, 5vw, 4rem) auto clamp(1rem, 3vw, 2rem);
@@ -473,7 +473,7 @@ h1 em {
   line-height: 1.6;
 }
 
-/* ===================== SEARCH BAR ===================== */
+/*SEARCH BAR*/
 .search-wrapper {
   width: 100%;
   max-width: 860px;
@@ -677,7 +677,7 @@ input[type="text"] { cursor: text; }
   }
 }
 
-/* ===================== STATS ROW ===================== */
+/*STATS ROW*/
 .stats-row {
   display: flex;
   gap: clamp(1rem, 4vw, 2.5rem);
@@ -710,7 +710,7 @@ input[type="text"] { cursor: text; }
   margin-top: 2px;
 }
 
-/* ===================== RESULTS DROPDOWN ===================== */
+/*RESULTS DROPDOWN*/
 .results-dropdown {
   position: absolute;
   top: calc(100% + 8px);
@@ -758,7 +758,7 @@ input[type="text"] { cursor: text; }
 .result-meta  { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
 .result-rating { font-size: 0.78rem; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
 
-/* ===================== ANIMATIONS ===================== */
+/*ANIMATIONS*/
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -786,9 +786,9 @@ input[type="text"] { cursor: text; }
   to { transform: rotate(360deg); }
 }
 
-/* =====================================================================
+/* 
    CATEGORIES SECTION
-   ===================================================================== */
+    */
 .categories-section {
   position: relative;
   padding: var(--space-xl) clamp(16px, 4vw, 40px) var(--space-xl);
@@ -1183,9 +1183,9 @@ input[type="text"] { cursor: text; }
   .cat-card.featured { grid-column: span 1; }
 }
 
-/* ═══════════════════════════════════════
+/* 
    WHY CHOOSE US SECTION
-═══════════════════════════════════════ */
+*/
 .wcu-section {
   position: relative;
   padding: var(--space-xl) clamp(16px, 4vw, 40px) var(--space-xl);
@@ -1645,9 +1645,9 @@ input[type="text"] { cursor: text; }
   .local-trust-banner { flex-direction: column; align-items: center; padding: 24px 20px; }
 }
 
-/* ═══════════════════════════════════════
+/* 
    STATS SECTION
-═══════════════════════════════════════ */
+*/
 .stats-section {
   width: 100%;
   max-width: 1100px;
@@ -1884,9 +1884,9 @@ input[type="text"] { cursor: text; }
   .stats-grid { grid-template-columns: 1fr; }
 }
 
-/* ═══════════════════════════════════════
+/* 
    CTA SECTION
-═══════════════════════════════════════ */
+*/
 .section-sep {
   width: 100%;
   height: 1px;
@@ -2143,9 +2143,9 @@ input[type="text"] { cursor: text; }
   .cta-stats .stat-divider { display: none; }
 }
 
-/* ═══════════════════════════════════════
+/* 
    FOOTER
-═══════════════════════════════════════ */
+*/
 .site-footer {
   position: relative;
   background: var(--dark-2);

@@ -1,6 +1,6 @@
-/* ════════════════════════════════════════
+/* 
    RESET & TOKENS
-════════════════════════════════════════ */
+*/
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#667eea;
@@ -42,7 +42,7 @@ body{
   position:relative;
 }
 
-/* ══ Split background ══ */
+/* Split background */
 body::before{
   content:'';
   position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -52,7 +52,7 @@ body::before{
     radial-gradient(ellipse 40% 40% at 55% 40%,  rgba(102,126,234,.05) 0%,transparent 50%);
 }
 
-/* ══ Grid texture overlay ══ */
+/* Grid texture overlay */
 body::after{
   content:'';
   position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -63,7 +63,7 @@ body::after{
   mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%);
 }
 
-/* ══ Animated orbs ══ */
+/* Animated orbs */
 .orb{
   position:fixed;border-radius:50%;filter:blur(90px);
   pointer-events:none;z-index:0;
@@ -94,9 +94,9 @@ body::after{
   to{transform:translate(calc(-50% + 20px),calc(-50% + 14px)) scale(1.05)}
 }
 
-/* ════════════════════════════════════════
+/* 
    PAGE WRAPPER  —  two-column split
-════════════════════════════════════════ */
+*/
 .page-wrap{
   position:relative;z-index:1;
   width:100%;max-width:980px;
@@ -111,9 +111,9 @@ body::after{
 }
 @keyframes wrapIn{from{opacity:0;transform:translateY(28px) scale(.98)}to{opacity:1;transform:none}}
 
-/* ════════════════════════════════════════
+/* 
    LEFT PANEL  —  Branded Illustration Side
-════════════════════════════════════════ */
+*/
 .left-panel{
   background:linear-gradient(145deg,#0e1420 0%,#141b2e 40%,#0f1422 100%);
   padding:48px 44px;
@@ -198,9 +198,9 @@ body::after{
 .lp-feat-text{font-size:.8rem;color:#c8d0df;line-height:1.4}
 .lp-feat-text strong{color:#e2e8f0;font-weight:600}
 
-/* ════════════════════════════════════════
+/* 
    RIGHT PANEL  —  Form Side
-════════════════════════════════════════ */
+*/
 .right-panel{
   background:var(--card);
   padding:44px 40px;
@@ -210,7 +210,7 @@ body::after{
   position:relative;overflow-y:auto;
 }
 
-/* ══ Header ══ */
+/* Header */
 .form-head{margin-bottom:28px}
 .form-title{
   font-family:var(--font-serif);font-size:1.65rem;
@@ -218,9 +218,9 @@ body::after{
 }
 .form-sub{font-size:.82rem;color:var(--muted);line-height:1.5}
 
-/* ════════════════════════════════════════
+/* 
    ROLE SELECTOR
-════════════════════════════════════════ */
+*/
 .role-wrap{
   background:var(--dark-3);
   border:1px solid var(--border);
@@ -256,9 +256,9 @@ body::after{
 .role-btn.active{color:#fff}
 .role-btn svg{width:15px;height:15px;flex-shrink:0}
 
-/* ════════════════════════════════════════
+/* 
    FIELDS
-════════════════════════════════════════ */
+*/
 .field{display:flex;flex-direction:column;gap:5px;margin-bottom:16px}
 .field:last-of-type{margin-bottom:0}
 
@@ -327,7 +327,7 @@ body::after{
   color:var(--accent);
 }
 
-/* ══ Error / Hint ══ */
+/* Error / Hint */
 .field-error{
   font-size:.72rem;color:var(--danger);
   display:flex;align-items:center;gap:4px;
@@ -336,7 +336,7 @@ body::after{
 }
 @keyframes errIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══ Remember + Forgot row ══ */
+/* Remember + Forgot row */
 .extras-row{
   display:flex;align-items:center;justify-content:space-between;
   margin:14px 0 20px;flex-wrap:wrap;gap:8px;
@@ -356,9 +356,9 @@ body::after{
 .forgot-link{font-size:.78rem;color:var(--accent);font-weight:600;text-decoration:none;transition:color .18s}
 .forgot-link:hover{color:var(--accent-2);text-decoration:underline}
 
-/* ════════════════════════════════════════
+/* 
    SUBMIT BUTTON
-════════════════════════════════════════ */
+*/
 .submit-btn{
   width:100%;padding:14px;
   background:linear-gradient(135deg,var(--accent),var(--accent-2));
@@ -390,12 +390,12 @@ body::after{
 .submit-btn.loading .btn-label{display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ══ Divider ══ */
+/* Divider */
 .divider{display:flex;align-items:center;gap:12px;margin:20px 0 16px}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
 .divider span{font-size:.72rem;color:var(--muted);white-space:nowrap}
 
-/* ══ Register row ══ */
+/* Register row */
 .register-row{
   text-align:center;font-size:.81rem;color:var(--muted);
   margin-top:4px;line-height:1.6;
@@ -403,9 +403,9 @@ body::after{
 .register-row a{color:var(--accent);font-weight:700;text-decoration:none;transition:color .18s}
 .register-row a:hover{color:var(--accent-2)}
 
-/* ════════════════════════════════════════
+/* 
    RATE LIMIT BANNER
-════════════════════════════════════════ */
+*/
 .rate-banner{
   background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);
   border-radius:var(--radius-xs);padding:10px 14px;
@@ -415,9 +415,9 @@ body::after{
 .rate-banner.show{display:flex;align-items:center;gap:9px}
 .rate-banner svg{flex-shrink:0}
 
-/* ════════════════════════════════════════
+/* 
    VERIFICATION BANNER
-════════════════════════════════════════ */
+*/
 .verify-banner{
   background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.22);
   border-radius:var(--radius-xs);padding:11px 14px;
@@ -428,9 +428,9 @@ body::after{
 .verify-banner.show{display:flex}
 .verify-banner a{color:var(--warning);font-weight:700;text-decoration:underline;cursor:pointer}
 
-/* ════════════════════════════════════════
+/* 
    FORGOT PASSWORD MODAL
-════════════════════════════════════════ */
+*/
 .modal-overlay{
   position:fixed;inset:0;z-index:500;
   background:rgba(13,17,23,.85);backdrop-filter:blur(8px);
@@ -525,9 +525,9 @@ body::after{
 }
 @keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 
-/* ════════════════════════════════════════
+/* 
    TOAST
-════════════════════════════════════════ */
+*/
 .toast-stack{position:fixed;bottom:22px;right:22px;z-index:700;display:flex;flex-direction:column;gap:9px;pointer-events:none}
 .toast{
   background:var(--dark-2);border:1px solid var(--border);
@@ -545,9 +545,9 @@ body::after{
 .toast-msg{font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.4}
 .toast-x{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.85rem;padding:0;margin-top:1px}
 
-/* ════════════════════════════════════════
+/* 
    RESPONSIVE
-════════════════════════════════════════ */
+*/
 @media(max-width:820px){
   .page-wrap{grid-template-columns:1fr;max-width:480px}
   .left-panel{display:none}

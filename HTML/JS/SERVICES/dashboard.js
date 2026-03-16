@@ -1,6 +1,6 @@
-/* ═══════════════════════════════════════════
+/* 
    DATA
-═══════════════════════════════════════════ */
+ */
 const bookings = [
   { id: 'BK001', customer: 'Kofi Brebo', avatar: 'KB', avatarColor: '#667eea', service: 'Deep Cleaning', category: 'cleaning', date: '2026-03-05', time: '09:00 AM', location: 'East Legon, Accra', price: 320, status: 'pending', payStatus: 'pending', special: 'Please bring eco-friendly products. 3-bedroom apartment.' },
   { id: 'BK002', customer: 'Abena Mensah', avatar: 'AM', avatarColor: '#764ba2', service: 'Pipe Repair', category: 'plumbing', date: '2026-03-04', time: '02:30 PM', location: 'Osu, Accra', price: 180, status: 'accepted', payStatus: 'pending', special: 'Kitchen sink is leaking under the cabinet.' },
@@ -50,15 +50,15 @@ const chatHistory = [
 ];
 
 const reviews = [
-  { name: 'Kofi Boateng', avatar: 'KB', color: '#3fb950', service: 'Electrical Installation', rating: 5, text: 'James was absolutely professional. Showed up on time, did the work cleanly, and even explained everything he was doing. Will definitely hire again!', date: 'March 3, 2026' },
+  { name: 'Kofi Blebo', avatar: 'KB', color: '#3fb950', service: 'Electrical Installation', rating: 5, text: 'James was absolutely professional. Showed up on time, did the work cleanly, and even explained everything he was doing. Will definitely hire again!', date: 'March 3, 2026' },
   { name: 'Abena Mensah', avatar: 'AM', color: '#764ba2', service: 'Pipe Repair', rating: 5, text: 'Quick, efficient, and very reasonably priced. Fixed my leaking pipe in under an hour. Very happy with the service.', date: 'Feb 28, 2026' },
   { name: 'Yaw Amponsah', avatar: 'YA', color: '#f85149', service: 'Deep Cleaning', rating: 4, text: 'Good work overall. The apartment was spotless afterwards. Would have given 5 stars but was 20 mins late.', date: 'Feb 26, 2026' },
   { name: 'Efua Owusu', avatar: 'EO', color: '#58a6ff', service: 'Plumbing Check', rating: 5, text: 'Very thorough inspection. Found issues I didn\'t even know existed and fixed them right away. Great value!', date: 'Feb 22, 2026' },
 ];
 
-/* ═══════════════════════════════════════════
+/* 
    NAVIGATION
-═══════════════════════════════════════════ */
+ */
 const pageTitles = {
   dashboard: 'Dashboard <span>Overview</span>',
   bookings: 'Booking <span>Requests</span>',
@@ -78,9 +78,9 @@ function navigate(page, el) {
   closeSidebar();
 }
 
-/* ═══════════════════════════════════════════
+/* 
    SIDEBAR TOGGLE
-═══════════════════════════════════════════ */
+ */
 function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('sidebarOverlay').classList.toggle('open');
@@ -90,9 +90,9 @@ function closeSidebar() {
   document.getElementById('sidebarOverlay').classList.remove('open');
 }
 
-/* ═══════════════════════════════════════════
+/* 
    MODAL
-═══════════════════════════════════════════ */
+ */
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 // Close on overlay click
@@ -100,9 +100,9 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
 });
 
-/* ═══════════════════════════════════════════
+/* 
    TOAST
-═══════════════════════════════════════════ */
+ */
 function showToast(msg, type = 'info') {
   const icons = { success: '✅', error: '❌', info: '💡' };
   const tc = document.getElementById('toast-container');
@@ -113,9 +113,9 @@ function showToast(msg, type = 'info') {
   setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(30px)'; t.style.transition = '.3s'; setTimeout(() => t.remove(), 300); }, 3000);
 }
 
-/* ═══════════════════════════════════════════
+/* 
    STATUS HELPERS
-═══════════════════════════════════════════ */
+ */
 function statusBadge(status) {
   const map = { pending: 'badge-pending', accepted: 'badge-accepted', inprogress: 'badge-inprogress', completed: 'badge-completed', cancelled: 'badge-cancelled', rejected: 'badge-rejected', paid: 'badge-paid', active: 'badge-active', paused: 'badge-paused', draft: 'badge-draft' };
   const labels = { inprogress: 'In Progress' };
@@ -127,9 +127,9 @@ function stars(n) {
   return n ? '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n)) : 'No ratings yet';
 }
 
-/* ═══════════════════════════════════════════
+/* 
    RENDER: RECENT BOOKINGS (DASHBOARD)
-═══════════════════════════════════════════ */
+ */
 function renderRecentBookings() {
   const tbody = document.getElementById('recentBookingsBody');
   const recent = bookings.slice(0, 5);
@@ -149,9 +149,9 @@ function renderRecentBookings() {
   `).join('');
 }
 
-/* ═══════════════════════════════════════════
+/* 
    RENDER: ACTIVE SERVICES SUMMARY
-═══════════════════════════════════════════ */
+ */
 function renderActiveSummary() {
   const el = document.getElementById('activeSummaryList');
   el.innerHTML = services.filter(s => s.status === 'active').map(s => `
@@ -166,9 +166,9 @@ function renderActiveSummary() {
   `).join('');
 }
 
-/* ═══════════════════════════════════════════
+/* 
    RENDER: BOOKINGS TABLE
-═══════════════════════════════════════════ */
+ */
 let filteredBookings = [...bookings];
 
 function renderBookingsTable(data) {
@@ -241,9 +241,9 @@ function updateBookingStatus(id, newStatus) {
   }
 }
 
-/* ═══════════════════════════════════════════
+/* 
    BOOKING DETAIL MODAL
-═══════════════════════════════════════════ */
+ */
 function openBookingDetail(id) {
   const b = bookings.find(x => x.id === id);
   if (!b) return;
@@ -283,9 +283,9 @@ function confirmReject() {
   if (rejectTargetId) { updateBookingStatus(rejectTargetId, 'rejected'); closeModal('rejectModal'); rejectTargetId = null; }
 }
 
-/* ═══════════════════════════════════════════
+/* 
    RENDER: SERVICES
-═══════════════════════════════════════════ */
+ */
 function renderServices() {
   const grid = document.getElementById('serviceGrid');
   grid.innerHTML = services.map(s => `
@@ -369,9 +369,9 @@ function saveServiceEdit() {
   closeModal('serviceModal');
 }
 
-/* ═══════════════════════════════════════════
+/* 
    RENDER: EARNINGS
-═══════════════════════════════════════════ */
+ */
 let filteredEarnings = [...earnings];
 
 function renderEarningsTable(data) {
@@ -427,9 +427,9 @@ function confirmWithdraw() {
   closeModal('withdrawModal');
 }
 
-/* ═══════════════════════════════════════════
+/* 
    RENDER: MESSAGES
-═══════════════════════════════════════════ */
+ */
 function renderMessages() {
   const el = document.getElementById('messagesList');
   el.innerHTML = messages.map((m, i) => `
@@ -475,9 +475,9 @@ function sendMessage() {
 
 function handleChatSend(e) { if (e.key === 'Enter') sendMessage(); }
 
-/* ═══════════════════════════════════════════
+/* 
    RENDER: REVIEWS
-═══════════════════════════════════════════ */
+ */
 function renderReviews() {
   const el = document.getElementById('reviewsList');
   el.innerHTML = reviews.map(r => `
@@ -498,9 +498,9 @@ function renderReviews() {
   `).join('');
 }
 
-/* ═══════════════════════════════════════════
+/* 
    SETTINGS
-═══════════════════════════════════════════ */
+ */
 function switchSettingsPanel(panel, el) {
   document.querySelectorAll('.settings-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.settings-nav-item').forEach(n => n.classList.remove('active'));
@@ -508,9 +508,9 @@ function switchSettingsPanel(panel, el) {
   el.classList.add('active');
 }
 
-/* ═══════════════════════════════════════════
+/* 
    INIT
-═══════════════════════════════════════════ */
+ */
 function init() {
   renderRecentBookings();
   renderActiveSummary();
@@ -528,11 +528,11 @@ function init() {
 
 init();
 
-/* ════════════════════════════════════════════════════════
+/* ═════════════
    dashboard.js — RESPONSIVE PATCH
    Replace your existing toggleSidebar() and closeSidebar()
    with these versions, and add the resize listener at bottom.
-   ════════════════════════════════════════════════════════ */
+   ═════════════ */
 
 /* ── Replaces original toggleSidebar() ── */
 function toggleSidebar() {

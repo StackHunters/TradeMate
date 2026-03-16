@@ -1010,17 +1010,17 @@ td {
            640px · 480px · 380px
    ════════════════════════════════════════════════════════ */
 
-/* ─────────────────────────────
+/* 
    1400px — wide laptop
-───────────────────────────────*/
+──*/
 @media (max-width: 1400px) {
   .earnings-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
   .earning-amount { font-size: 24px; }
 }
 
-/* ─────────────────────────────
+/* 
    1200px — small laptop / tablet landscape
-───────────────────────────────*/
+──*/
 @media (max-width: 1200px) {
   /* Earnings — 2 columns */
   .earnings-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -1038,9 +1038,9 @@ td {
   .settings-grid { grid-template-columns: 180px 1fr; }
 }
 
-/* ─────────────────────────────
+/* 
    1024px — tablet landscape
-───────────────────────────────*/
+──*/
 @media (max-width: 1024px) {
   /* Sidebar hidden by default, shown on toggle */
   .sidebar {
@@ -1073,9 +1073,9 @@ td {
   .withdrawal-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
 }
 
-/* ─────────────────────────────
+/* 
    900px — tablet portrait
-───────────────────────────────*/
+──*/
 @media (max-width: 900px) {
   /* Topbar search hidden */
   .topbar-search { display: none; }
@@ -1122,9 +1122,9 @@ td {
   .content { padding: 18px; }
 }
 
-/* ─────────────────────────────
+/* 
    768px — large phone / small tablet
-───────────────────────────────*/
+──*/
 @media (max-width: 768px) {
   /* Topbar */
   .topbar { padding: 0 14px; gap: 10px; }
@@ -1172,9 +1172,9 @@ td {
   .toast { min-width: unset; width: 100%; }
 }
 
-/* ─────────────────────────────
+/* 
    640px — phone landscape / large phone
-───────────────────────────────*/
+*/
 @media (max-width: 640px) {
   /* Topbar title shortened */
   .topbar-title { font-size: 15px; }
@@ -1231,9 +1231,9 @@ td {
   .content { padding: 12px; }
 }
 
-/* ─────────────────────────────
+/* 
    480px — typical phone portrait
-───────────────────────────────*/
+──*/
 @media (max-width: 480px) {
   /* Sidebar profile compact */
   .profile-info strong { font-size: 12.5px; }
@@ -1281,9 +1281,9 @@ td {
   .form-label { font-size: 12px; }
 }
 
-/* ─────────────────────────────
+/* 
    380px — smallest phones (iPhone SE etc.)
-───────────────────────────────*/
+──*/
 @media (max-width: 380px) {
   /* Root adjustments */
   :root {
@@ -1342,16 +1342,16 @@ td {
   .modal { padding: 16px; max-height: 95vh; }
 }
 
-/* ─────────────────────────────
+/* 
    UTILITY — mobile sidebar open
    Ensure body doesn't scroll behind open sidebar
-───────────────────────────────*/
+──*/
 body.sidebar-open { overflow: hidden; }
 
-/* ─────────────────────────────
+/* 
    TABLE SCROLL HINT — subtle
    gradient shows there's more content
-───────────────────────────────*/
+──*/
 @media (max-width: 768px) {
   .table-wrapper {
     position: relative;
@@ -1367,9 +1367,9 @@ body.sidebar-open { overflow: hidden; }
   }
 }
 
-/* ─────────────────────────────
+/* 
    MESSAGES — chat height fix on mobile
-───────────────────────────────*/
+──*/
 @media (max-width: 900px) {
   .chat-area {
     min-height: 400px;
@@ -1382,9 +1382,9 @@ body.sidebar-open { overflow: hidden; }
   }
 }
 
-/* ─────────────────────────────
+/* 
    TOPBAR — title truncation on small screens
-───────────────────────────────*/
+──*/
 @media (max-width: 640px) {
   .topbar-title {
     white-space: nowrap;
@@ -1394,9 +1394,9 @@ body.sidebar-open { overflow: hidden; }
   }
 }
 
-/* ─────────────────────────────
+/* 
    SIDEBAR OVERLAY — ensure it works correctly
-───────────────────────────────*/
+──*/
 .sidebar-overlay {
   display: none;
   position: fixed;
@@ -1409,18 +1409,18 @@ body.sidebar-open { overflow: hidden; }
 }
 .sidebar-overlay.open { display: block; }
 
-/* ─────────────────────────────
+/* 
    EARNINGS TABLE — td nowrap guard
-───────────────────────────────*/
+──*/
 @media (max-width: 768px) {
   .td-commission { font-size: 11.5px; }
   .badge { font-size: 10px; padding: 3px 8px; }
   .badge::before { font-size: 7px; }
 }
 
-/* ─────────────────────────────
+/* 
    SERVICE ACTIONS — wrap on tiny cards
-───────────────────────────────*/
+──*/
 @media (max-width: 360px) {
   .service-actions { gap: 5px; }
   .service-actions .btn { font-size: 10.5px; padding: 5px 8px; }

@@ -30,7 +30,7 @@
     overflow-x: hidden;
   }
 
-  /* ── BACKGROUND MESH ── */
+  /*  BACKGROUND MESH  */
   body::before {
     content: '';
     position: fixed; inset: 0; z-index: 0;
@@ -41,7 +41,7 @@
     pointer-events: none;
   }
 
-  /* ── NOISE GRAIN ── */
+  /*  NOISE GRAIN  */
   body::after {
     content: '';
     position: fixed; inset: 0; z-index: 0;
@@ -51,7 +51,7 @@
 
   main, header, footer, nav { position: relative; z-index: 1; }
 
-  /* ── NAV ── */
+  /*  NAV  */
   .navbar {
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 clamp(20px, 5vw, 64px);
@@ -113,7 +113,7 @@
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: none; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--muted); border-radius: 2px; transition: var(--transition); }
 
-  /* ── HERO SUMMARY ── */
+  /*  HERO SUMMARY  */
   .hero {
     padding: clamp(48px,8vw,96px) clamp(20px,5vw,64px) clamp(32px,5vw,64px);
     max-width: 1280px; margin: 0 auto;
@@ -145,7 +145,7 @@
     font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.7;
   }
 
-  /* ── RATING SUMMARY CARD ── */
+  /*  RATING SUMMARY CARD  */
   .rating-card {
     background: var(--dark-2);
     border: 1px solid var(--border);
@@ -175,7 +175,7 @@
   .star-icon.half { position: relative; }
   .review-count { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
-  /* ── CONTROLS BAR ── */
+  /*  CONTROLS BAR  */
   .controls-bar {
     max-width: 1280px; margin: 0 auto 32px;
     padding: 0 clamp(20px,5vw,64px);
@@ -223,7 +223,7 @@
   }
   .sort-select:focus { border-color: rgba(102,126,234,0.45); color: var(--white); }
 
-  /* ── RATINGS BREAKDOWN ── */
+  /*  RATINGS BREAKDOWN  */
   .breakdown-section {
     max-width: 1280px; margin: 0 auto 40px;
     padding: 0 clamp(20px,5vw,64px);
@@ -261,7 +261,7 @@
   .cat-stars { display: flex; gap: 2px; margin-top: 4px; }
   .cat-stars .s { font-size: 11px; color: var(--star); }
 
-  /* ── REVIEWS GRID ── */
+  /*  REVIEWS GRID  */
   .reviews-section {
     max-width: 1280px; margin: 0 auto;
     padding: 0 clamp(20px,5vw,64px);
@@ -398,7 +398,7 @@
   }
   .report-btn:hover { color: var(--accent-2); }
 
-  /* ── PAGINATION ── */
+  /*  PAGINATION  */
   .pagination {
     display: flex; align-items: center; justify-content: center; gap: 8px;
     padding: clamp(40px,6vw,64px) clamp(20px,5vw,64px);
@@ -419,7 +419,7 @@
   }
   .page-btn.arrow { font-size: 18px; }
 
-  /* ── FOOTER ── */
+  /*  FOOTER  */
   .footer {
     border-top: 1px solid var(--border);
     padding: 32px clamp(20px,5vw,64px);
@@ -431,7 +431,7 @@
   .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color var(--transition); }
   .footer-links a:hover { color: var(--accent); }
 
-  /* ── MODAL ── */
+  /*  MODAL  */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.75);
     backdrop-filter: blur(8px);
@@ -490,7 +490,7 @@
   }
   .submit-btn:hover { box-shadow: 0 8px 28px rgba(102,126,234,0.55); transform: translateY(-2px); }
 
-  /* ── ANIMATIONS ── */
+  /*  ANIMATIONS  */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -501,7 +501,7 @@
   .review-card:nth-child(4) { animation-delay: 0.26s; }
   .review-card:nth-child(5) { animation-delay: 0.33s; }
 
-  /* ── RESPONSIVE ── */
+  /*  RESPONSIVE  */
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
     .rating-card { justify-self: start; }

@@ -1,6 +1,6 @@
-/* ───────────────────────────────────────────
+/* 
        PRICES  (in GH₵)
-    ─────────────────────────────────────────── */
+     */
     const PRICES = { 'Home Cleaning': 80, 'Plumbing': 120, 'Electrician': 100 };
 
     /* ── Refs ── */
@@ -30,9 +30,9 @@
     /* ── Date minimum = today ── */
     dateEl.min = new Date().toISOString().slice(0, 10);
 
-    /* ───────────────────────────────────────────
+    /* 
        SERVICE SELECTION
-    ─────────────────────────────────────────── */
+     */
     function getSelectedService() {
       return document.querySelector('[name="service"]:checked').value;
     }
@@ -47,9 +47,9 @@
       });
     });
 
-    /* ───────────────────────────────────────────
+    /* 
        SUMMARY UPDATE
-    ─────────────────────────────────────────── */
+     */
     function updateSummary() {
       const serv = getSelectedService();
       sumService.textContent  = serv;
@@ -61,9 +61,9 @@
       sumTotal.textContent = `GH₵${total}`;
     }
 
-    /* ───────────────────────────────────────────
+    /* 
        VALIDATION
-    ─────────────────────────────────────────── */
+     */
     function isBusinessHour(t) {
       if (!t) return false;
       const [hh, mm] = t.split(':').map(Number);
@@ -87,9 +87,9 @@
       el.addEventListener('input', () => { updateSummary(); validateEnable(); })
     );
 
-    /* ───────────────────────────────────────────
+    /* 
        GEO
-    ─────────────────────────────────────────── */
+     */
     geoBtn.addEventListener('click', () => {
       coordsInfo.textContent = 'Locating…';
       if (!navigator.geolocation) {
@@ -110,9 +110,9 @@
       );
     });
 
-    /* ───────────────────────────────────────────
+    /* 
        CLEAR
-    ─────────────────────────────────────────── */
+     */
     clearBtn.addEventListener('click', () => {
       document.querySelector('[name="service"][value="Home Cleaning"]').checked = true;
       document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
@@ -126,9 +126,9 @@
       validateEnable();
     });
 
-    /* ───────────────────────────────────────────
+    /* 
        CONFIRM BUTTON → show modal
-    ─────────────────────────────────────────── */
+     */
     confirmBtn.addEventListener('click', () => {
       if (!formValid()) return;
       const serv  = getSelectedService();
@@ -179,18 +179,18 @@
       setTimeout(updateBookingsList, 200);
     });
 
-    /* ───────────────────────────────────────────
+    /* 
        TOAST
-    ─────────────────────────────────────────── */
+     */
     function showToast(msg) {
       toast.textContent = msg;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3800);
     }
 
-    /* ───────────────────────────────────────────
+    /* 
        BOOKINGS LIST
-    ─────────────────────────────────────────── */
+     */
     function updateBookingsList() {
       const listRoot = document.getElementById('bookingsList');
       if (!listRoot) return;
@@ -230,9 +230,9 @@
       });
     }
 
-    /* ───────────────────────────────────────────
+    /* 
        NAVIGATION
-    ─────────────────────────────────────────── */
+     */
     const navBtns      = document.querySelectorAll('.nav-btn');
     const bookingCard  = document.getElementById('bookingCard');
     const bookingsPanel = document.getElementById('bookingsPanel');
