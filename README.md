@@ -49,7 +49,7 @@ TradeMate is a local services marketplace web platform that connects users with 
 | Markup       | HTML5                             |
 | Styling      | CSS3 (Custom Properties, Flexbox, Grid) |
 | Logic        | Vanilla JavaScript (ES6+)         |
-| Icons        | Font Awesome / Heroicons          |
+| Emojies      | Emohipedia   & Google             |
 | Fonts        | Times New Roman, Arial, DM Sans   |
 | Storage      | localStorage / sessionStorage     |
 | Maps (opt.)  | Google Maps API (location input)  |
