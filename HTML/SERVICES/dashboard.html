@@ -1,671 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Provider Dashboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/HTML/CSS/SERVICES/dashboard.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Provider Dashboard | TradeMate</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/HTML/CSS/SERVICES/dashboard.css"/>
 </head>
 <body>
 
-<!--  SIDEBAR OVERLAY  -->
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<!-- Sidebar overlay (mobile) -->
+<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
 
-<div class="layout">
-
-<!--
-     SIDEBAR
- -->
+<!-- ════ SIDEBAR ════ -->
 <aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo">
-    <div class="logo-icon">⚡</div>
-    <div>
-      <h2>Trade Mate</h2>
-      <span>Provider Portal</span>
-    </div>
+  <div class="sb-logo" onclick="showSection('overview')">
+    <div class="sb-logo-icon">TM</div>
+    <div class="sb-logo-text">Trade<em>Mate</em></div>
   </div>
-  <div class="sidebar-profile">
-    <div class="profile-avatar">KB</div>
-    <div class="profile-info">
-      <strong>KOFI BREBO</strong>
-      <div class="profile-badge">Online</div>
+
+  <nav class="sb-nav">
+    <div class="sb-group-label">Main</div>
+
+    <div class="sb-item active" data-section="overview" onclick="showSection('overview')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+      </svg>
+      Overview
     </div>
-  </div>
-  <nav class="sidebar-nav">
-    <div class="nav-section-label">Main</div>
-    <div class="nav-item active" onclick="navigate('dashboard', this)">
-      <span class="nav-icon">🏠</span> Dashboard
+
+    <div class="sb-item" data-section="bookings" onclick="showSection('bookings')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      Bookings
+      <span class="sb-badge" id="bookingsBadge">3</span>
     </div>
-    <div class="nav-item" onclick="navigate('bookings', this)">
-      <span class="nav-icon">📋</span> Bookings
-      <span class="nav-badge">3</span>
+
+    <div class="sb-item" data-section="messages" onclick="showSection('messages')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      Messages
+      <span class="sb-badge">2</span>
     </div>
-    <div class="nav-item" onclick="navigate('services', this)">
-      <span class="nav-icon">🛠️</span> Services
+
+    <div class="sb-item" data-section="earnings" onclick="showSection('earnings')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="1" x2="12" y2="23"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+      Earnings
     </div>
-    <div class="nav-item" onclick="navigate('earnings', this)">
-      <span class="nav-icon">💷</span> Earnings
+
+    <div class="sb-group-label" style="margin-top:6px">Provider</div>
+
+    <div class="sb-item" data-section="services" onclick="showSection('services')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+      Services
     </div>
-    <div class="nav-section-label">Communication</div>
-    <div class="nav-item" onclick="navigate('messages', this)">
-      <span class="nav-icon">💬</span> Messages
-      <span class="nav-badge">2</span>
+
+    <div class="sb-item" data-section="calendar" onclick="showSection('calendar')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      Calendar
     </div>
-    <div class="nav-item" onclick="navigate('reviews', this)">
-      <span class="nav-icon">⭐</span> Reviews
+
+    <div class="sb-item" data-section="reviews" onclick="showSection('reviews')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      Reviews
     </div>
-    <div class="nav-section-label">Account</div>
-    <div class="nav-item" onclick="navigate('settings', this)">
-      <span class="nav-icon">⚙️</span> Settings
+
+    <div class="sb-item" data-section="notifications" onclick="showSection('notifications')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+      Notifications
+      <span class="sb-badge">5</span>
+    </div>
+
+    <div class="sb-group-label" style="margin-top:6px">Account</div>
+
+    <div class="sb-item" data-section="profile" onclick="showSection('profile')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      Profile
+    </div>
+
+    <div class="sb-item" data-section="settings" onclick="showSection('settings')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+      Settings
+    </div>
+
+    <div class="sb-item" onclick="handleLogout()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      Sign Out
     </div>
   </nav>
-  <div class="sidebar-footer">
-    <div class="nav-item logout" onclick="showToast('Logging out...','info');  window.location.href = '/HTML/ADMIN/LandingPage.html';">
-      <span class="nav-icon">🚪</span> Logout
+
+  <div class="sb-footer">
+    <div class="sb-user" onclick="showSection('profile')">
+      <div class="sb-avatar">
+        <img src="https://i.pravatar.cc/80?img=11" alt="Provider" onerror="this.style.display='none'"/>
+        MB
+      </div>
+      <div class="sb-user-info">
+        <div class="sb-user-name" id="sbProviderName">Maxi Billion</div>
+        <div class="sb-user-role">● Provider — Active</div>
+      </div>
     </div>
   </div>
 </aside>
 
-<!--
-     MAIN WRAPPER
- -->
-<div class="main-wrapper">
+<!-- ════ MAIN ════ -->
+<div class="shell">
+  <div class="main">
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <button class="hamburger" onclick="toggleSidebar()">☰</button>
-    <div class="topbar-title" id="topbarTitle">Dashboard <span>Overview</span></div>
-    <div class="topbar-search">
-      <span class="search-icon">🕵🏻‍♀️
-</span>
-      <input type="text" placeholder="Search anything...">
-    </div>
-    <div class="topbar-actions">
-      <button class="topbar-btn" onclick="showToast('No new updates','info')">🔔<span class="notif-dot"></span></button>
-      <button class="topbar-btn" onclick="showToast('Refreshed!','success')">🔄</button>
-      <button class="topbar-btn" onclick="navigate('settings', document.querySelector('[onclick*=settings]'))">👥</button>
-    </div>
-  </header> 
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <button class="ham-btn" id="hamBtn" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar-brand">
+        <div class="topbar-brand-icon">TM</div>
+        <div class="topbar-brand-name">Trade<em>Mate</em></div>
+      </div>
+      <span class="topbar-page-name" id="topbarPageName">Overview</span>
+      <div class="topbar-spacer"></div>
+      <button class="tb-btn" onclick="showSection('notifications')" title="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <div class="notif-dot"></div>
+      </button>
+      <div class="tb-avatar" onclick="showSection('profile')">
+        <img src="https://i.pravatar.cc/80?img=11" alt="Provider" onerror="this.style.display='none'"/>
+        MB
+      </div>
+    </header>
 
+    <!-- PAGE CONTENT -->
+    <main class="content">
 
-  <!-- CONTENT -->
-  <div class="content">
-
-    <!--══
-         PAGE: DASHBOARD
-   ══ -->
-    <div class="page active" id="page-dashboard">
-
-      <div class="section-header">
+      <!-- ══ OVERVIEW ══ -->
+      <div class="section active" id="sec-overview">
         <div>
-          <h2>Welcome back, Kofi 👋</h2>
-          <p>Here's what's happening with your business today.</p>
+          <div class="sec-heading rv">Dashboard Overview</div>
+          <div class="sec-sub rv" style="transition-delay:.05s">Welcome back, Maxi ! Here's your business summary.</div>
         </div>
-        <button class="btn btn-primary" onclick="navigate('bookings', document.querySelectorAll('.nav-item')[1])">View All Bookings</button>
-      </div>
 
-      <!-- EARNINGS CARDS -->
-      <div class="earnings-grid">
-        <div class="earning-card total" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
-          <div class="earning-card-top">
-            <div class="earning-icon">💷</div>
-            <span class="earning-card-arrow">→</span>
-          </div>
-          <div class="earning-label">Total Earnings</div>
-          <div class="earning-amount">GH₵ 12,450</div>
-          <div class="earning-meta"><span class="trend up">▲ 14.2%</span> vs last month</div>
-          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
-        </div>
-        <div class="earning-card monthly" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
-          <div class="earning-card-top">
-            <div class="earning-icon">🗓️</div>
-            <span class="earning-card-arrow">→</span>
-          </div>
-          <div class="earning-label">This Month</div>
-          <div class="earning-amount">GH₵ 3,820</div>
-          <div class="earning-meta"><span class="trend up">▲ 8.7%</span> vs Feb</div>
-          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
-        </div>
-        <div class="earning-card pending" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
-          <div class="earning-card-top">
-            <div class="earning-icon">🕒</div>
-            <span class="earning-card-arrow">→</span>
-          </div>
-          <div class="earning-label">Pending Earnings</div>
-          <div class="earning-amount">GH₵ 680</div>
-          <div class="earning-meta"><span style="color:var(--warning)">4 jobs</span> awaiting clearance</div>
-          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
-        </div>
-        <div class="earning-card withdraw" onclick="navigate('earnings', document.querySelectorAll('.nav-item')[3])">
-          <div class="earning-card-top">
-            <div class="earning-icon">💳</div>
-            <span class="earning-card-arrow">→</span>
-          </div>
-          <div class="earning-label">Withdrawable</div>
-          <div class="earning-amount">GH₵ 2,340</div>
-          <div class="earning-meta">Min withdrawal: <strong style="color:#c9d1d9">GH₵ 50</strong></div>
-          <div class="earning-timestamp">Last updated: Today, 10:32 AM</div>
-        </div>
-      </div>
-
-      <!-- QUICK STATS -->
-      <div class="quick-stats mb-24">
-        <div class="quick-stat-card">
-          <div class="qs-icon purple">📦</div>
-          <div>
-            <div class="qs-value">24</div>
-            <div class="qs-label">Total Bookings</div>
-          </div>
-        </div>
-        <div class="quick-stat-card">
-          <div class="qs-icon green">✅</div>
-          <div>
-            <div class="qs-value">18</div>
-            <div class="qs-label">Completed Jobs</div>
-          </div>
-        </div>
-        <div class="quick-stat-card">
-          <div class="qs-icon yellow">⭐</div>
-          <div>
-            <div class="qs-value">4.8</div>
-            <div class="qs-label">Average Rating</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RECENT TWO COL -->
-      <div class="recent-two-col">
-        <!-- RECENT BOOKINGS -->
-        <div>
-          <div class="table-wrapper">
-            <div class="table-header">
-              <div>
-                <div class="table-title">Recent Bookings</div>
-                <div class="table-count">Showing last 5 requests</div>
-              </div>
-              <button class="btn btn-outline btn-sm" onclick="navigate('bookings', document.querySelectorAll('.nav-item')[1])">View all →</button>
+        <!-- Stat cards -->
+        <div class="stats-grid">
+          <div class="stat-card rv" style="transition-delay:.06s" onclick="showSection('bookings')">
+            <div class="stat-icon ic-blue">📅</div>
+            <div class="stat-body">
+              <div class="stat-val">24</div>
+              <div class="stat-lbl">Total Bookings</div>
             </div>
-            <div style="overflow-x:auto">
-            <table>
+            <div class="stat-delta delta-up">+3</div>
+          </div>
+          <div class="stat-card rv" style="transition-delay:.1s" onclick="showSection('earnings')">
+            <div class="stat-icon ic-green">💰</div>
+            <div class="stat-body">
+              <div class="stat-val">₵1,840</div>
+              <div class="stat-lbl">Total Earnings</div>
+            </div>
+            <div class="stat-delta delta-up">+₵240</div>
+          </div>
+          <div class="stat-card rv" style="transition-delay:.14s" onclick="showSection('reviews')">
+            <div class="stat-icon ic-gold">⭐</div>
+            <div class="stat-body">
+              <div class="stat-val">4.8</div>
+              <div class="stat-lbl">Average Rating</div>
+            </div>
+            <div class="stat-delta delta-up">↑</div>
+          </div>
+          <div class="stat-card rv" style="transition-delay:.18s" onclick="showSection('bookings')">
+            <div class="stat-icon ic-purple">🕒</div>
+            <div class="stat-body">
+              <div class="stat-val">3</div>
+              <div class="stat-lbl">Pending Requests</div>
+            </div>
+            <div class="stat-delta delta-up">New</div>
+          </div>
+        </div>
+
+        <!-- Recent bookings preview -->
+        <div class="card rv">
+          <div class="card-title">Recent Bookings</div>
+          <div style="overflow-x:auto">
+            <table class="bookings-table">
               <thead>
                 <tr>
-                  <th>Customer</th>
-                  <th>Service</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th>Customer</th><th>Service</th><th>Date</th><th>Status</th><th>Actions</th>
                 </tr>
               </thead>
-              <tbody id="recentBookingsBody">
-              </tbody>
+              <tbody id="recentBookingsBody"></tbody>
             </table>
-            </div>
           </div>
         </div>
+      </div>
 
-        <!-- ACTIVE SERVICES SUMMARY -->
-        <div>
-          <div class="table-wrapper">
-            <div class="table-header">
-              <div>
-                <div class="table-title">Active Services</div>
-                <div class="table-count">3 of 5 active</div>
+      <!-- ══ BOOKINGS ══ -->
+      <div class="section" id="sec-bookings">
+        <div class="sec-heading rv">Booking Management</div>
+        <div class="card rv">
+          <!-- Filter tabs -->
+          <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" id="bkFilterRow">
+            <button class="bk-btn active-filter" onclick="filterBookings('all',this)">All</button>
+            <button class="bk-btn" onclick="filterBookings('pending',this)">Pending</button>
+            <button class="bk-btn" onclick="filterBookings('accepted',this)">Accepted</button>
+            <button class="bk-btn" onclick="filterBookings('completed',this)">Completed</button>
+            <button class="bk-btn" onclick="filterBookings('cancelled',this)">Cancelled</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="bookings-table">
+              <thead>
+                <tr><th>Customer</th><th>Service</th><th>Date &amp; Time</th><th>Location</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="allBookingsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ MESSAGES ══ -->
+      <div class="section" id="sec-messages">
+        <div class="sec-heading rv">Messages</div>
+        <div class="rv" style="transition-delay:.06s">
+          <div class="messages-layout">
+            <!-- Contacts list -->
+            <div class="msg-sidebar">
+              <div class="msg-sidebar-header">
+                <div class="msg-sidebar-title">Conversations</div>
               </div>
-              <button class="btn btn-outline btn-sm" onclick="navigate('services', document.querySelectorAll('.nav-item')[2])">Manage →</button>
+              <div class="msg-list" id="msgList"></div>
             </div>
-            <div id="activeSummaryList" style="padding: 8px 0;"></div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /page-dashboard -->
-
-    <!--══
-         PAGE: BOOKINGS
-   ══ -->
-    <div class="page" id="page-bookings">
-      <div class="section-header">
-        <div>
-          <h2>Booking Requests</h2>
-          <p>Manage and respond to all your service bookings.</p>
-        </div>
-        <button class="btn btn-primary" onclick="showToast('Export started','success')">📤 Export CSV</button>
-      </div>
-
-      <!-- FILTERS -->
-      <div class="filters-bar">
-        <div class="filter-group">
-          <span class="filter-label">Status:</span>
-          <select class="filter-select" id="bookingStatusFilter" onchange="filterBookings()">
-            <option value="all">All Statuses</option>
-            <option value="pending">Pending</option>
-            <option value="accepted">Accepted</option>
-            <option value="inprogress">In Progress</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-            <option value="rejected">Rejected</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">From:</span>
-          <input type="date" class="filter-input" id="bookingDateFrom" onchange="filterBookings()">
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">To:</span>
-          <input type="date" class="filter-input" id="bookingDateTo" onchange="filterBookings()">
-        </div>
-        <button class="btn btn-outline btn-sm" onclick="resetBookingFilters()">✕ Reset</button>
-      </div>
-
-      <div class="table-wrapper">
-        <div class="table-header">
-          <div>
-            <div class="table-title">All Bookings</div>
-            <div class="table-count" id="bookingCount">Loading...</div>
-          </div>
-        </div>
-        <div style="overflow-x:auto">
-        <table>
-          <thead>
-            <tr>
-              <th>Customer</th>
-              <th>Service</th>
-              <th>Date & Time</th>
-              <th>Location</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="bookingsTableBody"></tbody>
-        </table>
-        </div>
-      </div>
-    </div><!-- /page-bookings -->
-
-    <!--══
-         PAGE: SERVICES
-   ══ -->
-    <div class="page" id="page-services">
-      <div class="section-header">
-        <div>
-          <h2>My Services</h2>
-          <p>Manage all your listed services.</p>
-        </div>
-        <button class="btn btn-primary" onclick="showToast('Service form coming soon','info')">+ Add New Service</button>
-      </div>
-
-      <div class="service-grid" id="serviceGrid"></div>
-    </div><!-- /page-services -->
-
-    <!--══
-         PAGE: EARNINGS
-   ══ -->
-    <div class="page" id="page-earnings">
-      <div class="section-header">
-        <div>
-          <h2>Earnings & Withdrawals</h2>
-          <p>Track your income and manage withdrawals.</p>
-        </div>
-      </div>
-
-      <div class="earnings-grid" style="margin-bottom:28px">
-        <div class="earning-card total">
-          <div class="earning-card-top">
-            <div class="earning-icon">💷</div>
-          </div>
-          <div class="earning-label">Total Earnings</div>
-          <div class="earning-amount">GH₵ 12,450</div>
-          <div class="earning-timestamp">All-time earnings since Jan 2024</div>
-        </div>
-        <div class="earning-card monthly">
-          <div class="earning-card-top">
-            <div class="earning-icon"></div>
-          </div>
-          <div class="earning-label">This Month</div>
-          <div class="earning-amount">GH₵ 3,820</div>
-          <div class="earning-timestamp">March 2026</div>
-        </div>
-        <div class="earning-card pending">
-          <div class="earning-card-top">
-            <div class="earning-icon">🕒</div>
-          </div>
-          <div class="earning-label">Pending</div>
-          <div class="earning-amount">GH₵ 680</div>
-          <div class="earning-timestamp">Awaiting job completion</div>
-        </div>
-        <div class="earning-card withdraw">
-          <div class="earning-card-top">
-            <div class="earning-icon">💳</div>
-          </div>
-          <div class="earning-label">Withdrawable</div>
-          <div class="earning-amount">GH₵ 2,340</div>
-          <div class="earning-timestamp">Available to withdraw</div>
-        </div>
-      </div>
-
-      <!-- FILTERS -->
-      <div class="filters-bar mb-16">
-        <div class="filter-group">
-          <span class="filter-label">Category:</span>
-          <select class="filter-select" id="earningCatFilter" onchange="filterEarnings()">
-            <option value="all">All Categories</option>
-            <option value="cleaning">Cleaning</option>
-            <option value="plumbing">Plumbing</option>
-            <option value="electrical">Electrical</option>
-            <option value="painting">Painting</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <span class="filter-label">Payment:</span>
-          <select class="filter-select" id="earningPayFilter" onchange="filterEarnings()">
-            <option value="all">All</option>
-            <option value="paid">Paid</option>
-            <option value="pending">Pending</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- EARNINGS TABLE -->
-      <div class="table-wrapper mb-24">
-        <div class="table-header">
-          <div>
-            <div class="table-title">Earnings Breakdown</div>
-            <div class="table-count" id="earningsCount">Showing all records</div>
-          </div>
-        </div>
-        <div style="overflow-x:auto">
-        <table>
-          <thead>
-            <tr>
-              <th>Job</th>
-              <th>Customer</th>
-              <th>Category</th>
-              <th>Date</th>
-              <th>Gross</th>
-              <th>Commission (15%)</th>
-              <th>Net Earned</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="earningsTableBody"></tbody>
-        </table>
-        </div>
-      </div>
-
-      <!-- WITHDRAWAL -->
-      <div class="withdrawal-grid">
-        <div class="withdrawal-card">
-          <div class="earning-label">Available Balance</div>
-          <div class="withdrawal-balance">GH₵ 2,340.00</div>
-          <div class="withdrawal-info">Minimum withdrawal: GH₵ 50.00</div>
-          <div class="payment-method-display">
-            <div class="payment-icon">🏦</div>
-            <div class="payment-details">
-              <strong>MTN Mobile Money</strong>
-              <span>+233 ** *** 5489</span>
+            <!-- Chat -->
+            <div class="chat-area">
+              <div class="chat-header">
+                <div class="sb-avatar" style="width:32px;height:32px;font-size:.75rem">AA</div>
+                <div>
+                  <div class="chat-header-name" id="chatName">Abena Agyemang</div>
+                  <div class="chat-header-status">● Online</div>
+                </div>
+              </div>
+              <div class="chat-messages" id="chatMessages"></div>
+              <div class="chat-input-row">
+                <input class="chat-input" id="chatInput" placeholder="Type a message…" onkeydown="if(event.key==='Enter') sendMessage()"/>
+                <button class="chat-send-btn" onclick="sendMessage()">Send</button>
+              </div>
             </div>
-            <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="showToast('Edit payment method','info')">Edit</button>
           </div>
-          <button class="btn btn-primary" style="width:100%" onclick="openWithdrawModal()">💳 Withdraw Funds</button>
-        </div>
-        <div class="withdrawal-card">
-          <div class="table-title" style="margin-bottom:16px">Withdrawal History</div>
-          <div id="withdrawalHistory"></div>
         </div>
       </div>
-    </div><!-- /page-earnings -->
 
-    <!--══
-         PAGE: MESSAGES
-   ══ -->
-    <div class="page" id="page-messages">
-      <div class="section-header">
-        <div>
-          <h2>Messages</h2>
-          <p>Chat with your customers.</p>
+      <!-- ══ EARNINGS ══ -->
+      <div class="section" id="sec-earnings">
+        <div class="sec-heading rv">Earnings &amp; Payments</div>
+        <!-- Summary -->
+        <div class="earnings-strip rv">
+          <div class="earn-card">
+            <div class="earn-card-label">Total Earnings</div>
+            <div class="earn-card-val">₵1,840</div>
+            <div class="earn-card-sub">All time</div>
+          </div>
+          <div class="earn-card">
+            <div class="earn-card-label">Pending Payments</div>
+            <div class="earn-card-val">₵240</div>
+            <div class="earn-card-sub">2 bookings awaiting</div>
+          </div>
+          <div class="earn-card">
+            <div class="earn-card-label">Withdrawable</div>
+            <div class="earn-card-val">₵1,430</div>
+            <div class="earn-card-sub">After 10% commission</div>
+          </div>
+        </div>
+        <!-- Withdrawal -->
+        <div class="card rv">
+          <div class="card-title">Request Withdrawal</div>
+          <div class="withdraw-card">
+            <div class="withdraw-bal">
+              <div class="withdraw-bal-lbl">Available Balance</div>
+              <div class="withdraw-bal-val">₵1,430</div>
+            </div>
+            <select class="form-select" style="width:160px">
+              <option>MTN MoMo</option>
+              <option>Vodafone Cash</option>
+              <option>AirtelTigo Money</option>
+              <option>Bank Account</option>
+            </select>
+            <input class="withdraw-input" type="number" placeholder="Amount (₵)" min="50"/>
+            <button class="btn-primary" onclick="requestWithdrawal()">Withdraw</button>
+          </div>
+        </div>
+        <!-- Transactions -->
+        <div class="card rv">
+          <div class="card-title">Transaction History</div>
+          <div style="overflow-x:auto">
+            <table class="tx-table">
+              <thead>
+                <tr><th>Client</th><th>Service</th><th>Date</th><th>Amount</th><th>Commission</th><th>Net</th></tr>
+              </thead>
+              <tbody id="txBody"></tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div class="messages-layout">
-        <div class="messages-list">
-          <div class="msg-list-header">💬 Conversations</div>
-          <div id="messagesList"></div>
+
+      <!-- ══ SERVICES ══ -->
+      <div class="section" id="sec-services">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div class="sec-heading rv">My Services</div>
+          <button class="btn-primary rv" onclick="openServiceModal()">+ Add Service</button>
         </div>
-        <div class="chat-area">
-          <div class="chat-header">
-            <div class="msg-avatar" style="background:linear-gradient(135deg,#667eea,#764ba2)">KB</div>
+        <div class="services-list rv" id="servicesList"></div>
+      </div>
+
+      <!-- ══ CALENDAR ══ -->
+      <div class="section" id="sec-calendar">
+        <div class="sec-heading rv">Availability &amp; Calendar</div>
+        <div class="cal-grid rv">
+          <!-- Mini Calendar -->
+          <div class="mini-cal">
+            <div class="cal-header">
+              <button class="cal-nav" onclick="changeMonth(-1)">‹</button>
+              <div class="cal-month" id="calMonthLabel">March 2025</div>
+              <button class="cal-nav" onclick="changeMonth(1)">›</button>
+            </div>
+            <div class="cal-days-header">
+              <div class="cal-day-name">Su</div><div class="cal-day-name">Mo</div>
+              <div class="cal-day-name">Tu</div><div class="cal-day-name">We</div>
+              <div class="cal-day-name">Th</div><div class="cal-day-name">Fr</div>
+              <div class="cal-day-name">Sa</div>
+            </div>
+            <div class="cal-days" id="calDays"></div>
+            <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+              <span style="font-size:.72rem;color:var(--success)">● Available</span>
+              <span style="font-size:.72rem;color:var(--danger)">● Booked</span>
+              <span style="font-size:.72rem;color:var(--accent)">● Today</span>
+            </div>
+          </div>
+          <!-- Working days -->
+          <div class="card" style="align-self:start">
+            <div class="card-title">Working Days</div>
+            <div class="avail-days" id="availDays"></div>
+            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+              <div style="flex:1">
+                <div class="form-label" style="margin-bottom:6px">Start Time</div>
+                <input class="form-input" type="time" value="07:00"/>
+              </div>
+              <div style="flex:1">
+                <div class="form-label" style="margin-bottom:6px">End Time</div>
+                <input class="form-input" type="time" value="18:00"/>
+              </div>
+            </div>
+            <button class="btn-primary" style="margin-top:14px;width:100%" onclick="saveAvailability()">Save Availability</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ REVIEWS ══ -->
+      <div class="section" id="sec-reviews">
+        <div class="sec-heading rv">Reviews &amp; Ratings</div>
+        <div class="card rv">
+          <div class="rating-summary-row">
             <div>
-              <div style="font-size:14px;font-weight:600;color:#e6edf3">Kofi Brebo</div>
-              <div style="font-size:11.5px;color:var(--success)">● Online</div>
+              <div class="big-rating-num">4.8</div>
+              <div style="font-size:.88rem;color:var(--warning);margin-top:4px">★★★★★</div>
+              <div style="font-size:.74rem;color:var(--muted);margin-top:4px">Based on 127 reviews</div>
             </div>
-            <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="showToast('Calling customer...','info')">📞 Call</button>
+            <div class="rating-bars">
+              <div class="rb-row"><span class="rb-label">5</span><div class="rb-track"><div class="rb-fill" style="width:78%"></div></div><span class="rb-count">99</span></div>
+              <div class="rb-row"><span class="rb-label">4</span><div class="rb-track"><div class="rb-fill" style="width:14%"></div></div><span class="rb-count">18</span></div>
+              <div class="rb-row"><span class="rb-label">3</span><div class="rb-track"><div class="rb-fill" style="width:5%"></div></div><span class="rb-count">7</span></div>
+              <div class="rb-row"><span class="rb-label">2</span><div class="rb-track"><div class="rb-fill" style="width:2%"></div></div><span class="rb-count">2</span></div>
+              <div class="rb-row"><span class="rb-label">1</span><div class="rb-track"><div class="rb-fill" style="width:1%"></div></div><span class="rb-count">1</span></div>
+            </div>
           </div>
-          <div class="chat-messages" id="chatMessages"></div>
-          <div class="chat-input-bar">
-            <input class="chat-input" type="text" placeholder="Type a message..." id="chatInput" onkeypress="handleChatSend(event)">
-            <button class="btn btn-primary" onclick="sendMessage()">Send →</button>
-          </div>
+          <div class="reviews-list" id="reviewsList"></div>
         </div>
       </div>
-    </div>
 
-    <!--══
-         PAGE: REVIEWS
-   ══ -->
-    <div class="page" id="page-reviews">
-      <div class="section-header">
-        <div>
-          <h2>Reviews & Ratings</h2>
-          <p>What customers say about your services.</p>
+      <!-- ══ NOTIFICATIONS ══ -->
+      <div class="section" id="sec-notifications">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div class="sec-heading rv">Notifications</div>
+          <button class="btn-outline rv" onclick="markAllRead()">Mark all read</button>
         </div>
+        <div class="notif-list rv" id="notifList"></div>
       </div>
-      <div class="reviews-summary">
-        <div class="rating-big">
-          <div class="rating-num">4.8</div>
-          <div class="rating-stars">★★★★★</div>
-          <div class="rating-count">Based on 42 reviews</div>
-        </div>
-        <div class="rating-bars">
-          <div style="font-size:14px;font-weight:600;color:#e6edf3;margin-bottom:16px;font-family:'Times New Roman',serif">Rating Distribution</div>
-          <div class="rating-bar-row">5 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:78%"></div></div><span>33</span></div>
-          <div class="rating-bar-row">4 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:14%"></div></div><span>6</span></div>
-          <div class="rating-bar-row">3 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:5%"></div></div><span>2</span></div>
-          <div class="rating-bar-row">2 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div><span>1</span></div>
-          <div class="rating-bar-row">1 ⭐<div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%"></div></div><span>0</span></div>
-        </div>
-      </div>
-      <div id="reviewsList"></div>
-    </div>
 
-    <!--══
-         PAGE: SETTINGS
-   ══ -->
-    <div class="page" id="page-settings">
-      <div class="section-header">
-        <div>
-          <h2>Settings</h2>
-          <p>Manage your account and preferences.</p>
-        </div>
-      </div>
-      <div class="settings-grid">
-        <div class="settings-nav" id="settingsNav">
-          <div class="settings-nav-item active" onclick="switchSettingsPanel('profile', this)">👥 Profile</div>
-          <div class="settings-nav-item" onclick="switchSettingsPanel('notifications', this)">🔔 Notifications</div>
-          <div class="settings-nav-item" onclick="switchSettingsPanel('payments', this)">💳 Payments</div>
-          <div class="settings-nav-item" onclick="switchSettingsPanel('security', this)">🔒 Security</div>
-        </div>
-        <div>
-          <!-- Profile -->
-          <div class="settings-panel active card" id="settings-profile">
-            <div class="settings-section-title">Profile Information</div>
-            <div class="settings-section-desc">Update your public provider profile.</div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">First Name</label>
-                <input class="form-input" type="text" value="Kofi">
+      <!-- ══ PROFILE ══ -->
+      <div class="section" id="sec-profile">
+        <div class="sec-heading rv">Profile Management</div>
+        <div class="card rv">
+          <div class="profile-grid">
+            <!-- Avatar upload -->
+            <div class="avatar-upload-wrap">
+              <div class="avatar-big">
+                <img src="https://i.pravatar.cc/80?img=11" alt="Provider" onerror="this.style.display='none'"/>
+                MB
               </div>
-              <div class="form-group">
-                <label class="form-label">Last Name</label>
-                <input class="form-input" type="text" value="Brebo">
+              <label class="avatar-upload-btn">
+                Change Photo
+                <input type="file" accept="image/*" style="display:none" onchange="previewAvatar(event)"/>
+              </label>
+              <div style="margin-top:6px">
+                <div class="form-label" style="text-align:center;margin-bottom:7px">Verification</div>
+                <div class="verif-row">
+                  <div class="verif-chip ok">✔ ID</div>
+                  <div class="verif-chip ok">✔ Phone</div>
+                  <div class="verif-chip ok">✔ Email</div>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input class="form-input" type="email" value="smartbwoy48@email.com">
+            <!-- Form -->
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label">Full Name</label>
+                <input class="form-input" type="text" value="Maxi Billion" id="pName"/>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Phone Number</label>
+                <input class="form-input" type="tel" value="+233 55 398 1702" id="pPhone"/>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Email Address</label>
+                <input class="form-input" type="email" value="kwame@example.com" id="pEmail"/>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Location</label>
+                <input class="form-input" type="text" value="East Legon, Accra" id="pLocation"/>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Category</label>
+                <select class="form-select" id="pCategory">
+                  <option selected>Tutoring</option>
+                  <option>Cleaning</option><option>Electrical</option>
+                  <option>Plumbing</option><option>Painting</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Service Radius</label>
+                <input class="form-input" type="text" value="20 km" id="pRadius"/>
+              </div>
+              <div class="form-field full">
+                <label class="form-label">Bio / Description</label>
+                <textarea class="form-textarea" id="pBio">Expert in Maths, Science &amp; English. 6 years teaching JHS–University level. Patient, results-driven tutor serving East Legon and surrounding areas.</textarea>
+              </div>
+              <div class="form-field full" style="flex-direction:row;align-items:center;justify-content:flex-end;gap:10px">
+                <button class="btn-outline" onclick="resetProfile()">Cancel</button>
+                <button class="btn-primary" onclick="saveProfile()">Save Changes</button>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input class="form-input" type="tel" value="+233 553 981 702">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Bio / Description</label>
-              <textarea class="textarea" style="margin-top:0" rows="3">Professional home services provider with 5+ years experience in plumbing, electrical, and general maintenance.</textarea>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Location / Area</label>
-              <input class="form-input" type="text" value="East Legon, Accra">
-            </div>
-            <button class="btn btn-primary" onclick="showToast('Profile saved successfully!','success')">💾 Save Changes</button>
-          </div>
-          <!-- Notifications -->
-          <div class="settings-panel card" id="settings-notifications">
-            <div class="settings-section-title">Notification Preferences</div>
-            <div class="settings-section-desc">Choose how you want to be notified.</div>
-            <div class="toggle-row"><div class="toggle-info"><strong>New Booking Requests</strong><span>Get notified when a customer places a booking</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
-            <div class="toggle-row"><div class="toggle-info"><strong>Booking Status Updates</strong><span>Confirmations, cancellations, and changes</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
-            <div class="toggle-row"><div class="toggle-info"><strong>New Messages</strong><span>Notifications for incoming customer messages</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
-            <div class="toggle-row"><div class="toggle-info"><strong>Payment Received</strong><span>Alert when earnings are confirmed</span></div><label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
-            <div class="toggle-row"><div class="toggle-info"><strong>Review Posted</strong><span>Get notified when a customer leaves a review</span></div><label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label></div>
-            <div class="toggle-row"><div class="toggle-info"><strong>Promotional Emails</strong><span>Tips, offers, and platform news</span></div><label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label></div>
-            <div style="margin-top:20px"><button class="btn btn-primary" onclick="showToast('Notification preferences saved!','success')">💾 Save Preferences</button></div>
-          </div>
-          <!-- Payments -->
-          <div class="settings-panel card" id="settings-payments">
-            <div class="settings-section-title">Payment Methods</div>
-            <div class="settings-section-desc">Manage how you receive withdrawals.</div>
-            <div class="payment-method-display" style="margin-bottom:16px">
-              <div class="payment-icon">📱</div>
-              <div class="payment-details"><strong>MTN Mobile Money</strong><span>+233 ** *** 1702 · Primary</span></div>
-              <span class="badge badge-active" style="margin-left:auto">✓ Active</span>
-            </div>
-            <div class="payment-method-display">
-              <div class="payment-icon">🏦</div>
-              <div class="payment-details"><strong>GCB Bank</strong><span>**** **** **** 3421</span></div>
-              <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="showToast('Set as primary','success')">Set Primary</button>
-            </div>
-            <div style="margin-top:20px"><button class="btn btn-primary" onclick="showToast('Add payment form coming soon','info')">+ Add Payment Method</button></div>
-          </div>
-          <!-- Security -->
-          <div class="settings-panel card" id="settings-security">
-            <div class="settings-section-title">Security Settings</div>
-            <div class="settings-section-desc">Keep your account secure.</div>
-            <div class="form-group"><label class="form-label">Current Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
-            <div class="form-group"><label class="form-label">New Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
-            <div class="form-group"><label class="form-label">Confirm New Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
-            <div class="toggle-row" style="margin-bottom:20px"><div class="toggle-info"><strong>Two-Factor Authentication</strong><span>Add extra security with SMS verification</span></div><label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label></div>
-            <button class="btn btn-primary" onclick="showToast('Password updated successfully!','success')">🔒 Update Password</button>
           </div>
         </div>
       </div>
-    </div>
 
-  </div><!-- /content -->
-</div><!-- /main-wrapper -->
-</div><!-- /layout -->
+      <!-- ══ SETTINGS ══ -->
+      <div class="section" id="sec-settings">
+        <div class="sec-heading rv">Account Settings</div>
+        <div class="card rv">
+          <div class="card-title">Security</div>
+          <div class="settings-group">
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">Change Password</div>
+                <div class="settings-row-sub">Update your login password</div>
+              </div>
+              <button class="btn-outline" onclick="showToast('info','Coming soon','Password change will open a secure modal.')">Change</button>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">Two-Factor Authentication</div>
+                <div class="settings-row-sub">Add an extra layer of security</div>
+              </div>
+              <label class="toggle-md">
+                <input type="checkbox"/><div class="toggle-md-track"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="card rv">
+          <div class="card-title">Notifications Preferences</div>
+          <div class="settings-group">
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">New Booking Alerts</div>
+                <div class="settings-row-sub">Get notified when someone books you</div>
+              </div>
+              <label class="toggle-md"><input type="checkbox" checked/><div class="toggle-md-track"></div></label>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">Payment Notifications</div>
+                <div class="settings-row-sub">Alert when payment is received</div>
+              </div>
+              <label class="toggle-md"><input type="checkbox" checked/><div class="toggle-md-track"></div></label>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">Review Notifications</div>
+                <div class="settings-row-sub">Know when a client leaves a review</div>
+              </div>
+              <label class="toggle-md"><input type="checkbox" checked/><div class="toggle-md-track"></div></label>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">Email Notifications</div>
+                <div class="settings-row-sub">Receive summaries via email</div>
+              </div>
+              <label class="toggle-md"><input type="checkbox"/><div class="toggle-md-track"></div></label>
+            </div>
+          </div>
+        </div>
+        <div class="card rv">
+          <div class="card-title">Danger Zone</div>
+          <div class="settings-group">
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">Deactivate Account</div>
+                <div class="settings-row-sub">Temporarily hide your profile from clients</div>
+              </div>
+              <button class="danger-btn" onclick="showToast('warning','Are you sure?','Deactivation will hide your profile immediately.')">Deactivate</button>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">Delete Account</div>
+                <div class="settings-row-sub">Permanently remove your account and all data</div>
+              </div>
+              <button class="danger-btn" onclick="showToast('error','Irreversible','Account deletion cannot be undone.')">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<!--
-     BOOKING DETAIL MODAL
- -->
-<div class="modal-overlay" id="bookingModal">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>📋 Booking Details</h3>
-      <div class="modal-close" onclick="closeModal('bookingModal')">✕</div>
-    </div>
-    <div id="bookingModalContent"></div>
+    </main><!-- end .content -->
+  </div><!-- end .main -->
+</div><!-- end .shell -->
+
+<!-- ════ MOBILE BOTTOM NAV ════ -->
+<nav class="bottom-nav" aria-label="Mobile navigation">
+  <div class="bn-item active" onclick="showSection('overview')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    Home
   </div>
-</div>
-
-<!--
-     REJECT MODAL
- -->
-<div class="modal-overlay" id="rejectModal">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>❌ Reject Booking</h3>
-      <div class="modal-close" onclick="closeModal('rejectModal')">✕</div>
-    </div>
-    <p style="font-size:13.5px;color:var(--muted);margin-bottom:4px">Please provide a reason for rejection (optional but recommended):</p>
-    <textarea class="textarea" id="rejectReason" placeholder="e.g. Schedule conflict, outside service area..."></textarea>
-    <div class="modal-actions">
-      <button class="btn btn-danger" onclick="confirmReject()">Confirm Rejection</button>
-      <button class="btn btn-outline" onclick="closeModal('rejectModal')">Cancel</button>
-    </div>
+  <div class="bn-item" onclick="showSection('bookings')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Bookings
   </div>
-</div>
-
-<!--
-     WITHDRAW MODAL
- -->
-<div class="modal-overlay" id="withdrawModal">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>💳 Withdraw Funds</h3>
-      <div class="modal-close" onclick="closeModal('withdrawModal')">✕</div>
-    </div>
-    <div class="modal-detail-row">
-      <span class="modal-detail-label">Available Balance</span>
-      <span class="modal-detail-value" style="color:var(--success);font-family:'Times New Roman',serif;font-size:20px;font-weight:700">GH₵ 2,340.00</span>
-    </div>
-    <div class="modal-detail-row">
-      <span class="modal-detail-label">Minimum Withdrawal</span>
-      <span class="modal-detail-value">GH₵ 50.00</span>
-    </div>
-    <div class="modal-detail-row">
-      <span class="modal-detail-label">Payment Method</span>
-      <span class="modal-detail-value">MTN Mobile Money ···1702</span>
-    </div>
-    <div class="form-group" style="margin-top:18px">
-      <label class="form-label">Amount to Withdraw (GH₵)</label>
-      <input class="form-input" type="number" id="withdrawAmount" placeholder="Enter amount (min 50)" min="50" max="2340">
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-primary" onclick="confirmWithdraw()">🏦 Request Withdrawal</button>
-      <button class="btn btn-outline" onclick="closeModal('withdrawModal')">Cancel</button>
-    </div>
+  <div class="bn-item" onclick="showSection('earnings')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    Earnings
   </div>
-</div>
+  <div class="bn-item" onclick="showSection('messages')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Chat
+  </div>
+  <div class="bn-item" onclick="showSection('profile')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Profile
+  </div>
+</nav>
 
-<!--
-     SERVICE EDIT MODAL
- -->
+<!-- ════ ADD/EDIT SERVICE MODAL ════ -->
 <div class="modal-overlay" id="serviceModal">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>✏️ Edit Service</h3>
-      <div class="modal-close" onclick="closeModal('serviceModal')">✕</div>
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeServiceModal()">✕</button>
+    <div class="modal-title" id="modalTitle">Add New Service</div>
+    <div class="form-grid">
+      <div class="form-field full">
+        <label class="form-label">Service Title</label>
+        <input class="form-input" id="svcTitle" placeholder="e.g. WASSCE Mathematics Tutoring"/>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Category</label>
+        <select class="form-select" id="svcCat">
+          <option>Tutoring</option><option>Cleaning</option><option>Electrical</option>
+          <option>Plumbing</option><option>Carpentry</option><option>Painting</option>
+          <option>Photography</option><option>Catering</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Pricing Type</label>
+        <select class="form-select" id="svcPricingType">
+          <option>Fixed Price</option><option>Hourly Rate</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Price (₵)</label>
+        <input class="form-input" id="svcPrice" type="number" placeholder="50"/>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Est. Duration</label>
+        <input class="form-input" id="svcDuration" placeholder="1 hour"/>
+      </div>
+      <div class="form-field full">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" id="svcDesc" placeholder="Describe what's included…"></textarea>
+      </div>
     </div>
-    <div class="form-group"><label class="form-label">Service Title</label><input class="form-input" type="text" id="editServiceTitle"></div>
-    <div class="form-row">
-      <div class="form-group"><label class="form-label">Category</label><select class="form-input"><option>Cleaning</option><option>Plumbing</option><option>Electrical</option><option>Painting</option></select></div>
-      <div class="form-group"><label class="form-label">Price (GH₵)</label><input class="form-input" type="number" id="editServicePrice"></div>
-    </div>
-    <div class="form-group"><label class="form-label">Description</label><textarea class="textarea" style="margin-top:0" id="editServiceDesc" rows="3"></textarea></div>
     <div class="modal-actions">
-      <button class="btn btn-primary" onclick="saveServiceEdit()">💾 Save Changes</button>
-      <button class="btn btn-outline" onclick="closeModal('serviceModal')">Cancel</button>
+      <button class="btn-outline" onclick="closeServiceModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveService()">Save Service</button>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
-<div id="toast-container"></div>
+<!-- Toast container -->
+<div class="toast-stack" id="toastStack"></div>
 
-<script src="/HTML/JS/SERVICES/dashboard.js">
-
-</script>
+<script src="/HTML/JS/SERVICES/dashboard.js"></script>
 </body>
 </html>
