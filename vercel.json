@@ -1,5 +1,7 @@
 {
   "routes": [
-    { "src": "/", "dest": "/HTML/ADMIN/LandingPage.html" }
+    { "handle": "filesystem" },
+    { "src": "/", "dest": "/HTML/ADMIN/LandingPage.html" },
+    { "src": "/(.*)", "dest": "/HTML/$1" }
   ]
 }
