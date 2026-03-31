@@ -593,7 +593,7 @@ function previewAvatar(e) {
 function handleLogout() {
   showToast('info','Signing out…','See you next time!');
   localStorage.removeItem('tm_session');
-  setTimeout(() => { window.location.href = '/HTML/ADMIN/LandingPage.html'; }, 1700);
+  setTimeout(() => { window.location.href = '/index.html'; }, 1700);
 }
 
 /* 

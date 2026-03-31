@@ -22,7 +22,7 @@ const ROUTES = {
   messages    : '#',
   profile     : '#',
   settings    : '#',
-  landing     : '/HTML/ADMIN/LandingPage.html',
+  landing     : '/index.html',
   login       : '/HTML/ADMIN/login.html',
 };
 
