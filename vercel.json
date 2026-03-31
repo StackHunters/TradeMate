@@ -1,8 +1,6 @@
 {
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/", "dest": "/HTML/ADMIN/LandingPage.html" },
-    { "src": "/(.*)", "dest": "/HTML/$1" }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
 
